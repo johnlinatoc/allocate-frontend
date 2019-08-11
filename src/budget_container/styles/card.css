@@ -1,0 +1,32 @@
+.budget-card{
+  border: solid black 1px;
+  width: 30%;
+  height: 11em;
+  overflow: scroll;
+  display: inline-block;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+.trans-name{
+  display: inline-block;
+}
+
+.trans-amount{
+  display: inline-block;
+}
+
+.progress-bar {
+  position: relative;
+  height: 20px;
+  width: 350px;
+  border-radius: 50px;
+  border: 1px solid #333;
+}
+
+.filler {
+  background: #1DA598;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+}

@@ -1,0 +1,9 @@
+.transactions-container {
+  border: solid black 1px;
+  width: 20%;
+  display: inline-block;
+  float: right;
+  margin-right: 4em;
+  height: 70vh;
+  padding: 1em;
+}

@@ -1,0 +1,8 @@
+.budget-container{
+  border: 1px solid black;
+  width: 60%;
+  height: 70vh;
+  padding: 1em;
+  display: inline-block;
+  margin-left: 3em;
+}
