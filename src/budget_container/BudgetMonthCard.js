@@ -45,11 +45,17 @@ export default class BudgetMonthCard extends Component {
     })
   }
 
+  calcPercentage(){
+    let total = (this.state.total / this.state.budget) * 100
+
+    return total
+  }
+
   render(){
     return(
       <div className='month-card'>
         <h2 className='month-card-name'> {this.renderMonthName()} </h2>
-        <ProgressBar percentage={(this.state.total / this.state.budget) * 100} />
+        <ProgressBar percentage={this.calcPercentage()} />
         <h4 className='spent'> Spent ${this.state.total} </h4>
         <h4 className='income'> Income ${this.renderMonthBudget()} </h4>
       </div>

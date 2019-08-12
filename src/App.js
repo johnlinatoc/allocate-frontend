@@ -1,59 +1,48 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Home from './Home'
+import Login from './Login';
 import Navbar from './Navbar'
+import Signup from './Signup'
 
 class App extends Component {
   constructor(){
     super()
     this.state = {
-      months: [],
-      categories: [],
-      transactions: []
+      auth: { user: {} },
+      loggedIn: false
     }
   }
 
-  componentDidMount(){
-    this.fetchMonth()
-    this.fetchCategories()
-    this.fetchTransactions()
+  handleLogin(user){
+    this.setState({
+      auth: { user },
+      loggedIn: true
+    })
+    localStorage.setItem('token', user.jwt)
   }
 
-  fetchMonth(){
-    return fetch('http://localhost:3000/monthly_budgets')
-    .then(resp => resp.json())
-    .then(data => this.setState({months: data}))
-    .catch((err)=>{console.log(err)})
-  }
-
-  fetchCategories(){
-    return fetch('http://localhost:3000/categories')
-    .then(resp => resp.json())
-    .then(data => this.setState({categories: data}))
-    .catch((err)=>{console.log(err)})
-  }
-
-  fetchTransactions(){
-    return fetch('http://localhost:3000/transactions')
-    .then(resp => resp.json())
-    .then(data => this.setState({transactions: data}))
-    .catch((err)=>{console.log(err)})
+  handleLogout(user){
+    this.setState({
+      auth: { user: {} }
+    })
+    localStorage.removeItem('token')
   }
 
   render(){
-    const { months, categories, transactions } = this.state
-
     return (
       <div>
-        <Navbar /><br/><br/>
-        <Route exact path='/' render={() => {
-          return <div>
-            <Home
-              months={months}
-              categories={categories}
-              transactions={transactions}/>
-          </div>
-          }}/>
+        <Navbar />
+          <Route exact path="/" render={(routeProps) => {
+            return <Home {...routeProps}
+              handleLogin={(user) => {this.handleLogin(user)}}/>
+          }} />
+          <Route path="/login" render={(routeProps) => {
+            return <Login {...routeProps} handleLogin={(user) => {this.handleLogin(user)}}/>
+          }} />
+        <Route path="/signup" render={(routeProps) => {
+            return <Signup {...routeProps} handleLogin={(user) => {this.handleLogin(user)}}/>
+          }} />
       </div>
     );
   }

@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import BudgetTransactionsCard from './BudgetTransactionsCard'
-// import './styles/card.css'
-// import ProgressBar from './ProgressBar.js'
+import './styles/card.css'
+import ProgressBar from './ProgressBar.js'
 
 class BudgetCardContainer extends Component {
   constructor(){
     super()
     this.state = {
       flipped: false,
+      total: 0,
+      budget: 0
     }
   }
 
@@ -15,6 +17,16 @@ class BudgetCardContainer extends Component {
     this.setState({
       flipped: !this.state.flipped
     })
+  }
+
+  componentDidUpdate(){
+    let transactions = this.renderTotal()
+    if(this.state.total !== transactions) {
+      return this.setState({
+        total: transactions,
+        budget: this.props.category.budget
+      })
+    }
   }
 
   renderCategoryTransactionNames(){
@@ -59,6 +71,15 @@ class BudgetCardContainer extends Component {
     return total;
   }
 
+  calcPercentage(){
+    let total = (this.state.total / this.state.budget) * 100
+    // if (total >= 100) {
+    //   return total = 100
+    // }
+
+    return total
+  }
+
   render(){
     const { category } = this.props
     const names = this.renderCategoryTransactionNames()
@@ -69,6 +90,9 @@ class BudgetCardContainer extends Component {
 
     if (!isClicked) {
        container = <div className='card-header'>
+         <div className=''>
+           <ProgressBar className='card-bar' percentage={this.calcPercentage()}/>
+         </div>
          <h3>{category.name}</h3>
          <h4>Budget: ${category.budget}</h4>
          <h4>Spent: ${this.renderTotal()}</h4>

@@ -27,27 +27,38 @@ img {
 
 .name{
   display: inline-block;
+  position: relative;
+  top: -18px;
+  margin-left: 12px;
 }
 
 .title-container{
-  border: solid 1px black;
   display: inline-block;
+  margin-left: 2em;
+  margin-top: 6px;
 }
 
 #navbar {
-  border: solid 1px black;
   height: 4em;
   width: auto;
   position: sticky;
   background: #AC98D6;
 }
 
-.categories-container{
-  border: solid 1px black;
-  display: inline-block;
-}
-
 .account-container{
-  border: solid 1px black;
   display: inline-block;
+  float: right;
+  position: relative;
+  top: 20px;
+  margin-right: 4em;
+}
+.categories-container{
+  display: flex;
+  float: right;
+  position: relative;
+  top: 20px;
+  margin-right: 3em;
+}
+.categories-container div{
+  margin-right: 2em;
 }

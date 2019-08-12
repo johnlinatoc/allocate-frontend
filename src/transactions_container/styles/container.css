@@ -8,3 +8,7 @@
   padding: 1em;
   background: #AC98D6;
 }
+
+.trans-amount {
+  float: right
+}

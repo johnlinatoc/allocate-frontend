@@ -8,12 +8,13 @@ export default {
       body: JSON.stringify(loginData)
     }
 
-    return fetch('http://localhost:3000/api/v1/auth', reqObj)
+    return fetch('http://localhost:3000/auth', reqObj)
       .then(res => res.json())
   },
 
 
   signup: (loginData) => {
+    console.log(loginData)
     const reqObj = {
       method: 'POST',
       headers: {
@@ -22,7 +23,7 @@ export default {
       body: JSON.stringify(loginData)
     }
 
-    return fetch('http://localhost:3000/api/v1/current_user', reqObj)
+    return fetch('http://localhost:3000/current_user', reqObj)
       .then(res => res.json())
   }
 }
