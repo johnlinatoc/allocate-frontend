@@ -1,8 +1,25 @@
 .budget-container{
   border: 1px solid black;
   width: 60%;
-  height: 70vh;
-  padding: 1em;
+  height: 75vh;
   display: inline-block;
   margin-left: 3em;
+}
+.month-card {
+  background: #AC98D6;
+  padding: 16px 0;
+  margin-bottom: 2em;
+}
+
+.month-card-name{
+  color: black;
+  margin: 0 auto 12px;
+  width: 3em;
+}
+
+.budget-cards {
+  /* display: grid;
+  grid-template-columns: repeat(3, 1fr); */
+  display: flex;
+  flex-wrap: wrap;
 }

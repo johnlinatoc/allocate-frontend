@@ -9,7 +9,6 @@ export default class BudgetContainer extends Component {
   renderBudgetMonth(){
     const { months, transactions } = this.props
 
-
       return months.map((month)=>{
         return <BudgetMonthCard
           key={month.id}
@@ -31,16 +30,10 @@ export default class BudgetContainer extends Component {
       })
       amounts = filtered.map((transaction)=>{return transaction.amount})
       names = filtered.map((transaction)=>{return transaction.name})
-      // return final;
-
-
-    console.log(names)
-    console.log(amounts)
   }
 
   renderBudgetCard(){
     const { categories, transactions } = this.props
-    
       return categories.map((category)=>{
         return <BudgetCardContainer
           key={category.id}
@@ -55,7 +48,9 @@ export default class BudgetContainer extends Component {
     return(
       <div className='budget-container'>
         {this.renderBudgetMonth()}
-        {this.renderBudgetCard()}
+        <div className='budget-cards'>
+          {this.renderBudgetCard()}
+        </div>
       </div>
     )
   }

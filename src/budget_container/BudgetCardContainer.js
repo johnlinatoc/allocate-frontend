@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import BudgetTransactionsCard from './BudgetTransactionsCard'
+// import './styles/card.css'
+// import ProgressBar from './ProgressBar.js'
 
 class BudgetCardContainer extends Component {
   constructor(){
     super()
     this.state = {
-      flipped: false
+      flipped: false,
     }
   }
 

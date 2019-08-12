@@ -7,18 +7,30 @@ export default class BudgetMonthCard extends Component {
     super(props)
 
     this.state = {
-      percentage: 0
+      total: 0,
+      budget: 0
     }
   }
 
-  componentDidMount(){
-    this.nextStep()
+  componentDidUpdate(){
+    let transactions = this.renderTotalTransactions()
+    if(this.state.total !== transactions.total) {
+      return this.setState({
+        total: transactions.total,
+        budget: transactions.budget
+      })
+    }
   }
 
-  nextStep = () => {
-    if(this.state.percentage === this.renderMonthBudget()) return
-    this.setState({ percentage: this.renderTotalTransactions() })
-    console.log(this.renderTotalTransactions())
+  renderTotalTransactions = () => {
+    let total = 0;
+    let budget = 0;
+
+    for(let expense of this.props.transactions) {
+      total += expense.amount
+    }
+    budget = this.props.months[0].monthly_budget
+    return {total, budget};
   }
 
   renderMonthName(){
@@ -33,27 +45,13 @@ export default class BudgetMonthCard extends Component {
     })
   }
 
-
-  renderTotalTransactions = () => {
-    let total = 0;
-
-    for(let expense of this.props.transactions) {
-      total += expense.amount
-    }
-
-    return total;
-  }
-
-
   render(){
     return(
-      <div>
-      <ProgressBar percentage={this.state.percentage} />
-      <h2>
-        {this.renderMonthName()} Income: ${this.renderMonthBudget()}
-        <br/>
-        Spent: ${this.renderTotalTransactions()}
-      </h2>
+      <div className='month-card'>
+        <h2 className='month-card-name'> {this.renderMonthName()} </h2>
+        <ProgressBar percentage={(this.state.total / this.state.budget) * 100} />
+        <h4 className='spent'> Spent ${this.state.total} </h4>
+        <h4 className='income'> Income ${this.renderMonthBudget()} </h4>
       </div>
     )
   }

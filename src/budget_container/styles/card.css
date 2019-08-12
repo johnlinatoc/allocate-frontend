@@ -1,11 +1,23 @@
 .budget-card{
   border: solid black 1px;
-  width: 30%;
+  width: 243px;
   height: 11em;
   overflow: scroll;
   display: inline-block;
   margin-right: 1em;
   margin-bottom: 1em;
+  background: #AC98D6;
+}
+
+.budget-card:nth-child(3n + 3){
+  border: solid black 1px;
+  height: 11em;
+  width: 243px;
+  overflow: scroll;
+  display: inline-block;
+  margin-right: 0em;
+  margin-bottom: 1em;
+  background: #AC98D6;
 }
 
 .trans-name{
@@ -18,15 +30,30 @@
 
 .progress-bar {
   position: relative;
-  height: 20px;
-  width: 350px;
-  border-radius: 50px;
-  border: 1px solid #333;
+  height: 5px;
+  width: 75%;
+  /* border: 1px solid #333; */
+  margin: 0 auto;
+  background: rgb(140, 138, 166);
+  /* margin-top: 2px; */
 }
 
 .filler {
-  background: #1DA598;
+  background: rgb(51, 49, 77);
   height: 100%;
   border-radius: inherit;
   transition: width .2s ease-in;
+}
+
+.income {
+  margin: 0;
+  display: inline-block;
+  float: right;
+  margin-right: 6em;
+}
+
+.spent {
+  margin: 0;
+  display: inline-block;
+  margin-left: 6em;
 }
