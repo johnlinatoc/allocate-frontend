@@ -20,7 +20,7 @@ export default class Home extends Component {
       this.props.history.push("/login");
     } else {
       Api.currentUser(token).then(data => {
-        console.log("data", data);
+        //console.log("data", data);
         if (data.error) {
           this.props.history.push("/login");
         } else {
@@ -47,7 +47,7 @@ export default class Home extends Component {
       .then(resp => resp.json())
       .then(data => this.setState({ months: data }))
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
   }
 
@@ -65,7 +65,7 @@ export default class Home extends Component {
       .then(resp => resp.json())
       .then(data => this.setState({ categories: data }))
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
 
   }
@@ -83,15 +83,15 @@ export default class Home extends Component {
       .then(resp => resp.json())
       .then(data => this.setState({ transactions: data }))
       .catch(err => {
-        console.log(err);
+        console.error(err);
       });
   }
 
   render() {
     const { categories, transactions, months } = this.state;
     // const userInfo = this.filterAll()
-    {console.log(this.props.userInfo.id)}
-    {console.log(months)}
+    // {console.log(this.props.userInfo.id)}
+    // {console.log(months)}
     return (
       <div>
         <BudgetContainer
@@ -100,8 +100,9 @@ export default class Home extends Component {
           categories={categories}
         />
         <TransactionsContainer
-          category={categories}
+          categories={categories}
           transactions={transactions}
+          id={this.props.userInfo.id}
         />
       </div>
     );

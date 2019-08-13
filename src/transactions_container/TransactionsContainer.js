@@ -1,65 +1,109 @@
-import React, { Component } from 'react'
-import TransactionCard from './TransactionCard'
-import './styles/container.css'
+import React, { Component } from "react";
+import TransactionCard from "./TransactionCard";
+import "./styles/container.css";
 
 export default class TransactionsContainer extends Component {
-  constructor(){
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
-      amount: 0,
+      expense_title: '',
+      amount: "",
       category_id: 0,
+      monthly_budget_id: 0
+    };
+  }
+
+  renderTransactionCard() {
+    const transactions = this.props.transactions;
+    return transactions.map(trans => {
+      return <TransactionCard key={trans.id} info={trans} />;
+    });
+  }
+
+  renderCategories() {
+    const categories = this.props.categories;
+
+    return categories.map(category => {
+      //console.log(category.monthly_budget_id)
+      return (
+        <option key={category.id} value={[category.id, category.monthly_budget_id]}>
+          {category.name}
+        </option>
+      );
+    });
+  }
+
+  handleAmountChange(e) {
+    this.setState({
+      amount: parseInt(e.target.value)
+    });
+  }
+
+  handleNameChange(e) {
+    this.setState({
+      expense_title: e.target.value
+    });
+  }
+
+  handleSubmit(e){
+    e.preventDefault()
+    console.log('working')
+    const { amount, category_id, monthly_budget_id, user_id, expense_title } = this.state
+
+    const info = this.state
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: expense_title,
+        amount,
+        category_id,
+        monthly_budget_id,
+        user_id: this.props.id
+      })
     }
+    return fetch('http://localhost:3000/transactions', reqObj)
+      .then(res => res.json())
+      .then(data => console.log(data))
   }
 
-  // renderCategoryTransactionNames(){
-  //   const { transactions } = this.props
-  //   let names;
-  //   names = transactions.map((transaction)=>{return transaction.name})
-  //   return names
-  // }
-  //
-  // renderCategoryTransactionAmounts(){
-  //   const { transactions } = this.props
-  //   let amounts;
-  //   amounts = transactions.map((transaction)=>{return transaction.amount})
-  //   return amounts
-  // }
-  // 
-  // renderTransactionName(){
-  //   const names = this.renderCategoryTransactionNames()
-  //   return names.map(name=> {
-  //     return <BudgetTransactionName name={name}/>})
-  // }
-
-  // renderTransactionAmount(){
-  //   const amounts = this.renderCategoryTransactionAmounts()
-  //   return amounts.map(amount=> {
-  //     return <BudgetTransactionAmount amount={amount}/>})
-  // }
-
-  renderTransactionCard(){
-    const transactions = this.props.transactions
-
-    return transactions.map(trans =>
-      {return <TransactionCard
-          key={trans.id}
-          info={trans}/>})
-  }
-
-  render(){
-    return(
-      <div className='transactions-container'>
+  render() {
+    return (
+      <div className="transactions-container">
         <h3>Expenses</h3>
         {this.renderTransactionCard()}
-        <div className='add-expense'>
-          <input></input>
-          <select>
-
-            <option>Category</option>
-          </select>
-          <button>Submit</button>
+        <div className="add-expense">
+          <form onSubmit={(e) => {this.handleSubmit(e)}}>
+            <input
+              type={'text'}
+              value={this.state.expense_title}
+              placeholder={"expense name"}
+              onChange={e => this.handleNameChange(e)}
+              ></input>
+            <input
+              type={'number'}
+              onChange={e => this.handleAmountChange(e)}
+              placeholder={"amount"}
+              value={this.state.amount}
+              ></input>
+            <select
+              onChange={e => {
+                this.setState({
+                  category_id: parseInt(e.target.value[0]),
+                  monthly_budget_id: parseInt(e.target.value[2])
+                });
+              }}
+              >
+              <option>Category</option>
+              {this.renderCategories()}
+            </select>
+            <button>Submit</button>
+          </form>
         </div>
       </div>
-    )
+    );
   }
 }
