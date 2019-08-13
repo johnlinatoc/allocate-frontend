@@ -99,6 +99,7 @@ class BudgetCardContainer extends Component {
        </div>
     } else {
        container = <BudgetTransactionsCard
+       key={category.id}
        names={names}
        amounts={amounts}/>
     }

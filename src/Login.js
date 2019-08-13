@@ -11,6 +11,7 @@ class Login extends React.Component {
       error: false
     }
   }
+
   handleUsernameChange(e){
     this.setState({
       username: e.target.value
@@ -27,13 +28,14 @@ class Login extends React.Component {
     e.preventDefault()
     Api.login(this.state)
       .then(data => {
+        console.log('data = ', data)
         if (data.error){
           this.setState({
             error: true
           })
         } else {
           this.props.handleLogin(data)
-          this.props.history.push('/')
+          this.props.history.push('/home')
         }
       })
   }
@@ -43,9 +45,9 @@ class Login extends React.Component {
       <div>
         {this.state.error ? <h4>Invalid username or Password</h4> : null}
         <form onSubmit={(e)=>{this.handleLogin(e)}}>
-          <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} />
-          <input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} />
-          <input type='submit' value='login' />
+          Username<input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} /><br/>
+          Password<input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} /><br/>
+        <input type='submit' value='login' />
         </form>
       </div>
     );

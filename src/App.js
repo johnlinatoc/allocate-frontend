@@ -1,51 +1,138 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import Home from './Home'
-import Login from './Login';
-import Navbar from './Navbar'
-import Signup from './Signup'
+import React, { Component, createContext } from "react";
+import { Route, withRouter } from "react-router-dom";
+import Home from "./Home";
+import Login from "./Login";
+import Navbar from "./Navbar";
+import Signup from "./Signup";
+import ExploreContainer from "./ExploreContainer";
+import MyBudget from "./my_budget_container/MyBudget";
+
+// export const { Provider, Consumer } = createContext({
+//   auth: {},
+//   handleLogout: () => {},
+// })
 
 class App extends Component {
-  constructor(){
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
-      auth: { user: {} },
-      loggedIn: false
+      auth: { user: {} }
+      // handleLogout: () => this.handleLogout(),
+    };
+  }
+
+  componentDidMount() {}
+
+  handleLogin(data) {
+    this.setState({
+      auth: { user: data.user },
+      loggedIn: true
+    });
+    if (data.jwt) {
+      localStorage.setItem("token", data.jwt);
     }
   }
 
-  handleLogin(user){
+  handleLogout() {
     this.setState({
-      auth: { user },
-      loggedIn: true
-    })
-    localStorage.setItem('token', user.jwt)
+      auth: { user: {} },
+      profile: ""
+    });
+    localStorage.removeItem("token");
+    console.log("logged out");
   }
 
-  handleLogout(user){
-    this.setState({
-      auth: { user: {} }
-    })
-    localStorage.removeItem('token')
-  }
+  render() {
+    const { auth } = this.state;
 
-  render(){
     return (
+      // <Provider value={this.state}>
       <div>
-        <Navbar />
-          <Route exact path="/" render={(routeProps) => {
-            return <Home {...routeProps}
-              handleLogin={(user) => {this.handleLogin(user)}}/>
-          }} />
-          <Route path="/login" render={(routeProps) => {
-            return <Login {...routeProps} handleLogin={(user) => {this.handleLogin(user)}}/>
-          }} />
-        <Route path="/signup" render={(routeProps) => {
-            return <Signup {...routeProps} handleLogin={(user) => {this.handleLogin(user)}}/>
-          }} />
+        <Navbar
+          userInfo={auth.user}
+          handleLogout={() => {
+            this.handleLogout();
+          }}
+        />
+
+        <Route
+          exact
+          path="/home"
+          render={routeProps => {
+            return (
+              <Home
+                {...routeProps}
+                fetchProfile={() => {
+                  this.fetchProfile();
+                }}
+                handleLogin={user => {
+                  this.handleLogin(user);
+                }}
+                userInfo={auth.user}
+              />
+            );
+          }}
+        />
+
+        <Route
+          path="/login"
+          render={routeProps => {
+            return (
+              <Login
+                {...routeProps}
+                handleLogin={user => {
+                  this.handleLogin(user);
+                }}
+              />
+            );
+          }}
+        />
+
+        <Route
+          path="/signup"
+          render={routeProps => {
+            return (
+              <Signup
+                {...routeProps}
+                handleLogin={user => {
+                  this.handleLogin(user);
+                }}
+              />
+            );
+          }}
+        />
+
+        <Route
+          path="/myBudget"
+          render={routeProps => {
+            return (
+              <MyBudget
+                {...routeProps}
+                handleLogin={user => {
+                  this.handleLogin(user);
+                }}
+              />
+            );
+          }}
+        />
+
+        <Route
+          path="/explore"
+          render={routeProps => {
+            return (
+              <ExploreContainer
+                {...routeProps}
+                handleLogin={user => {
+                  this.handleLogin(user);
+                }}
+              />
+            );
+          }}
+        />
       </div>
+      // </Provider>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

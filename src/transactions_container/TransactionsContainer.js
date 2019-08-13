@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import BudgetTransactionName from '../budget_container/BudgetTransactionName'
-import BudgetTransactionAmount from '../budget_container/BudgetTransactionAmount'
 import TransactionCard from './TransactionCard'
 import './styles/container.css'
 
@@ -26,7 +24,7 @@ export default class TransactionsContainer extends Component {
   //   amounts = transactions.map((transaction)=>{return transaction.amount})
   //   return amounts
   // }
-  //
+  // 
   // renderTransactionName(){
   //   const names = this.renderCategoryTransactionNames()
   //   return names.map(name=> {
@@ -43,7 +41,9 @@ export default class TransactionsContainer extends Component {
     const transactions = this.props.transactions
 
     return transactions.map(trans =>
-      {return <TransactionCard info={trans}/>})
+      {return <TransactionCard
+          key={trans.id}
+          info={trans}/>})
   }
 
   render(){
@@ -54,6 +54,7 @@ export default class TransactionsContainer extends Component {
         <div className='add-expense'>
           <input></input>
           <select>
+
             <option>Category</option>
           </select>
           <button>Submit</button>
