@@ -44,6 +44,12 @@ class Navbar extends Component {
             </div>
           </Link>
 
+          <Link to="/profile" className="nav-link-text">
+            <div className="nav-link">
+              <span>Profile</span>
+            </div>
+          </Link>
+
           <a to="/" className="nav-link-text">
             <div
               className="nav-link"

@@ -31,11 +31,12 @@
 .progress-bar {
   position: relative;
   height: 5px;
-  width: 75%;
+  width: 80%;
   /* border: 1px solid #333; */
   margin: 0 auto;
   background: rgb(140, 138, 166);
   /* margin-top: 2px; */
+  margin-top: 14px;
 }
 
 .filler {

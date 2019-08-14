@@ -73,6 +73,7 @@ export default class TransactionsContainer extends Component {
   }
 
   render() {
+    {console.log(this.props.id)}
     return (
       <div className="transactions-container">
         <h3>Expenses</h3>

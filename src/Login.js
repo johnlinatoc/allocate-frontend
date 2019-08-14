@@ -1,5 +1,7 @@
 import React from 'react';
 import Api from './services/api'
+import { Link, withRouter } from "react-router-dom";
+
 
 
 class Login extends React.Component {
@@ -49,9 +51,14 @@ class Login extends React.Component {
           Password<input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} /><br/>
         <input type='submit' value='login' />
         </form>
+        <Link to="/create_user" className="nav-link-text">
+          <div className="nav-link">
+            <span>Create User</span>
+          </div>
+        </Link>
       </div>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);

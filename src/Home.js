@@ -121,8 +121,6 @@ export default class Home extends Component {
     if (perMonthMon[0]){
       const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
       const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === perMonthMon[0].id})
-      console.log(thisMonthTrans)
-
       return <div>
         <BudgetContainer
           months={perMonthMon}

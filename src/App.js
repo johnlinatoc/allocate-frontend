@@ -5,6 +5,8 @@ import Login from "./Login";
 import Navbar from "./Navbar";
 import Signup from "./Signup";
 import ExploreContainer from "./ExploreContainer";
+import ProfileContainer from "./ProfileContainer";
+import NewProfileContainer from "./NewProfileContainer";
 import MyBudget from "./my_budget_container/MyBudget";
 
 // export const { Provider, Consumer } = createContext({
@@ -130,7 +132,37 @@ class App extends Component {
             );
           }}
         />
+
+      <Route
+        path="/profile"
+        render={routeProps => {
+          return (
+            <ProfileContainer
+              {...routeProps}
+              handleLogin={user => {
+                this.handleLogin(user);
+              }}
+              />
+          );
+        }}
+        />
+
+      <Route
+        path="/create_user"
+        render={routeProps => {
+          return (
+            <NewProfileContainer
+              {...routeProps}
+              handleLogin={user => {
+                this.handleLogin(user);
+              }}
+              />
+          );
+        }}
+        />
+
       </div>
+
       // </Provider>
     );
   }

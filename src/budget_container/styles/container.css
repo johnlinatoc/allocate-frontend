@@ -15,7 +15,9 @@
 .month-card-name{
   color: black;
   margin: 0 auto 12px;
-  width: 3em;
+  position: relative;
+  width: 8em;
+  left: 18px;
 }
 
 .budget-cards {

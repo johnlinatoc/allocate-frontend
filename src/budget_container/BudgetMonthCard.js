@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './styles/card.css'
 import ProgressBar from './ProgressBar.js'
 
+
 export default class BudgetMonthCard extends Component {
 
   renderMonthTransactions(){
@@ -22,10 +23,11 @@ export default class BudgetMonthCard extends Component {
 
   render(){
     const { month } = this.props
+    console.log(month)
     {this.renderMonthTransactions()}
     return(
       <div className='month-card'>
-        <h2 className='month-card-name'> {month.name} </h2>
+        <h2 className='month-card-name'> {month.name} {month.year}</h2>
         <ProgressBar percentage={this.calcPercentage()} />
         <h4 className='spent'> Spent ${this.renderMonthTransactions()} </h4>
         <h4 className='income'> Income ${month.monthly_budget} </h4>
