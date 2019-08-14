@@ -13,10 +13,14 @@ const Filler = (props) => {
      fillerStyle = {
       width: `100%`,
       background: 'green'}
-  } else {
+  } else if (props.percentage >= 100){
     fillerStyle = {
      width: `100%`,
      background: 'red'}
+  } else {
+    fillerStyle = {
+     width: `0%`,
+    }
   }
 
   return <div

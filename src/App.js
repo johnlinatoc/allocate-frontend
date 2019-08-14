@@ -108,6 +108,7 @@ class App extends Component {
             return (
               <MyBudget
                 {...routeProps}
+                userInfo={auth.user}
                 handleLogin={user => {
                   this.handleLogin(user);
                 }}

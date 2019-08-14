@@ -12,6 +12,7 @@ export default class BudgetContainer extends Component {
     return months.map((month)=>{
       return <BudgetMonthCard
         key={month.id}
+        id={month.id}
         month={month}
         transactions={transactions}
         />

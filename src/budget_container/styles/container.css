@@ -4,6 +4,7 @@
   height: 75vh;
   display: inline-block;
   margin-left: 3em;
+  overflow: scroll;
 }
 .month-card {
   background: #AC98D6;

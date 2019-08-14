@@ -12,7 +12,6 @@ export default {
       .then(res => res.json())
   },
 
-
   signup: (loginData) => {
     console.log(loginData)
     const reqObj = {
@@ -36,5 +35,18 @@ export default {
     }
     return fetch('http://localhost:3000/profile', reqObj)
     .then(resp => resp.json())
+  },
+
+  postBudget: (userInput) => {
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(userInput)
+    }
+    return fetch('http://localhost:3000/transactions', reqObj)
+      .then(res => res.json())
   }
 }

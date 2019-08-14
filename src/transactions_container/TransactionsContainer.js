@@ -14,8 +14,10 @@ export default class TransactionsContainer extends Component {
   }
 
   renderTransactionCard() {
-    const transactions = this.props.transactions;
-    return transactions.map(trans => {
+    let allMonthTrans = this.props.transactions
+    const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === this.props.id})
+
+    return thisMonthTrans.map(trans => {
       return <TransactionCard key={trans.id} info={trans} />;
     });
   }

@@ -9,8 +9,32 @@ export default class Home extends Component {
     this.state = {
       months: [],
       categories: [],
-      transactions: []
+      transactions: [],
+      page: 0,
+      month: [],
     };
+  }
+
+  pageForward = (e) => {
+    e.preventDefault()
+    let start = this.state.page;
+    if (start < this.state.months.length - 1) {
+      start += 1
+      this.setState({
+        page: start
+      })
+    }
+  }
+
+  pageBack = (e) => {
+    e.preventDefault()
+    let start = this.state.page;
+    if (start > 0){
+      start -= 1
+      this.setState({
+        page: start
+      })
+    }
   }
 
   componentDidMount() {
@@ -87,26 +111,42 @@ export default class Home extends Component {
       });
   }
 
-  render() {
+  renderPerMonth(){
     const { categories, transactions, months } = this.state;
-    // const userInfo = this.filterAll()
-    // {console.log(this.props.userInfo.id)}
-    // {console.log(months)}
+    const start = this.state.page
+    const perMonthMon = this.state.months.slice(start, start + 1)
+    const allMonthCats = this.state.categories
+    const allMonthTrans = this.state.transactions
+
+    if (perMonthMon[0]){
+      const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
+      const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === perMonthMon[0].id})
+      console.log(thisMonthTrans)
+
+      return <div>
+        <BudgetContainer
+          months={perMonthMon}
+          transactions={transactions}
+          categories={thisMonthCats}
+          />
+
+        <TransactionsContainer
+          categories={thisMonthCats}
+          transactions={thisMonthTrans}
+          id={this.props.userInfo.id}
+          />
+      </div>
+    }
+  }
+
+  render() {
+
     return (
       <div>
-        <BudgetContainer
-          months={months}
-          transactions={transactions}
-          categories={categories}
-        />
-        <TransactionsContainer
-          categories={categories}
-          transactions={transactions}
-          id={this.props.userInfo.id}
-        />
+        <button onClick={(e)=>{this.pageBack(e)}}>back</button>
+        <button onClick={(e)=>{this.pageForward(e)}}>forward</button>
+        {this.renderPerMonth()}
       </div>
     );
   }
-  // month.map(budget => {return <div>budget.monthly_budget</div>})
 }
-//
