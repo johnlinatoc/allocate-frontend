@@ -15,10 +15,10 @@ export default class TransactionsContainer extends Component {
 
   renderTransactionCard() {
     let allMonthTrans = this.props.transactions
-    const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === this.props.id})
+    const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === this.props.months[0].id})
 
     return thisMonthTrans.map(trans => {
-      return <TransactionCard key={trans.id} info={trans} />;
+            return <TransactionCard key={trans.id} info={trans} />;
     });
   }
 
@@ -49,7 +49,6 @@ export default class TransactionsContainer extends Component {
 
   handleSubmit(e){
     e.preventDefault()
-    console.log('working')
     const { amount, category_id, monthly_budget_id, user_id, expense_title } = this.state
 
     const info = this.state
@@ -69,11 +68,16 @@ export default class TransactionsContainer extends Component {
     }
     return fetch('http://localhost:3000/transactions', reqObj)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => this.props.addTransactions(data))
+      .then( this.setState({
+        expense_title: '',
+        amount: "",
+        category_id: 0,
+        monthly_budget_id: 0
+      }))
   }
 
   render() {
-    {console.log(this.props.id)}
     return (
       <div className="transactions-container">
         <h3>Expenses</h3>
@@ -93,10 +97,12 @@ export default class TransactionsContainer extends Component {
               value={this.state.amount}
               ></input>
             <select
-              onChange={e => {
+              onChange={(e) => {
+                const filteredCatId = e.target.value.split(',')[0]
+                const filteredMonId = e.target.value.split(',')[1]
                 this.setState({
-                  category_id: parseInt(e.target.value[0]),
-                  monthly_budget_id: parseInt(e.target.value[2])
+                  category_id: parseInt(filteredCatId),
+                  monthly_budget_id: parseInt(filteredMonId)
                 });
               }}
               >

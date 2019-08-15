@@ -9,7 +9,7 @@
   background: #AC98D6;
 }
 
-.budget-card:nth-child(3n + 3){
+/* .budget-card:nth-child(3n + 3){
   border: solid black 1px;
   height: 11em;
   width: 243px;
@@ -18,7 +18,7 @@
   margin-right: 0em;
   margin-bottom: 1em;
   background: #AC98D6;
-}
+} */
 
 .trans-name{
   display: inline-block;

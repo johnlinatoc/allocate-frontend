@@ -67,3 +67,25 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 # champion-frontend
+
+<!-- //render 12 months (month cards) ahead of today's date
+    //in state, save date of user creation
+    //at date of user creation, create 12 month instances in backend
+    //in backend, make sure to create a key, value pair to match month number with month name
+        //1st month will take user creation month date
+        //next 11 months will be created by incrementing the months up to 12.
+        //if month passes 12, increment year and send month number back to 1
+        //automatially add months as time passes by
+    //allow user to create more months past 12 months ahead
+        //create button that adds month instance using the same formula as above
+
+//what happens if user has created budgets already?
+    //will not be a problem because at creation of user, there will be months already populated. no one will have months before user creation
+//what happens if user has budgets created past today's month?
+    //will not be a problem because at creation of user, the populated months will have the ability to have budget be made already -->
+
+  if monthly budget is empty, render option to start budget
+  in budget container, render 'myBudget' component
+
+
+<!--  -->

@@ -44,14 +44,14 @@ class Login extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className='login'>
         {this.state.error ? <h4>Invalid username or Password</h4> : null}
         <form onSubmit={(e)=>{this.handleLogin(e)}}>
           Username<input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} /><br/>
           Password<input onChange={(e) => this.handlePasswordChange(e)} value={this.state.password} /><br/>
         <input type='submit' value='login' />
         </form>
-        <Link to="/create_user" className="nav-link-text">
+        <Link to="/signup" className="nav-link-text">
           <div className="nav-link">
             <span>Create User</span>
           </div>

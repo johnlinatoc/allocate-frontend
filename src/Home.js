@@ -38,7 +38,6 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-
     const token = localStorage.getItem("token");
     if (!token) {
       this.props.history.push("/login");
@@ -55,6 +54,11 @@ export default class Home extends Component {
         }
       });
     }
+  }
+
+  addTransaction(data){
+    let newState = [...this.state.transactions, data]
+    this.setState({ transactions: newState })
   }
 
   fetchMonth() {
@@ -126,12 +130,15 @@ export default class Home extends Component {
           months={perMonthMon}
           transactions={transactions}
           categories={thisMonthCats}
+          userInfo={this.props.userInfo}
           />
 
         <TransactionsContainer
           categories={thisMonthCats}
           transactions={thisMonthTrans}
+          months={perMonthMon}
           id={this.props.userInfo.id}
+          addTransactions={(data)=>{this.addTransaction(data)}}
           />
       </div>
     }

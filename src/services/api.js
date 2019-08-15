@@ -22,8 +22,9 @@ export default {
       body: JSON.stringify(loginData)
     }
 
-    return fetch('http://localhost:3000/current_user', reqObj)
+    return fetch('http://localhost:3000/users', reqObj)
       .then(res => res.json())
+      .catch(err => console.error(err))
   },
 
   currentUser: (token) => {

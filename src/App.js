@@ -23,8 +23,6 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {}
-
   handleLogin(data) {
     this.setState({
       auth: { user: data.user },
@@ -108,13 +106,14 @@ class App extends Component {
           path="/myBudget"
           render={routeProps => {
             return (
-              <MyBudget
-                {...routeProps}
-                userInfo={auth.user}
-                handleLogin={user => {
-                  this.handleLogin(user);
-                }}
-              />
+              // <MyBudget
+              //   {...routeProps}
+              //   userInfo={auth.user}
+              //   handleLogin={user => {
+              //     this.handleLogin(user);
+              //   }}
+              // />
+              <div>COMING SOON</div>
             );
           }}
         />

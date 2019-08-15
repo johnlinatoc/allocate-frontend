@@ -34,7 +34,7 @@ class Navbar extends Component {
 
           <Link to="/myBudget" className="nav-link-text">
             <div className="nav-link">
-              <span>myBudget</span>
+              <span>myBudge</span>
             </div>
           </Link>
 
