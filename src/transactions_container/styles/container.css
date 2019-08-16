@@ -6,8 +6,10 @@
   margin-right: 4em;
   height: 70vh;
   padding: 1em;
-  background: #3C4148;
-  color: white
+  background: rgb(42,42,48);
+  background: linear-gradient(0deg, rgba(42,42,48,1) 27%, rgba(93,92,110,1) 100%);
+  color: white;
+  border-radius: 3%;
 }
 
 .trans-amount {

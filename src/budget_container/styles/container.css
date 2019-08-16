@@ -10,20 +10,23 @@
   position: sticky;
 }
 .home-page-header{
-  margin-left: 2em; 
+  margin-left: 2em;
 }
 .month-card {
-  background: aquamarine;
-  /* background: rgb(124,124,124);
-background: radial-gradient(circle, rgba(124,124,124,0.27354691876750703) 72%, rgba(93,45,210,0.7021183473389356) 100%); */
+  background: rgb(148,255,220);
+  background: linear-gradient(180deg, rgba(148,255,220,1) 0%, rgba(84,218,173,1) 100%);
   padding: 11px 0;
   margin-bottom: 2em;
-  /* border: 1px solid black; */
   box-shadow: -1px 7px 11px 0px lightgrey;
   border-radius: 15px;
   margin-right: 11px;
   margin-left: -1px;
   height: 5em;
+}
+
+.month-card:hover {
+  filter: blur(0.2rem);
+  color: white;
 }
 
 .month-card-name{
@@ -41,7 +44,7 @@ background: radial-gradient(circle, rgba(124,124,124,0.27354691876750703) 72%, r
   grid-template-columns: repeat(3, 1fr); */
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .inset-shad {

@@ -3,6 +3,13 @@ import "./styles/card.css";
 import ProgressBar from "./ProgressBar.js";
 
 export default class BudgetMonthCard extends Component {
+  constructor(){
+    super()
+    this.state = {
+      isClicked: false
+    }
+  }
+
   renderMonthTransactions() {
     let allMonthTrans = this.props.transactions;
     let total = 0;
@@ -22,11 +29,9 @@ export default class BudgetMonthCard extends Component {
     return total;
   }
 
+  // { this.renderMonthTransactions(); }
   render() {
     const { month } = this.props;
-    {
-      this.renderMonthTransactions();
-    }
     return (
       <div className="month-card">
         <div className="month-card-name">

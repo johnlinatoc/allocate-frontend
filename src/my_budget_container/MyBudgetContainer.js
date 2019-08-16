@@ -120,10 +120,10 @@ class MyBudgetContainer extends Component {
         <h2>myBudge</h2>
         <div className='my-budge-container'>
           <MyBudgetGraph />
+          <MyBudgetCategories />
           <div className='my-budget-trans-container'>
             {this.renderPerMonth()}
           </div>
-          <MyBudgetCategories />
         </div>
       </div>
     )

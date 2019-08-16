@@ -1,5 +1,5 @@
 .my-budge-container {
-  display: flex;
+  /* display: flex; */
   border: solid black 1px;
   width: 90vw;
   height: 75vh;
@@ -16,15 +16,15 @@
 }
 
 .my-budget-graph-container{
-  width: 49vw;
+  width: 60%;
   border: solid lightgreen 1px;
-  height: 100%;
+  height: 70%;
   display: inline-block;
 }
 
 .my-budget-category-container{
-  width: 20vw;
+  width: 39%;
   border: solid lightgreen 1px;
-  height: 100%;
+  height: 70%;
   display: inline-block;
 }

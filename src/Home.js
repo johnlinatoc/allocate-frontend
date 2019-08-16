@@ -51,7 +51,6 @@ class Home extends Component {
         } else {
           this.props.handleLogin(data);
           this.fetchMonth();
-          this.fetchCategories();
           this.fetchTransactions();
         }
       });
@@ -111,7 +110,10 @@ class Home extends Component {
     };
     return fetch(`http://localhost:3000/users/${userId}/transactions`, reqObj)
       .then(resp => resp.json())
-      .then(data => this.setState({ transactions: data }))
+      .then(data => {
+        this.setState({ transactions: data })
+        this.fetchCategories();
+      })
       .catch(err => {
         console.error(err);
       });

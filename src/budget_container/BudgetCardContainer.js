@@ -19,7 +19,7 @@ class BudgetCardContainer extends Component {
     })
   }
 
-  componentDidUpdate(){
+  componentDidMount(){
     let transactions = this.renderTotal()
     if(this.state.total !== transactions) {
       return this.setState({
@@ -73,13 +73,8 @@ class BudgetCardContainer extends Component {
 
   calcPercentage(){
     let total = (this.state.total / this.state.budget) * 100
-    // if (total >= 100) {
-    //   return total = 100
-    // }
-
     return total
   }
-  // <h4 className='category-budget'>Budget: ${category.budget}</h4>
 
   render(){
     const { category } = this.props
@@ -91,7 +86,9 @@ class BudgetCardContainer extends Component {
 
     if (!isClicked) {
        container = <div className='card-header'>
-
+         <div className='card-progress-bar'>
+           <ProgressBar className='card-bar' percentage={this.calcPercentage()}/>
+         </div>
          <h4 className='category-spent'>Spent: ${this.renderTotal()}</h4>
          <h3 className='category-name'>{category.name}</h3>
        </div>
@@ -105,9 +102,6 @@ class BudgetCardContainer extends Component {
     return(
 
         <div className='budget-card' onClick={()=>{ this.handleflip() }}>
-          <div className='card-progress-bar'>
-            <ProgressBar className='card-bar' percentage={this.calcPercentage()}/>
-          </div>
           { container }
 
         </div>

@@ -1,26 +1,15 @@
 .budget-card{
   color: white;
-  width: 30%;
+  width: 31%;
   height: 10em;
   overflow: scroll;
   display: inline-block;
-  margin-right: 1em;
+  margin-right: 2%;
   margin-bottom: 1em;
-  background: #0D0630;
-  box-shadow: 2px 3px 4px 0px lightgrey;
+  background: rgb(13,6,48);
+  background: linear-gradient(0deg, rgba(13,6,48,1) 0%, rgba(13,6,48,0.8533788515406162) 89%);
   border-radius: 3%;
 }
-
-/* .budget-card:nth-child(3n + 3){
-  border: solid black 1px;
-  height: 11em;
-  width: 243px;
-  overflow: scroll;
-  display: inline-block;
-  margin-right: 0em;
-  margin-bottom: 1em;
-  background: #AC98D6;
-} */
 
 .trans-name{
   display: inline-block;
@@ -54,7 +43,8 @@
   font-size: 1em;
 }
 
-#month-forward:hover {
+#month-forward:hover,
+#month-back:hover {
   background-color: #3C4148;
   color: white;
 }
@@ -63,10 +53,6 @@
   font-size: 1em;
   background: transparent;
     border: none;
-}
-
-#month-back:hover {
-  background-color: #3C4148;
 }
 
 .card-progress-bar {
@@ -108,8 +94,10 @@
 }
 
 .category-spent{
-
+  margin-left: 6%;
 }
 
-.category-name{}
+.category-name{
+  margin-left: 6%;
+}
 .category-budget{}
