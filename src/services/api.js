@@ -1,53 +1,94 @@
 export default {
-  login: (loginData) => {
+  login: loginData => {
     const reqObj = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(loginData)
-    }
+    };
 
-    return fetch('http://localhost:3000/auth', reqObj)
-      .then(res => res.json())
+    return fetch("http://localhost:3000/auth", reqObj).then(res => res.json());
   },
 
-  signup: (loginData) => {
-    console.log(loginData)
+  signup: loginData => {
     const reqObj = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(loginData)
-    }
+    };
 
-    return fetch('http://localhost:3000/users', reqObj)
+    return fetch("http://localhost:3000/users", reqObj)
       .then(res => res.json())
-      .catch(err => console.error(err))
+      .catch(err => console.error(err));
   },
 
-  currentUser: (token) => {
+  currentUser: token => {
     const reqObj = {
-      method: 'GET',
+      method: "GET",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       }
-    }
-    return fetch('http://localhost:3000/profile', reqObj)
-    .then(resp => resp.json())
+    };
+    return fetch("http://localhost:3000/profile", reqObj).then(resp =>
+      resp.json()
+    );
   },
 
-  postBudget: (userInput) => {
+  postBudget: userInput => {
     const reqObj = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(userInput)
-    }
-    return fetch('http://localhost:3000/transactions', reqObj)
-      .then(res => res.json())
+    };
+    return fetch("http://localhost:3000/transactions", reqObj).then(res =>
+      res.json()
+    );
+  },
+
+  fetchMonth: userId => {
+    const reqObj = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    };
+
+    return fetch(`http://localhost:3000/users/${userId}/months`, reqObj).then(
+      resp => resp.json()
+    );
+  },
+
+  fetchCategories: userId => {
+    const reqObj = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    };
+
+    return fetch(
+      `http://localhost:3000/users/${userId}/categories`,
+      reqObj
+    ).then(resp => resp.json());
+  },
+
+  fetchTransactions: userId => {
+    const reqObj = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
+    };
+
+    return fetch(
+      `http://localhost:3000/users/${userId}/transactions`,
+      reqObj
+    ).then(resp => resp.json());
   }
-}
+};

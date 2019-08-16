@@ -14,7 +14,7 @@ class Navbar extends Component {
   renderLoggedInNavbar() {
     return (
       <div>
-        <Link to="/home">
+        <Link to="/home" style={{ textDecoration: 'none', color: 'black' }}>
           <div className="title-container">
             <img className="icon" src={Icon} alt="" />
             <div className="name">Budge</div>
@@ -26,7 +26,7 @@ class Navbar extends Component {
         </div>
 
         <div className="categories-container">
-          <Link to="/home" className="nav-link-text">
+          <Link to="/home" >
             <div className="nav-link">
               <span>Home</span>
             </div>

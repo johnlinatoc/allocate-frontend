@@ -1,24 +1,39 @@
 .budget-container{
   /* border: 1px solid black; */
-  width: 60%;
+  width: 65%;
   height: 75vh;
   display: inline-block;
   margin-left: 3em;
   overflow: scroll;
+  /* box-shadow: inset -1px -17px 6px -10px #999; */
+  padding-left: 11px;
+  position: sticky;
+}
+.home-page-header{
+  margin-left: 2em; 
 }
 .month-card {
-  background: #AC98D6;
-  padding: 16px 0;
+  background: aquamarine;
+  /* background: rgb(124,124,124);
+background: radial-gradient(circle, rgba(124,124,124,0.27354691876750703) 72%, rgba(93,45,210,0.7021183473389356) 100%); */
+  padding: 11px 0;
   margin-bottom: 2em;
-  
+  /* border: 1px solid black; */
+  box-shadow: -1px 7px 11px 0px lightgrey;
+  border-radius: 15px;
+  margin-right: 11px;
+  margin-left: -1px;
+  height: 5em;
 }
 
 .month-card-name{
-  color: black;
+  /* top: 9px;
   margin: 0 auto 12px;
   position: relative;
   width: 8em;
-  left: 18px;
+  left: 18px; */
+  display: flex;
+  justify-content: center;
 }
 
 .budget-cards {
@@ -26,4 +41,16 @@
   grid-template-columns: repeat(3, 1fr); */
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.inset-shad {
+    content:'';
+    display:block;
+    box-shadow:inset 0 0 10px black;
+    position:relative;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
 }

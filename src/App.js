@@ -7,7 +7,8 @@ import Signup from "./Signup";
 import ExploreContainer from "./ExploreContainer";
 import ProfileContainer from "./ProfileContainer";
 import NewProfileContainer from "./NewProfileContainer";
-import MyBudget from "./my_budget_container/MyBudget";
+import MyBudgetContainer from "./my_budget_container/MyBudgetContainer";
+
 
 // export const { Provider, Consumer } = createContext({
 //   auth: {},
@@ -18,7 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      auth: { user: {} }
+      auth: { user: {} },
       // handleLogout: () => this.handleLogout(),
     };
   }
@@ -42,6 +43,12 @@ class App extends Component {
     console.log("logged out");
   }
 
+  getState = passedState => {
+    console.log('passedState = ', passedState)
+    this.setState({passedState});
+    console.log('this.state = ', this.state)
+  }
+
   render() {
     const { auth } = this.state;
 
@@ -50,26 +57,28 @@ class App extends Component {
       <div>
         <Navbar
           userInfo={auth.user}
+          handleLogin={user => {
+            this.handleLogin(user);
+          }}
           handleLogout={() => {
             this.handleLogout();
           }}
         />
 
         <Route
-          exact
           path="/home"
           render={routeProps => {
             return (
-              <Home
-                {...routeProps}
-                fetchProfile={() => {
-                  this.fetchProfile();
-                }}
-                handleLogin={user => {
-                  this.handleLogin(user);
-                }}
-                userInfo={auth.user}
-              />
+                <Home
+                  {...routeProps}
+                  fetchProfile={() => {
+                    this.fetchProfile();
+                  }}
+                  handleLogin={user => {
+                    this.handleLogin(user);
+                  }}
+                  userInfo={auth.user}
+                />
             );
           }}
         />
@@ -80,6 +89,21 @@ class App extends Component {
             return (
               <Login
                 {...routeProps}
+                handleLogin={user => {
+                  this.handleLogin(user);
+                }}
+              />
+            );
+          }}
+        />
+
+        <Route
+          path="/myBudget"
+          render={routeProps => {
+            return (
+              <MyBudgetContainer
+                {...routeProps}
+                userInfo={auth.user}
                 handleLogin={user => {
                   this.handleLogin(user);
                 }}
@@ -102,21 +126,6 @@ class App extends Component {
           }}
         />
 
-        <Route
-          path="/myBudget"
-          render={routeProps => {
-            return (
-              // <MyBudget
-              //   {...routeProps}
-              //   userInfo={auth.user}
-              //   handleLogin={user => {
-              //     this.handleLogin(user);
-              //   }}
-              // />
-              <div>COMING SOON</div>
-            );
-          }}
-        />
 
         <Route
           path="/explore"
@@ -132,34 +141,33 @@ class App extends Component {
           }}
         />
 
-      <Route
-        path="/profile"
-        render={routeProps => {
-          return (
-            <ProfileContainer
-              {...routeProps}
-              handleLogin={user => {
-                this.handleLogin(user);
-              }}
+        <Route
+          path="/profile"
+          render={routeProps => {
+            return (
+              <ProfileContainer
+                {...routeProps}
+                handleLogin={user => {
+                  this.handleLogin(user);
+                }}
               />
-          );
-        }}
+            );
+          }}
         />
 
-      <Route
-        path="/create_user"
-        render={routeProps => {
-          return (
-            <NewProfileContainer
-              {...routeProps}
-              handleLogin={user => {
-                this.handleLogin(user);
-              }}
+        <Route
+          path="/create_user"
+          render={routeProps => {
+            return (
+              <NewProfileContainer
+                {...routeProps}
+                handleLogin={user => {
+                  this.handleLogin(user);
+                }}
               />
-          );
-        }}
+            );
+          }}
         />
-
       </div>
 
       // </Provider>

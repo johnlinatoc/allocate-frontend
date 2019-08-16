@@ -1,0 +1,30 @@
+.my-budge-container {
+  display: flex;
+  border: solid black 1px;
+  width: 90vw;
+  height: 75vh;
+  margin: 0 auto;
+  background: white;
+  justify-content: space-between;
+}
+
+.my-budget-trans-container{
+  width: 15vw;
+  border: solid lightgreen 1px;
+  height: 100%;
+  display: inline-block;
+}
+
+.my-budget-graph-container{
+  width: 49vw;
+  border: solid lightgreen 1px;
+  height: 100%;
+  display: inline-block;
+}
+
+.my-budget-category-container{
+  width: 20vw;
+  border: solid lightgreen 1px;
+  height: 100%;
+  display: inline-block;
+}

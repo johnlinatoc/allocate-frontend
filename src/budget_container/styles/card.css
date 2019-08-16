@@ -1,12 +1,14 @@
 .budget-card{
-  border: solid black 1px;
-  width: 243px;
-  height: 11em;
+  color: white;
+  width: 30%;
+  height: 10em;
   overflow: scroll;
   display: inline-block;
   margin-right: 1em;
   margin-bottom: 1em;
-  background: #AC98D6;
+  background: #0D0630;
+  box-shadow: 2px 3px 4px 0px lightgrey;
+  border-radius: 3%;
 }
 
 /* .budget-card:nth-child(3n + 3){
@@ -28,19 +30,61 @@
   display: inline-block;
 }
 
+#main-month-bar {
+  /* margin-top: 22px; */
+  position: relative;
+}
+
+#main-month-info {
+  margin-top: 6px;
+}
+
+.month-header{
+  margin: 0;
+}
+
+.month-card-name{
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+
+#month-forward{
+  background: transparent;
+  border: none;
+  font-size: 1em;
+}
+
+#month-forward:hover {
+  background-color: #3C4148;
+  color: white;
+}
+
+#month-back{
+  font-size: 1em;
+  background: transparent;
+    border: none;
+}
+
+#month-back:hover {
+  background-color: #3C4148;
+}
+
+.card-progress-bar {
+  margin-top: 10%
+}
+
 .progress-bar {
   position: relative;
-  height: 5px;
-  width: 80%;
-  /* border: 1px solid #333; */
+  height: 7px;
+  border-radius: 3px;
+  width: 88%;
   margin: 0 auto;
   background: rgb(140, 138, 166);
-  /* margin-top: 2px; */
-  margin-top: 14px;
+  /* margin-top: 3em; */
 }
 
 .filler {
-  background: rgb(51, 49, 77);
+  background: white;
   height: 100%;
   border-radius: inherit;
   transition: width .2s ease-in;
@@ -50,15 +94,22 @@
   margin: 0;
   display: inline-block;
   float: right;
-  margin-right: 6em;
+  margin-right: 6%;
 }
 
 .spent {
   margin: 0;
   display: inline-block;
-  margin-left: 6em;
+  margin-left: 6%;
 }
 
 .card-bar{
   color: white
 }
+
+.category-spent{
+
+}
+
+.category-name{}
+.category-budget{}

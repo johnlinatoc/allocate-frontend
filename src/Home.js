@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { Route, withRouter } from "react-router-dom";
 import BudgetContainer from "./budget_container/BudgetContainer";
 import TransactionsContainer from "./transactions_container/TransactionsContainer";
 import Api from "./services/api";
+import DashboardContainer from "./DashboardContainer";
 
-export default class Home extends Component {
+
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +14,6 @@ export default class Home extends Component {
       categories: [],
       transactions: [],
       page: 0,
-      month: [],
     };
   }
 
@@ -118,21 +120,26 @@ export default class Home extends Component {
   renderPerMonth(){
     const { categories, transactions, months } = this.state;
     const start = this.state.page
-    const perMonthMon = this.state.months.slice(start, start + 1)
-    const allMonthCats = this.state.categories
-    const allMonthTrans = this.state.transactions
+    const sortedMonths = months.sort( (a, b) =>{ return a.id - b.id })
+    const perMonthMon = sortedMonths.slice(start, start + 1)
+    const allMonthCats = categories
+    const allMonthTrans = transactions
 
     if (perMonthMon[0]){
       const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
       const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === perMonthMon[0].id})
       return <div>
+
         <BudgetContainer
+          key={perMonthMon.id}
+          pageBack={(e)=>{this.pageBack(e)}}
+          pageForward={e=>this.pageForward(e)}
           months={perMonthMon}
           transactions={transactions}
           categories={thisMonthCats}
           userInfo={this.props.userInfo}
           />
-
+        <div className="transactions-container">
         <TransactionsContainer
           categories={thisMonthCats}
           transactions={thisMonthTrans}
@@ -140,18 +147,18 @@ export default class Home extends Component {
           id={this.props.userInfo.id}
           addTransactions={(data)=>{this.addTransaction(data)}}
           />
-      </div>
+        </div>
+            </div>
     }
   }
 
   render() {
-
     return (
       <div>
-        <button onClick={(e)=>{this.pageBack(e)}}>back</button>
-        <button onClick={(e)=>{this.pageForward(e)}}>forward</button>
+        <h2 className='home-page-header'>Home Page</h2>
         {this.renderPerMonth()}
       </div>
     );
   }
 }
+export default Home

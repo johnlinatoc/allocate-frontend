@@ -9,7 +9,7 @@ export default class TransactionsContainer extends Component {
       expense_title: '',
       amount: "",
       category_id: 0,
-      monthly_budget_id: 0
+      monthly_budget_id: 0,
     };
   }
 
@@ -79,8 +79,9 @@ export default class TransactionsContainer extends Component {
 
   render() {
     return (
-      <div className="transactions-container">
-        <h3>Expenses</h3>
+      <div>
+        <h2 className="trans-header">Expenses</h2>
+        <h4 className="trans-sub-header">This Month</h4>
         {this.renderTransactionCard()}
         <div className="add-expense">
           <form onSubmit={(e) => {this.handleSubmit(e)}}>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BudgetCardContainer from "./BudgetCardContainer";
 import BudgetMonthCard from "./BudgetMonthCard";
-import MyBudget from "../my_budget_container/MyBudget";
+import NewBudget from "./NewBudget";
 import "./styles/container.css";
 
 export default class BudgetContainer extends Component {
@@ -12,12 +12,16 @@ export default class BudgetContainer extends Component {
     };
   }
 
+
+
   renderBudgetMonth() {
     const { months, transactions } = this.props;
 
     return months.map(month => {
       return (
         <BudgetMonthCard
+          pageBack={this.props.pageBack}
+          pageForward={this.props.pageForward}
           key={month.id}
           id={month.id}
           month={month}
@@ -49,7 +53,7 @@ export default class BudgetContainer extends Component {
     const { months } = this.props;
 
     return <div>
-      <MyBudget
+      <NewBudget
         months={months}
         userInfo={this.props.userInfo} />
     </div>

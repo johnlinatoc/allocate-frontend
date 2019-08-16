@@ -4,7 +4,7 @@ import uuid from "uuid";
 import { Link, withRouter } from "react-router-dom";
 
 
-class MyBudgetContainer extends Component {
+class NewBudgetContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -162,4 +162,4 @@ class MyBudgetContainer extends Component {
   }
 }
 
-export default withRouter(MyBudgetContainer);
+export default withRouter(NewBudgetContainer);
