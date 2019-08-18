@@ -3,6 +3,10 @@ import { Form, Button } from "react-bootstrap";
 import uuid from "uuid";
 import { Link, withRouter } from "react-router-dom";
 
+//monthly income is set first. display confirmation on screen.
+//add category budgets until CB == monthly income. (0 == 0 validation needed)
+//enable submit button
+
 
 class NewBudgetContainer extends Component {
   constructor(props) {
@@ -12,21 +16,23 @@ class NewBudgetContainer extends Component {
       month_id: this.props.months[0].id,
       user_id: this.props.userInfo.id,
       categories: [{name: '', amount: 0}],
+      isEqual: false,
+      categoryTotal: 0,
     };
   }
+
+  totalUpdate(){
+    if (this.state.monthly_income === this.state.categoryTotal){
+      this.setState({ isEqual: true })
+    } else{
+      this.setState({ isEqual: false })
+    }
+  }
+
 
   handleMonthIncomeChange(e) {
     this.setState({
       monthly_income: parseInt(e.target.value)
-    });
-  }
-
-  handleCategoryBudgetChange(e) {
-    this.setState({
-      categories: [{
-        name: this.state.name,
-        amount: parseInt(e.target.value)
-      }]
     });
   }
 
@@ -79,10 +85,31 @@ class NewBudgetContainer extends Component {
 
   handleCategoryChange(e, index) {
     let newCats = [...this.state.categories]
+    let categories = this.state.categories
+    let isEqual = this.state.isEqual
+    let monthly_income = this.state.monthly_income
+
     newCats[index][e.target.name] = e.target.value
-    this.setState({
-      categories: newCats
-    });
+
+    let newCatsTotal = 0
+    categories.map(cat=> newCatsTotal += parseInt(cat.amount))
+
+    if (newCatsTotal === monthly_income){
+      return this.setState({
+        categories: newCats,
+        categoryTotal: newCatsTotal,
+        isEqual: true,
+      })
+    } else {
+      return this.setState({
+        categories: newCats,
+        categoryTotal: newCatsTotal,
+        isEqual: false,
+      })
+    }
+
+
+    return this.totalUpdate()
   }
 
   renderCategoryInputs(){
