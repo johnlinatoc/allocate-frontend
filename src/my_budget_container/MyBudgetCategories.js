@@ -92,19 +92,27 @@ class MyBudgetCategories extends Component {
     //   [{category_id: 0, percentage: 0}]
     // ];
     // //
-  //matched.filter(cat => cat[0].percentage > 100)
+  matched.filter(cat => cat[0].percentage > 100)
     // return a
- console.log(matched)
+   console.log(matched)
     //
     // console.log("a", a);
     //console.log("a", a);
     console.log("thisMonthsCats", thisMonthsCats);
     // return transAmounts
   }
+  renderDangerCats() {
+    if (this.props.categories.length > 0 ){
+       var foo = this.findDangerCats()
+       return foo;
+    } else{
+      return null
+    }
+  }
 
   render() {
 
-    { this.props.categories ? this.findDangerCats() : console.log('hi') }
+
 
     const popCategory = this.findPopCategory();
     return (
@@ -131,6 +139,7 @@ class MyBudgetCategories extends Component {
           &raquo;
         </button>
         <p>Show most popular category = </p>
+        { this.renderDangerCats()}
         {popCategory ? (
           <h4>{popCategory.name}</h4>
         ) : (
