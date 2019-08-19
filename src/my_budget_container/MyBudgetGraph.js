@@ -1,76 +1,89 @@
-import React, { Component } from 'react'
-import {XYPlot, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, LineSeries} from 'react-vis';
-import './my_budget_container_styles.css'
-import { VictoryChart, VictoryBar, Bar } from 'victory';
-
+import React, { Component } from "react";
+import "./my_budget_container_styles.css";
+import {
+  VictoryBar,
+  VictoryChart,
+  VictoryAxis,
+  VictoryTheme,
+  VictoryGroup
+} from "victory";
 
 class MyBudgetGraph extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      clicked: false,
-      style: {
-        data: { fill: "tomato" }
-      },
-      data: [{id: 0, month: '', year: 0, 'budget': 0, 'expenses': 0}],
-    };
+    this.state = {};
   }
 
-  groupBy(xs, key) {
-  return xs.reduce(function(rv, x) {
-    (rv[x[key]] = rv[x[key]] || []).push(x);
-    return rv;
-    }, {});
-  };
+  renderMonthData() {
+    const months = this.props.allMonths.map(month => month.name);
+    const monthBudgets = this.props.allMonths.map(
+      month => month.monthly_budget
+    );
+    const newData = [];
 
-  calculateData(){
-    const allMonths = this.props.allMonths
-    const allTransactions = this.props.allTransactions
-    const data = []
-    let sums = []
-
-    allMonths.map(month => data.push({id: month.id, month: month.name, year: month.year, budget: month.monthly_budget, expenses: 0}))
-    sums = this.groupBy(allTransactions, trans => trans.monthly_budget_id)
+    for (let i = 0; i < months.length; i++) {
+      newData.push({ month: months[i], budget: monthBudgets[i] });
+    }
+    console.log('newData', newData)
+    return newData.slice(0, 5);
   }
 
+  renderTransactionData() {
+    const monthNames = this.props.allMonths.map(month => month.name);
+    const months = this.props.allMonths
+    const transactions = this.props.allTransactions;
+    const trans = {};
+    const newData = []
 
-  render(){
-    const handleMouseOver = () => {
-      const fillColor = this.state.clicked ? "blue" : "tomato";
-      const clicked = !this.state.clicked;
-      this.setState({
-        clicked,
-        style: {
-          data: { fill: fillColor }
-        }
-      });
-    };
+    transactions.forEach(transaction => {
+      if (transaction.monthly_budget_id in trans) {
+        trans[transaction.monthly_budget_id] += transaction.amount;
+      } else {
+        trans[transaction.monthly_budget_id] = transaction.amount;
+      }
+    });
 
-    {this.calculateData()}
-    // <VictoryChart height={400} width={400}
-    //   domainPadding={{ x: 50, y: [0, 20] }}
-    //   // scale={{ x: "time" }}
-    //   >
-    //   <VictoryBar
-    //     dataComponent={
-    //       <Bar events={{ onMouseOver: handleMouseOver }}/>
-    //     }
-    //     style={this.state.style}
-    //     data={[
-    //       { x: new Date(1986, 1, 1), y: 2 },
-    //       { x: new Date(1996, 1, 1), y: 3 },
-    //       { x: new Date(2006, 1, 1), y: 5 },
-    //       { x: new Date(2016, 1, 1), y: 4 }
-    //     ]}
-    //     />
-    // </VictoryChart>
-    return(
-      <div className='my-budget-graph-container'>
+    let obj = [];
+     for (let i = 0; i < months.length; i++) {
+       let curr = months[i];
+       if (trans[curr.id]) {
+         obj.push({month: curr.name, total: trans[curr.id]});
+       } else {
+         obj.push({month: curr.name, total: null});
+       }
+     }
+
+   return obj.slice(0, 5);
+  }
+
+  render() {
+    return (
+      <div className="my-budget-graph-container">
         Graph
-        <p>Show bar graph with side by side data of budget and expenses per month</p>
+        <VictoryChart
+          domainPadding={30}
+        >
+          <VictoryGroup
+            colorScale={["orange", "tomato"]}
+            offset={20}>
+            <VictoryBar
+              animate={{ duration: 2000, onLoad: { duration: 4000 } }}
+              data={this.renderMonthData()}
+              x="month"
+              y="budget"
+            />
+            <VictoryBar
+              animate={{ duration: 2000, onLoad: { duration: 4000 } }}
+              data={this.renderTransactionData()}
+              x="month"
+              y="total"
+            />
+          </VictoryGroup>
+        </VictoryChart>
+
       </div>
-    )
+    );
   }
 }
 
-export default MyBudgetGraph
+export default MyBudgetGraph;

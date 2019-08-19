@@ -109,9 +109,8 @@ class MyBudgetContainer extends Component {
           <MyBudgetGraph
             allMonths={this.state.months}
             allTransactions={this.state.transactions}/>
-          {this.renderPerMonth()}
           <MyBudgetOverview />
-          <AllTransactions />
+          {this.renderPerMonth()}
         </div>
       </div>
     )

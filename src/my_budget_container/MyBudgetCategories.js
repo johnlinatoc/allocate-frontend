@@ -89,31 +89,64 @@ class MyBudgetCategories extends Component {
       return matched1
     });
 
-    //   [{category_id: 0, percentage: 0}]
-    // ];
-    // //
-  matched.filter(cat => cat[0].percentage > 100)
-    // return a
-   console.log(matched)
-    //
-    // console.log("a", a);
-    //console.log("a", a);
-    console.log("thisMonthsCats", thisMonthsCats);
-    // return transAmounts
+    const danger = matched.filter(cat => cat[0].percentage > 100)
+    const dangerCats = thisMonthsCats.filter(cat => {
+      let catId = cat.id
+      return danger.find(category => {
+        return category[0].category_id == catId
+      })
+    })
+
+    const warning = matched.filter(cat => cat[0].percentage < 100 && cat[0].percentage > 80)
+    const warningCats = thisMonthsCats.filter(cat => {
+      let catId = cat.id
+      return warning.find(category => {
+        return category[0].category_id == catId
+      })
+    })
+
+    const okay = matched.filter(cat => cat[0].percentage < 80)
+    const okayCats = thisMonthsCats.filter(cat => {
+      let catId = cat.id
+      return okay.find(category => {
+        return category[0].category_id == catId
+      })
+    })
+
+    // console.log("danger", danger);
+    // console.log("dangerCats", dangerCats);
+    // console.log("warning", warning);
+    // console.log("warningCats", warningCats);
+    // console.log("okayCats", okayCats);
+    return [dangerCats, warningCats, okayCats]
   }
+
   renderDangerCats() {
-    if (this.props.categories.length > 0 ){
-       var foo = this.findDangerCats()
-       return foo;
-    } else{
-      return null
-    }
+    if (this.props.categories.length > 0 ) {
+       let dangerCats = this.findDangerCats()[0]
+       if (dangerCats.length > 0) {
+          return (
+            <div>
+            <h2>Budgets you went over!</h2> {
+              dangerCats.map(cat => {
+                return (
+                  <div>
+                    <p style={{color: 'red', fontWeight: 600 }}> {cat.name} </p>
+                  </div>
+                )
+              })
+            }
+          </div>
+          )
+        }
+       let warningCats = this.findDangerCats()[1]
+       let okayCats = this.findDangerCats()[2]
+     } else {
+       return null
+     }
   }
 
   render() {
-
-
-
     const popCategory = this.findPopCategory();
     return (
       <div className="my-budget-category-container">
@@ -138,15 +171,14 @@ class MyBudgetCategories extends Component {
         >
           &raquo;
         </button>
-        <p>Show most popular category = </p>
-        { this.renderDangerCats()}
+        <p>Most Popular Budget Category </p>
         {popCategory ? (
           <h4>{popCategory.name}</h4>
         ) : (
           <h4> No Transactions Yet! </h4>
         )}
-        <p>Show most urgent catgory status</p>
-        <p>1. in danger cats, 2. 80% filled, 3. All good</p>
+
+        { this.renderDangerCats()}
       </div>
     );
   }

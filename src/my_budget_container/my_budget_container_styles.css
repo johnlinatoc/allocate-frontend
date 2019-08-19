@@ -1,5 +1,5 @@
 .my-budge-container {
-  display: flex;
+  /* display: flex; */
   border: solid black 1px;
   width: 91vw;
   height: 75vh;
@@ -19,7 +19,7 @@
 .my-budget-graph-container{
   width: 60%;
   border: solid lightgreen 1px;
-  height: 65%;
+  height: 100%;
   display: inline-block;
 }
 
@@ -28,12 +28,16 @@
   border: solid lightgreen 1px;
   height: 65%;
   display: inline-block;
+  position: relative;
+  top: -90%;
+  left: 60%;
 }
 
 .my-budget-overview-container {
   border: solid lightgreen 1px;
   height: 35%;
-  width: 40%;
+  top: -90%;
+  width: 39%;
   display: inline-block;
   position: relative;
 }
