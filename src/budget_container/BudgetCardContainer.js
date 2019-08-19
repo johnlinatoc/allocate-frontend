@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import BudgetTransactionsCard from './BudgetTransactionsCard'
+import BudgetCardBack from './BudgetCardBack'
 import './styles/card.css'
 import ProgressBar from './ProgressBar.js'
 
@@ -76,34 +76,39 @@ class BudgetCardContainer extends Component {
     return total
   }
 
-  render(){
-    const { category } = this.props
+  renderCard(){
+    const { category, transactions } = this.props
     const names = this.renderCategoryTransactionNames()
     const amounts = this.renderCategoryTransactionAmounts()
-
     const isClicked = this.state.flipped
-    let container;
 
     if (!isClicked) {
-       container = <div className='card-header'>
-         <div className='card-progress-bar'>
-           <ProgressBar className='card-bar' percentage={this.calcPercentage()}/>
-         </div>
-         <h4 className='category-spent'>Spent: ${this.renderTotal()}</h4>
-         <h3 className='category-name'>{category.name}</h3>
-       </div>
+      return <div className='card-header'>
+        <div className='card-progress-bar'>
+          <ProgressBar className='card-bar' percentage={this.calcPercentage()}/>
+        </div>
+        <h4 className='category-spent'>Spent ${this.renderTotal()}</h4>
+        <h2 className='category-name'>{category.name}</h2>
+      </div>
     } else {
-       container = <BudgetTransactionsCard
-       key={category.id}
-       names={names}
-       amounts={amounts}/>
+      let filtered;
+
+      filtered = this.props.transactions.filter((transaction)=>{
+        return transaction.category_id === category.id
+      })
+
+      return <BudgetCardBack
+          key={category.id}
+          category={category}
+          total={this.state.total}
+          transactions={filtered}/>
     }
+  }
 
+  render(){
     return(
-
         <div className='budget-card' onClick={()=>{ this.handleflip() }}>
-          { container }
-
+          { this.renderCard() }
         </div>
     )
   }

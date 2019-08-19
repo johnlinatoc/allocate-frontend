@@ -8,7 +8,8 @@ export default class BudgetContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isFlagged: false
+      isFlagged: false,
+      isCancelled: true,
     };
   }
 
@@ -45,18 +46,27 @@ export default class BudgetContainer extends Component {
     });
   }
 
-  showMyBudget = () => {
-    return this.setState({ isFlagged: !this.state.isFlagged });
+  isFlagged() {
+    return this.setState({
+      isFlagged: !this.state.isFlagged,
+      isCancelled: !this.state.isCancelled,
+     });
   };
 
-  renderMyBudget = () => {
+  renderNewBudgetForm() {
     const { months } = this.props;
 
-    return <div>
-      <NewBudget
+    return <NewBudget
         months={months}
-        userInfo={this.props.userInfo} />
-    </div>
+        userInfo={this.props.userInfo}
+        isCancelled={this.state.isCancelled}
+        fetchAll={this.props.fetchAll} />
+  }
+
+  renderButton(){
+    return <button onClick={() => this.isFlagged()}>
+      {this.state.isFlagged ? "cancel" : "Start Budget!"}
+    </button>
   }
 
   render() {
@@ -64,13 +74,8 @@ export default class BudgetContainer extends Component {
       <div className="budget-container">
         {this.renderBudgetMonth()}
         <div className="budget-cards">{this.renderBudgetCard()}</div>
-        <button onClick={() => this.showMyBudget()}>
-          {" "}
-          {this.state.isFlagged ? "cancel" : "show"}
-        </button>
-        {this.state.isFlagged ? (
-          this.renderMyBudget()
-        ) : null}
+        { this.props.categories.length < 1 && !this.state.isFlagged ? <div>Would you like to start your budget for this month? {this.renderButton()}</div> : null }
+        {this.state.isFlagged ?  <div>{this.renderNewBudgetForm()} {this.renderButton()}</div> : null}
       </div>
     );
   }

@@ -21,8 +21,23 @@ class ProfileContainer extends Component {
 
   render(){
     return (
-      <div className="" style={{ color: 'white' }}>
-        PROFILE COMING SOON
+      <div className="" style={{ color: 'black' }}>
+        <p>
+          Account Name
+
+        </p>
+        <p>
+          Update Password
+
+        </p>
+        <p>
+
+          Update Username
+        </p>
+        <p>
+          Delete Account
+
+        </p>
       </div>
     )
   }

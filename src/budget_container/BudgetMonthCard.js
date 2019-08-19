@@ -29,6 +29,7 @@ export default class BudgetMonthCard extends Component {
     return total;
   }
 
+
   // { this.renderMonthTransactions(); }
   render() {
     const { month } = this.props;
@@ -36,7 +37,7 @@ export default class BudgetMonthCard extends Component {
       <div className="month-card">
         <div className="month-card-name">
           <button id='month-back' onClick={(e)=>{this.props.pageBack(e)}}> &laquo; </button>
-          <h3 className='month-header'>{month.name} {month.year}</h3>
+          <h2 className='month-header'>{month.name} {month.year}</h2>
           <button id='month-forward' onClick={(e)=>{this.props.pageForward(e)}}>&raquo;</button>
         </div>
         {this.props.month.monthly_budget >= 1 ? (
@@ -48,7 +49,7 @@ export default class BudgetMonthCard extends Component {
             <h4 className="spent"> Spent ${this.renderMonthTransactions()} </h4>
             <h4 className="income"> Income ${month.monthly_budget} </h4>
           </div>
-        ) : null}
+        ) : <p>Budget Not Started</p>}
       </div>
     );
   }

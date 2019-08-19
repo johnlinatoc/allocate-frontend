@@ -16,8 +16,9 @@ class NewBudgetContainer extends Component {
       month_id: this.props.months[0].id,
       user_id: this.props.userInfo.id,
       categories: [{name: '', amount: 0}],
-      isEqual: false,
       categoryTotal: 0,
+      monthSubmitted: false,
+      isEqual: false,
     };
   }
 
@@ -29,11 +30,48 @@ class NewBudgetContainer extends Component {
     }
   }
 
+  clearForm(){
+    if (this.props.isCancelled){
+      this.setState({
+        monthly_income: 0,
+        month_id: this.props.months[0].id,
+        user_id: this.props.userInfo.id,
+        categories: [{name: '', amount: 0}],
+        isEqual: false,
+        monthSubmitted: false,
+        categoryTotal: 0,
+      })
+      this.handleMonthCancel()
+    }
+  }
+
 
   handleMonthIncomeChange(e) {
     this.setState({
-      monthly_income: parseInt(e.target.value)
+      monthly_income: parseInt(e.target.value),
+      monthSubmitted: false,
+      categories: [{name: '', amount: 0}],
     });
+  }
+
+  handleMonthCancel(){
+    const data = this.state;
+    const reqObj_mon = {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+        mode: 'no-cors'
+      },
+      body: JSON.stringify(data)
+    };
+
+    fetch("http://localhost:3000/new_budget", reqObj_mon)
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .then( this.setState({ monthSubmitted: false }) )
+
+      console.log('month cancel')
   }
 
   handleMonthSubmit(e) {
@@ -52,9 +90,8 @@ class NewBudgetContainer extends Component {
 
     fetch("http://localhost:3000/new_budget", reqObj_mon)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then( this.setState({ monthSubmitted: true }) )
 
-    // this.props.history.push('/home')
   }
 
   handleCategorySubmit(e) {
@@ -70,9 +107,12 @@ class NewBudgetContainer extends Component {
       body: JSON.stringify(data)
     };
 
+
+
     fetch("http://localhost:3000/categories", reqObj_mon)
       .then(res => res.json())
       .then(data => console.log(data))
+      .then(this.props.fetchAll())
 
   //   this.props.history.push('/home')
   }
@@ -116,20 +156,26 @@ class NewBudgetContainer extends Component {
     return this.state.categories.map((category, index)=> {
       return(
         <div>
-          <Form.Group>
+          <Form.Group
+            style = {{ marginTop: "2px", }}
+            >
             <Form.Label>Category Name</Form.Label>
             <Form.Control
+              required
               onChange={e => {
                 this.handleCategoryChange(e, index);
               }}
               name='name'
-              type="text"
+              type='text'
               placeholder="ex: Shopping"
             />
           </Form.Group>
-          <Form.Group controlId="formBasicPassword">
+          <Form.Group
+            style = {{ marginTop: "2px", }}
+            controlId="formBasicPassword">
             <Form.Label>Category Budget</Form.Label>
             <Form.Control
+              required
               onChange={e => {
                 this.handleCategoryChange(e, index);
               }}
@@ -143,46 +189,76 @@ class NewBudgetContainer extends Component {
     })
   }
 
+  renderSubmitButton(){
+    return <Button variant="primary" type="submit">
+            Submit Budget!
+            </Button>
+  }
+
+  renderNewCatButton(){
+    return <button
+      onClick={() => {
+        this.renderNewCategory();
+      }}>
+      Add Category
+    </button>
+  }
+
+  calcRemainder(){
+    let total = this.state.monthly_income - this.state.categoryTotal
+    return total
+  }
+
+  renderSecondForm(){
+    return <div>
+    <h3>Planned Expenses: <span>${this.state.categoryTotal}</span> </h3>
+    <hr />
+    <h3 style={ this.state.isEqual ? {color: 'green'} : null}>
+      { this.state.isEqual ? 'Budget Ready!' : 'Remaining:'}
+      <span style={ this.state.isEqual ? {color: 'green'} : {color: 'red'}}>${this.calcRemainder()}</span>
+      </h3>
+    </div>
+  }
+
   render() {
     return (
-      <div className="" style={{ color: "white" }}>
-
+      <div className="" style={{ color: "black" }}>
+        <h2>Start Your New Budget</h2>
         <Form
+          className='main-budget-form'
           onSubmit={e => this.handleMonthSubmit(e)}
-          className='new-month-budget'>
+          >
           <Form.Group>
             <Form.Label>Monthly Income</Form.Label>
             <Form.Control
+              required
               onChange={e => {
                 this.handleMonthIncomeChange(e);
               }}
               type="number"
-              placeholder="ex: $2500"
-              />
+              placeholder="ex: $2500"/>
           </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+          { this.state.monthly_income > 0 && !this.state.monthSubmitted ? <Button variant="primary" type="submit">
+            Submit Month Income
+          </Button> : null}
+
         </Form>
-====================
+        <div className="side-budget-form">
+          <h3>This Month's Income: <span>${this.state.monthly_income ? this.state.monthly_income : 0}</span> </h3>
+          { this.state.monthSubmitted  ?  this.renderSecondForm() : null }
+
+        </div>
         <Form
+          className='cat-budget-form'
           onSubmit={e => {
             this.handleCategorySubmit(e);
-          }}
-        >
-          {this.renderCategoryInputs()}
-          <Button
-            onClick={() => {
-              this.renderNewCategory();
-            }}
-          >
-            Add Category
-          </Button>
+          }}>
 
+          { this.state.monthSubmitted ? this.renderCategoryInputs() : null }
+          { this.state.monthSubmitted ? this.renderNewCatButton() : null }
 
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
+          { this.state.isEqual ? this.renderSubmitButton() : null }
+
         </Form>
       </div>
     );

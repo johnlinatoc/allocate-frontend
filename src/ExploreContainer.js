@@ -22,8 +22,17 @@ class ExploreContainer extends Component{
 
   render(){
     return (
-      <div className="" style={{ color: 'white' }}>
-        EXPLORE COMING SOON
+      <div className="" style={{ color: 'black' }}>
+        <p>
+          Insert Post Input
+        </p>
+        <p>
+          Per Post, add comment box and likes count
+        </p>
+        <p>
+          Per Comment, add likes count
+        </p>
+
       </div>
     )
   }

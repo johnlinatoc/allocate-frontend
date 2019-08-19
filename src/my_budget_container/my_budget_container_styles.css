@@ -1,15 +1,16 @@
 .my-budge-container {
-  /* display: flex; */
+  display: flex;
   border: solid black 1px;
   width: 91vw;
   height: 75vh;
   margin: 0 auto;
   background: white;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .my-budget-trans-container{
-  width: 50%;
+  width: 59%;
   border: solid lightgreen 1px;
   height: 35%;
   display: inline-block;
@@ -27,4 +28,12 @@
   border: solid lightgreen 1px;
   height: 65%;
   display: inline-block;
+}
+
+.my-budget-overview-container {
+  border: solid lightgreen 1px;
+  height: 35%;
+  width: 40%;
+  display: inline-block;
+  position: relative;
 }

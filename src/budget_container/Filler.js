@@ -2,7 +2,6 @@ import React from 'react'
 import './styles/card.css'
 
 const Filler = (props) => {
-  console.log('filler', props)
   let fillerStyle;
 
   if (props.percentage <= 100) {
@@ -12,7 +11,7 @@ const Filler = (props) => {
   } else if (props.percentage === 100){
      fillerStyle = {
       width: `100%`,
-      background: 'white'}
+      background: 'forestgreen'}
   } else if (props.percentage >= 100){
     fillerStyle = {
      width: `100%`,

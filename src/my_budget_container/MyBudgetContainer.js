@@ -4,10 +4,7 @@ import './my_budget_container_styles.css'
 import AllTransactions from './AllTransactions'
 import MyBudgetGraph from './MyBudgetGraph'
 import MyBudgetCategories from './MyBudgetCategories'
-import TransactionsContainer from '../transactions_container/TransactionsContainer'
-// import BudgetContainer from "./budget_container/BudgetContainer";
-
-
+import MyBudgetOverview from './MyBudgetOverview'
 
 class MyBudgetContainer extends Component {
   constructor(props) {
@@ -38,17 +35,17 @@ class MyBudgetContainer extends Component {
             console.error(err);
           });
 
-          Api.fetchCategories(this.props.userInfo.id)
-          .then(data => this.setState({ categories: data }))
-          .catch(err => {
-            console.error(err);
-          });
-
           Api.fetchTransactions(this.props.userInfo.id)
-          .then(data => this.setState({ transactions: data }))
-          .catch(err => {
+          .then(data => {
+            this.setState({ transactions: data })
+            Api.fetchCategories(this.props.userInfo.id)
+            .then(data => this.setState({ categories: data }))
+            .catch(err => {
+              console.error(err);
+            })
+          }).catch(err => {
             console.error(err);
-          });
+          })
 
         }
       });
@@ -77,53 +74,44 @@ class MyBudgetContainer extends Component {
     }
   }
 
-  addTransaction(data){
-    let newState = [...this.state.transactions, data]
-    this.setState({ transactions: newState })
-  }
-
   renderPerMonth(){
     const { categories, transactions, months } = this.state;
     const start = this.state.page
-    const perMonthMon = this.state.months.slice(start, start + 1)
+    const perMonthMon = this.state.months.sort((a, b)=> a.id -b.id ).slice(start, start + 1)
     const allMonthCats = this.state.categories
     const allMonthTrans = this.state.transactions
-
     if (perMonthMon[0]){
       const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
       const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === perMonthMon[0].id})
-      return <TransactionsContainer
+      // return <TransactionsContainer
+      //   categories={thisMonthCats}
+      //   transactions={thisMonthTrans}
+      //   months={perMonthMon}
+      //   id={this.props.userInfo.id}
+      //   addTransactions={(data)=>{this.addTransaction(data)}}
+      //   />
+      return <MyBudgetCategories
+        month={perMonthMon}
+        pageBack={(e)=>{this.pageBack(e)}}
+        pageForward={e=>this.pageForward(e)}
         categories={thisMonthCats}
-        transactions={thisMonthTrans}
-        months={perMonthMon}
-        id={this.props.userInfo.id}
-        addTransactions={(data)=>{this.addTransaction(data)}}
-        />
+        transactions={thisMonthTrans}/>
     }
   }
 
-  // <MyBudgetCategories />
-  // renderCategoryCards(perMonthMon, transactions, thisMonthCats){
-  //   return <BudgetContainer
-  //     months={perMonthMon}
-  //     transactions={transactions}
-  //     categories={thisMonthCats}
-  //     userInfo={this.props.userInfo}
-  //     />
-  // }
-
 
   render(){
-    // <AllTransactions transactions={this.state.transactions}/>
+    console.log('state', this.state)
     return(
       <div>
         <h2>myBudge</h2>
         <div className='my-budge-container'>
-          <MyBudgetGraph />
-          <MyBudgetCategories />
-          <div className='my-budget-trans-container'>
-            {this.renderPerMonth()}
-          </div>
+          <MyBudgetGraph
+            allMonths={this.state.months}
+            allTransactions={this.state.transactions}/>
+          {this.renderPerMonth()}
+          <MyBudgetOverview />
+          <AllTransactions />
         </div>
       </div>
     )

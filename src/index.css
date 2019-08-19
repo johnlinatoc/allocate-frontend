@@ -12,6 +12,14 @@ body {
   text-decoration: none;
 }
 
+h1, h2, h3, h4, h5 {
+  margin: 0
+}
+
+#main-home{
+  margin-top: 4%
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

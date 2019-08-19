@@ -11,13 +11,48 @@
   border-radius: 3%;
 }
 
-.trans-name{
+/* .budget-card:nth-child(3n+3){
+  color: white;
+  width: 31%;
+  height: 10em;
+  overflow: scroll;
   display: inline-block;
+  margin-right: 0%;
+  margin-bottom: 1em;
+  background: rgb(13,6,48);
+  background: linear-gradient(0deg, rgba(13,6,48,1) 0%, rgba(13,6,48,0.8533788515406162) 89%);
+  border-radius: 3%;
+} */
+
+.trans-card span{
+  float: right;
+}
+.trans-card {
+  width: 100%;
+  margin: 0 auto;
+  font-weight: 600;
 }
 
-.trans-amount{
-  display: inline-block;
+.card-back{
+  padding: 1em;
 }
+.card-back div{
+  padding: 0 1%;
+}
+.card-back p{
+  text-align: center;
+  font-weight: 600;
+}
+.card-back h4{
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: 1%;
+}
+
+.card-back hr {
+  border-bottom: hidden;
+}
+
 
 #main-month-bar {
   /* margin-top: 22px; */
@@ -56,7 +91,7 @@
 }
 
 .card-progress-bar {
-  margin-top: 10%
+  margin-top: 14%
 }
 
 .progress-bar {
@@ -95,9 +130,39 @@
 
 .category-spent{
   margin-left: 6%;
+  margin-top: 3%;
 }
 
 .category-name{
   margin-left: 6%;
+  margin-top: 13%;
+  font-size: 1.4em;
 }
-.category-budget{}
+
+.main-budget-form{
+  display: inline-block;
+  width: 50%;
+}
+
+.main-budget-form * input{
+  float: right;
+}
+
+.cat-budget-form{
+  display: inline-block;
+  width: 50%;
+}
+
+.cat-budget-form * input{
+  float: right;
+}
+
+.side-budget-form{
+  display: inline-block;
+  float: right;
+  width: 36%;
+}
+
+.side-budget-form span{
+  float: right;
+}

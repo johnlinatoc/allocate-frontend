@@ -24,10 +24,10 @@
   height: 5em;
 }
 
-.month-card:hover {
+/* .month-card:hover {
   filter: blur(0.2rem);
   color: white;
-}
+} */
 
 .month-card-name{
   /* top: 9px;

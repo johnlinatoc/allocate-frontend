@@ -4,6 +4,7 @@ import BudgetContainer from "./budget_container/BudgetContainer";
 import TransactionsContainer from "./transactions_container/TransactionsContainer";
 import Api from "./services/api";
 import DashboardContainer from "./DashboardContainer";
+import "./index.css";
 
 
 class Home extends Component {
@@ -72,7 +73,7 @@ class Home extends Component {
       }
     };
 
-    return fetch(`http://localhost:3000/users/${userId}/months`, reqObj)
+    fetch(`http://localhost:3000/users/${userId}/months`, reqObj)
       .then(resp => resp.json())
       .then(data => this.setState({ months: data }))
       .catch(err => {
@@ -119,6 +120,11 @@ class Home extends Component {
       });
   }
 
+  fetchAll(){
+    this.fetchMonth();
+    this.fetchTransactions();
+  }
+
   renderPerMonth(){
     const { categories, transactions, months } = this.state;
     const start = this.state.page
@@ -140,6 +146,7 @@ class Home extends Component {
           transactions={transactions}
           categories={thisMonthCats}
           userInfo={this.props.userInfo}
+          fetchAll={()=>this.fetchAll()}
           />
         <div className="transactions-container">
         <TransactionsContainer
@@ -150,14 +157,13 @@ class Home extends Component {
           addTransactions={(data)=>{this.addTransaction(data)}}
           />
         </div>
-            </div>
+      </div>
     }
   }
 
   render() {
     return (
-      <div>
-        <h2 className='home-page-header'>Home Page</h2>
+      <div id='main-home'>
         {this.renderPerMonth()}
       </div>
     );
