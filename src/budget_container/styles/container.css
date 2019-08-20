@@ -13,15 +13,17 @@
   margin-left: 2em;
 }
 .month-card {
-  background: rgb(148,255,220);
-  background: linear-gradient(180deg, rgba(148,255,220,1) 0%, rgba(84,218,173,1) 100%);
+  /* background: rgb(148,255,220); */
+  background: #151E3F;
   padding: 11px 0;
-  margin-bottom: 2em;
+  padding-bottom: 23px;
+  margin-bottom: 34px;
   box-shadow: -1px 7px 11px 0px lightgrey;
   border-radius: 15px;
   margin-right: 11px;
   margin-left: -1px;
   height: 5em;
+  color: white;
 }
 
 /* .month-card:hover {
@@ -30,13 +32,8 @@
 } */
 
 .month-card-name{
-  /* top: 9px;
-  margin: 0 auto 12px;
-  position: relative;
-  width: 8em;
-  left: 18px; */
-  display: flex;
-  justify-content: center;
+  margin-left: 5%;
+  display: inline-block;
 }
 
 .budget-cards {

@@ -3,10 +3,10 @@ import "./styles/card.css";
 import ProgressBar from "./ProgressBar.js";
 
 export default class BudgetMonthCard extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
-      isClicked: false
+      isClicked: false,
     }
   }
 
@@ -29,15 +29,16 @@ export default class BudgetMonthCard extends Component {
     return total;
   }
 
-
-  // { this.renderMonthTransactions(); }
   render() {
-    const { month } = this.props;
+    const { month } = this.props
+
     return (
       <div className="month-card">
         <div className="month-card-name">
-          <button id='month-back' onClick={(e)=>{this.props.pageBack(e)}}> &laquo; </button>
           <h2 className='month-header'>{month.name} {month.year}</h2>
+        </div>
+        <div className='month-buttons'>
+          <button id='month-back' onClick={(e)=>{this.props.pageBack(e)}}> &laquo; </button>
           <button id='month-forward' onClick={(e)=>{this.props.pageForward(e)}}>&raquo;</button>
         </div>
         {this.props.month.monthly_budget >= 1 ? (
@@ -49,7 +50,7 @@ export default class BudgetMonthCard extends Component {
             <h4 className="spent"> Spent ${this.renderMonthTransactions()} </h4>
             <h4 className="income"> Income ${month.monthly_budget} </h4>
           </div>
-        ) : <p>Budget Not Started</p>}
+        ) : <p>Start this month's budget today!</p>}
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './index.css'
 import Api from "./services/api";
 
 
@@ -21,23 +22,16 @@ class ProfileContainer extends Component {
 
   render(){
     return (
-      <div className="" style={{ color: 'black' }}>
-        <p>
-          Account Name
-
-        </p>
-        <p>
-          Update Password
-
-        </p>
-        <p>
-
-          Update Username
-        </p>
-        <p>
-          Delete Account
-
-        </p>
+      <div className="profile-container" style={{ color: 'black' }}>
+        <h1>Welcome, {this.props.userInfo.username}!</h1>
+        <div className='profile-info'>
+          <p>
+            Account Name: {this.props.userInfo.username}
+          </p>
+          <button> Update Username </button>
+          <button> Update Password </button>
+          <button> Delete Account </button>
+        </div>
       </div>
     )
   }

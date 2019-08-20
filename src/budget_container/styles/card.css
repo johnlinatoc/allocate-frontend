@@ -6,8 +6,7 @@
   display: inline-block;
   margin-right: 2%;
   margin-bottom: 1em;
-  background: rgb(13,6,48);
-  background: linear-gradient(0deg, rgba(13,6,48,1) 0%, rgba(13,6,48,0.8533788515406162) 89%);
+  background: #151E3F;
   border-radius: 3%;
 }
 
@@ -65,17 +64,33 @@
 
 .month-header{
   margin: 0;
+  display: inline-block;
+  margin-left: 5%;
+  width: 100%;
 }
 
 .month-card-name{
   margin-top: 1%;
   margin-bottom: 2%;
+  margin-left: 5%;
+  display: inline-block;
+  width: 23%;
+}
+
+.month-buttons{
+  position: relative;
+  display: inline-block;
+  top: -4px;
+  right: 0%;
+  width: 5%;
 }
 
 #month-forward{
   background: transparent;
   border: none;
   font-size: 1em;
+  color: white;
+  position: absolute;
 }
 
 #month-forward:hover,
@@ -85,6 +100,7 @@
 }
 
 #month-back{
+  color: white;
   font-size: 1em;
   background: transparent;
     border: none;
@@ -165,4 +181,17 @@
 
 .side-budget-form span{
   float: right;
+}
+
+.start-budget-button{
+  padding: 12px 3em;
+  font-size: 1em;
+  border-radius: 7px;
+  background: #F2F3D9;
+  color: #151E3F;
+  border: none;
+  font-weight: 700;
+  box-shadow: 3px 4px 5px 0px lightgrey;
+  position: relative;
+  left: 38%;
 }

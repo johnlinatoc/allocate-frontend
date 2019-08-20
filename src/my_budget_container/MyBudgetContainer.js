@@ -4,7 +4,6 @@ import './my_budget_container_styles.css'
 import AllTransactions from './AllTransactions'
 import MyBudgetGraph from './MyBudgetGraph'
 import MyBudgetCategories from './MyBudgetCategories'
-import MyBudgetOverview from './MyBudgetOverview'
 
 class MyBudgetContainer extends Component {
   constructor(props) {
@@ -109,7 +108,7 @@ class MyBudgetContainer extends Component {
           <MyBudgetGraph
             allMonths={this.state.months}
             allTransactions={this.state.transactions}/>
-          <MyBudgetOverview />
+
           {this.renderPerMonth()}
         </div>
       </div>

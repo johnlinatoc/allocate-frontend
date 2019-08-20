@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Form, Button } from "react-bootstrap";
 import uuid from "uuid";
 import { Link, withRouter } from "react-router-dom";
+import './styles/card.css'
 
 //monthly income is set first. display confirmation on screen.
 //add category budgets until CB == monthly income. (0 == 0 validation needed)

@@ -10,6 +10,7 @@ export default class BudgetContainer extends Component {
     this.state = {
       isFlagged: false,
       isCancelled: true,
+      editEnabled: false,
     };
   }
 
@@ -21,6 +22,8 @@ export default class BudgetContainer extends Component {
     return months.map(month => {
       return (
         <BudgetMonthCard
+          handleEdit={(e)=>this.handleEdit(e)}
+          editEnabled={this.state.editEnabled}
           pageBack={this.props.pageBack}
           pageForward={this.props.pageForward}
           key={month.id}
@@ -30,6 +33,12 @@ export default class BudgetContainer extends Component {
         />
       );
     });
+  }
+
+  handleEdit(e){
+    e.preventDefault()
+
+    this.setState({ editEnabled: !this.state.editEnabled })
   }
 
   renderBudgetCard() {
@@ -64,7 +73,7 @@ export default class BudgetContainer extends Component {
   }
 
   renderButton(){
-    return <button onClick={() => this.isFlagged()}>
+    return <button className='start-budget-button' onClick={() => this.isFlagged()}>
       {this.state.isFlagged ? "cancel" : "Start Budget!"}
     </button>
   }
@@ -74,7 +83,7 @@ export default class BudgetContainer extends Component {
       <div className="budget-container">
         {this.renderBudgetMonth()}
         <div className="budget-cards">{this.renderBudgetCard()}</div>
-        { this.props.categories.length < 1 && !this.state.isFlagged ? <div>Would you like to start your budget for this month? {this.renderButton()}</div> : null }
+        { this.props.categories.length < 1 && !this.state.isFlagged ? this.renderButton() : null }
         {this.state.isFlagged ?  <div>{this.renderNewBudgetForm()} {this.renderButton()}</div> : null}
       </div>
     );

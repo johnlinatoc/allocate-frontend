@@ -1,5 +1,5 @@
 .my-budge-container {
-  /* display: flex; */
+  display: flex;
   border: solid black 1px;
   width: 91vw;
   height: 75vh;
@@ -26,18 +26,17 @@
 .my-budget-category-container{
   width: 39%;
   border: solid lightgreen 1px;
-  height: 65%;
+  height: 100%;
   display: inline-block;
   position: relative;
-  top: -90%;
-  left: 60%;
-}
+  /* top: -23%; */
+  }
 
 .my-budget-overview-container {
   border: solid lightgreen 1px;
-  height: 35%;
+  height: 24%;
   top: -90%;
-  width: 39%;
+  width: 100%;
   display: inline-block;
   position: relative;
 }

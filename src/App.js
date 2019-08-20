@@ -67,6 +67,7 @@ class App extends Component {
 
         <Route
           path="/home"
+          userInfo={auth.user}
           render={routeProps => {
             return (
                 <Home
@@ -147,6 +148,7 @@ class App extends Component {
             return (
               <ProfileContainer
                 {...routeProps}
+                userInfo={auth.user}
                 handleLogin={user => {
                   this.handleLogin(user);
                 }}

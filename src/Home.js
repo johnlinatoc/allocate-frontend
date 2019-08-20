@@ -164,6 +164,7 @@ class Home extends Component {
   render() {
     return (
       <div id='main-home'>
+        <h1>Welcome back, {this.props.userInfo.username}!</h1>
         {this.renderPerMonth()}
       </div>
     );

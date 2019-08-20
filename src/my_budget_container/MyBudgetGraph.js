@@ -5,7 +5,9 @@ import {
   VictoryChart,
   VictoryAxis,
   VictoryTheme,
-  VictoryGroup
+  VictoryGroup,
+  VictoryLabel,
+  VictoryLegend
 } from "victory";
 
 class MyBudgetGraph extends Component {
@@ -49,7 +51,7 @@ class MyBudgetGraph extends Component {
        if (trans[curr.id]) {
          obj.push({month: curr.name, total: trans[curr.id]});
        } else {
-         obj.push({month: curr.name, total: null});
+         obj.push({month: curr.name, total: 0});
        }
      }
 
@@ -59,24 +61,40 @@ class MyBudgetGraph extends Component {
   render() {
     return (
       <div className="my-budget-graph-container">
-        Graph
+
         <VictoryChart
-          domainPadding={30}
+          domainPadding={40}
         >
+        <VictoryLabel
+           x={55} y={20}
+          text='myBudge Graph'
+           textAnchor="middle"/>
+
+
+  <VictoryLegend x={125} y={50}
+    orientation="horizontal"
+    gutter={50}
+    colorScale={["orange", "tomato"]}
+    data={[
+      { name: "Budget" }, { name: "Total Expenses" }
+    ]}
+  />
           <VictoryGroup
             colorScale={["orange", "tomato"]}
             offset={20}>
             <VictoryBar
-              animate={{ duration: 2000, onLoad: { duration: 4000 } }}
+              animate={{ duration: 2000 }}
               data={this.renderMonthData()}
               x="month"
               y="budget"
+              tickFormat={(t) => `${t}k`}
             />
             <VictoryBar
               animate={{ duration: 2000, onLoad: { duration: 4000 } }}
               data={this.renderTransactionData()}
               x="month"
               y="total"
+
             />
           </VictoryGroup>
         </VictoryChart>

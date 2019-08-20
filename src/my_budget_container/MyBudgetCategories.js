@@ -150,7 +150,7 @@ class MyBudgetCategories extends Component {
     const popCategory = this.findPopCategory();
     return (
       <div className="my-budget-category-container">
-        <h3>MyBudgetCategories</h3>
+        <h3>myBudge Overview</h3>
         {this.props.month[0].name}
         {this.props.month[0].year}
         <br />
