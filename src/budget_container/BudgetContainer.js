@@ -4,6 +4,8 @@ import BudgetMonthCard from "./BudgetMonthCard";
 import NewBudget from "./NewBudget";
 import "./styles/container.css";
 
+
+
 export default class BudgetContainer extends Component {
   constructor(props) {
     super(props);
@@ -73,8 +75,8 @@ export default class BudgetContainer extends Component {
   }
 
   renderButton(){
-    return <button className='start-budget-button' onClick={() => this.isFlagged()}>
-      {this.state.isFlagged ? "cancel" : "Start Budget!"}
+    return <button className='start-budget-button'  onClick={() => this.isFlagged()}>
+      { this.state.isFlagged ? "cancel" : "Start Budget!"}
     </button>
   }
 

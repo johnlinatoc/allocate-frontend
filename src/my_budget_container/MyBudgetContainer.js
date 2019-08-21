@@ -5,6 +5,7 @@ import AllTransactions from './AllTransactions'
 import MyBudgetGraph from './MyBudgetGraph'
 import MyBudgetCategories from './MyBudgetCategories'
 
+
 class MyBudgetContainer extends Component {
   constructor(props) {
     super(props);
@@ -103,7 +104,7 @@ class MyBudgetContainer extends Component {
     console.log('state', this.state)
     return(
       <div>
-        <h2>myBudge</h2>
+        <h1 className='my-budge-header'>myBudget</h1>
         <div className='my-budge-container'>
           <MyBudgetGraph
             allMonths={this.state.months}

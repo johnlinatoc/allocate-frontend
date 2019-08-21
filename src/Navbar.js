@@ -16,8 +16,7 @@ class Navbar extends Component {
       <div>
         <Link to="/home" style={{ textDecoration: 'none', color: 'black' }}>
           <div className="title-container">
-            <img className="icon" src={Icon} alt="" />
-            <div className="name">Budge</div>
+            <div className="name">allocate</div>
           </div>
         </Link>
 
@@ -27,14 +26,14 @@ class Navbar extends Component {
 
         <div className="categories-container">
           <Link to="/home" >
-            <div className="nav-link">
-              <span>Home</span>
+            <div>
+              <span className="nav-link">Home</span>
             </div>
           </Link>
 
           <Link to="/myBudget" className="nav-link-text">
-            <div className="nav-link">
-              <span>myBudge</span>
+            <div>
+              <span className="nav-link">myBudget</span>
             </div>
           </Link>
 
@@ -47,8 +46,8 @@ class Navbar extends Component {
         }
 
           <Link to="/profile" className="nav-link-text">
-            <div className="nav-link">
-              <span>Profile</span>
+            <div>
+              <span className="nav-link">Profile</span>
             </div>
           </Link>
 
@@ -69,13 +68,8 @@ class Navbar extends Component {
   }
 
   renderLoggedOutNavbar() {
-    return (
-      <Link to="/login" className="nav-link-text">
-        <div className="nav-link">
-          <span>Login</span>
-        </div>
-      </Link>
-    );
+    return <div>
+    </div>
   }
 
   render() {

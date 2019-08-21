@@ -1,36 +1,51 @@
 .my-budge-container {
   display: flex;
-  border: solid black 1px;
+  /* border: solid black 1px; */
   width: 91vw;
   height: 75vh;
-  margin: 0 auto;
+  margin: 1% auto;
   background: white;
   justify-content: space-between;
   flex-wrap: wrap;
 }
+.my-budge-header{
+  margin-left: 5%;
+  font-size: 2em;
+}
 
 .my-budget-trans-container{
   width: 59%;
-  border: solid lightgreen 1px;
+  /* border: solid lightgreen 1px; */
   height: 35%;
   display: inline-block;
 }
 
 .my-budget-graph-container{
   width: 60%;
-  border: solid lightgreen 1px;
+  /* border: solid lightgreen 1px; */
   height: 100%;
   display: inline-block;
 }
 
 .my-budget-category-container{
-  width: 39%;
-  border: solid lightgreen 1px;
-  height: 100%;
+  width: 37%;
+  height: 99%;
   display: inline-block;
   position: relative;
-  /* top: -23%; */
+  background: #151E3F;
+  border-radius: 6px;
+  color: white;
+  padding: 8px;
+  top: -7%;
+  box-shadow: 7px 7px 9px grey;
   }
+
+.my-budget-category-container h2{
+  margin-top: 3%;
+  margin-left: 3%;
+  margin-bottom: 0%;
+  font-weight: 300;
+}
 
 .my-budget-overview-container {
   border: solid lightgreen 1px;
@@ -39,4 +54,112 @@
   width: 100%;
   display: inline-block;
   position: relative;
+}
+
+.cat-month-year {
+  margin-top: 2%;
+  margin-left: 2%;
+  width: 39%;
+  display: inline-block;
+}
+.cat-month-year h3{
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.cat-buttons{
+  position: relative;
+  top: -3px;
+  display: inline-block;
+  margin-left: 2%;
+}
+
+.cat-button {
+  border: none;
+  background: none;
+  color: white;
+  border-radius: 5px;
+  font-size: 15px;
+  width: 22px;
+}
+
+.cat-pop {
+  margin-top: 4%;
+  padding-top: 3%;
+  margin-left: 3%;
+  width: 94%;
+}
+
+.cat-pop h5 {
+  padding: 2%;
+  text-align: center;
+  font-size: 28px;
+  background: grey;
+  font-weight: 300;
+  margin: 4% auto 0;
+  width: 73%;
+}
+
+.cat-pop h4,
+.danger-cats h4{
+  font-weight: 300;
+}
+
+.danger-cat{
+  color: white;
+  font-weight: 600;
+  padding: 2%;
+  text-align: center;
+  font-size: 23px;
+  margin: 4% auto 0;
+  width: 73%;
+  background: darkred;
+  border-radius: 11px;
+  border: none;
+}
+.warning-cat{
+  color: white;
+  font-weight: 600;
+  padding: 2%;
+  text-align: center;
+  font-size: 23px;
+  margin: 4% auto 0;
+  width: 73%;
+  background: goldenrod;
+  border-radius: 11px;
+  border: none;
+}
+.okay-cat{
+  color: white;
+  font-weight: 600;
+  padding: 2%;
+  text-align: center;
+  font-size: 23px;
+  margin: 4% auto 0;
+  width: 73%;
+  background: green;
+  border-radius: 11px;
+  border: none;
+}
+
+.danger-cats{
+  padding-top: 3%;
+  margin-top: 6%;
+  width: 94%;
+  margin-left: 3%;
+  overflow: scroll;
+}
+
+.danger-cats h5{
+  padding: 2%;
+  text-align: center;
+  font-size: 28px;
+  margin-top: 2%;
+  font-weight: 400;
+  border-radius: 0;
+}
+
+.danger-cats h4 span,
+.warning-cats h4 span{
+  font-weight: 600;
 }

@@ -1,33 +1,58 @@
-import React, { Component } from 'react'
-import BudgetCardTransaction from './BudgetCardTransaction'
+import React, { Component } from "react";
+import BudgetCardTransaction from "./BudgetCardTransaction";
 import uuid from "uuid";
 
 class BudgetCardBack extends Component {
-
-  renderTransCards(){
-    const trans = this.props.transactions
-    return trans.map( transaction =>  <BudgetCardTransaction
-      name={transaction.name}
-      amount={transaction.amount}
-      />)
+  renderTransCards() {
+    const trans = this.props.transactions;
+    return trans.map(transaction => (
+      <BudgetCardTransaction
+        name={transaction.name}
+        amount={transaction.amount}
+      />
+    ));
   }
 
-  calcRemainder(){
-    const total = this.props.category.budget - this.props.total
-    return total
+  calcRemainder() {
+    const total = this.props.category.budget - this.props.total;
+    return total;
   }
 
-  render(){
-    return(
-      <div className='card-back'>
-        <p>${this.calcRemainder()} left in {this.props.category.name}</p>
+  render() {
+    const { category, total } = this.props;
+    return (
+      <div className="card-back">
+        <h4>{category.name}</h4>
+        <hr/>
+        <div className='card-back-cats'>
+        <p>
+          Budget:
+        </p>
+        <p>
+          Spent:
+        </p>
+        <p>
+          Remaining:
+        </p>
+      </div>
+        <div className='card-back-data'>
+        <p>
+        ${category.budget}
+        </p>
+        <p>
+        ${total}
+        </p>
+        <p>
+        ${this.calcRemainder()}
+        </p>
+      </div>
         <div>
-          <h4>Expenses</h4>
+          <h5>Expenses</h5>
           {this.renderTransCards()}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default BudgetCardBack
+export default BudgetCardBack;

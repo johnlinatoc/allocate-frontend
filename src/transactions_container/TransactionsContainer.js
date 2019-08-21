@@ -82,10 +82,14 @@ export default class TransactionsContainer extends Component {
       <div>
         <h2 className="trans-header">Expenses</h2>
         <h4 className="trans-sub-header">This Month</h4>
-        {this.renderTransactionCard()}
+        <div className='trans-card-container'>
+          {this.renderTransactionCard()}
+        </div>
         <div className="add-expense">
+          <h4>Add Expense</h4>
           <form onSubmit={(e) => {this.handleSubmit(e)}}>
             <input
+              className=''
               type={'text'}
               value={this.state.expense_title}
               placeholder={"expense name"}
@@ -107,7 +111,7 @@ export default class TransactionsContainer extends Component {
                 });
               }}
               >
-              <option>Category</option>
+              <option>Select Category</option>
               {this.renderCategories()}
             </select>
             <button>Submit</button>

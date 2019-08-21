@@ -10,6 +10,18 @@
   border-radius: 3%;
 }
 
+.budget-card:hover {
+  color: white;
+  width: 31%;
+  height: 10em;
+  overflow: scroll;
+  display: inline-block;
+  margin-right: 2%;
+  margin-bottom: 1em;
+  background: #7F8496;
+  border-radius: 3%;
+}
+
 /* .budget-card:nth-child(3n+3){
   color: white;
   width: 31%;
@@ -38,14 +50,38 @@
 .card-back div{
   padding: 0 1%;
 }
-.card-back p{
-  text-align: center;
+
+.card-back-cats{
+  display: inline-block;
+  text-align: right;
+  margin-left: 15%;
+}
+.card-back-cats {
+  display: inline-block;
+  text-align: right;
+  margin-left: 15%;
   font-weight: 600;
 }
+.card-back-data{
+  display: inline-block;
+  text-align: left;
+}
+.card-back p{
+  /* text-align: center; */
+  /* font-weight: 600; */
+  margin: 0
+}
 .card-back h4{
-  text-align: center;
+  /* text-align: center; */
+  font-weight: 700;
+  margin-bottom: 3%;
+}
+.card-back h5{
+  /* text-align: center; */
   font-weight: 300;
-  margin-bottom: 1%;
+  margin-bottom: 3%;
+  margin-top: 7%;
+  font-size: 1em;
 }
 
 .card-back hr {
@@ -58,6 +94,21 @@
   position: relative;
 }
 
+#main-month-bar .progress-bar .filler-4 {
+  background: #151E3F;
+}
+
+#main-month-bar .progress-bar {
+  position: relative;
+  height: 7px;
+  border-radius: 3px;
+  width: 96%;
+  margin: 0 auto;
+  background: rgb(140, 138, 166);
+  /* margin-top: 3em; */
+  left: 36px;
+}
+
 #main-month-info {
   margin-top: 6px;
 }
@@ -67,6 +118,8 @@
   display: inline-block;
   margin-left: 5%;
   width: 100%;
+  font-weight: 400;
+  font-size: 24px;
 }
 
 .month-card-name{
@@ -80,8 +133,8 @@
 .month-buttons{
   position: relative;
   display: inline-block;
-  top: -4px;
-  right: 0%;
+  top: 53px;
+  right: -23%;
   width: 5%;
 }
 
@@ -89,7 +142,6 @@
   background: transparent;
   border: none;
   font-size: 1em;
-  color: white;
   position: absolute;
 }
 
@@ -100,7 +152,6 @@
 }
 
 #month-back{
-  color: white;
   font-size: 1em;
   background: transparent;
     border: none;
@@ -127,17 +178,49 @@
   transition: width .2s ease-in;
 }
 
+.filler-4 {
+  background: white;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+}
+
+.filler-3 {
+  background: green;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+}
+
+.filler-2 {
+  background: red;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+}
+
+.filler-1 {
+  background: red;
+  height: 100%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+}
+
 .income {
   margin: 0;
   display: inline-block;
   float: right;
-  margin-right: 6%;
+  margin-right: -2%;
+  font-weight: 400;
+  word-spacing: 1px;
 }
 
 .spent {
   margin: 0;
   display: inline-block;
   margin-left: 6%;
+  font-weight: 400;
+  word-spacing: 1px;
 }
 
 .card-bar{
@@ -147,12 +230,14 @@
 .category-spent{
   margin-left: 6%;
   margin-top: 3%;
+  font-weight: 400;
 }
 
 .category-name{
   margin-left: 6%;
   margin-top: 13%;
   font-size: 1.4em;
+  font-weight: 300;
 }
 
 .main-budget-form{
@@ -160,8 +245,24 @@
   width: 50%;
 }
 
+.main-budget-form h4{
+  display: inline-block;
+  width: 50%;
+}
+
 .main-budget-form * input{
   float: right;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  -webkit-appearance: none;
+}
+
+.main-budget-form * input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.main-budget-form * input:focus{
+  outline: none;
 }
 
 .cat-budget-form{
@@ -187,11 +288,48 @@
   padding: 12px 3em;
   font-size: 1em;
   border-radius: 7px;
-  background: #F2F3D9;
-  color: #151E3F;
+  background: #151E3F;
+  color: white;
   border: none;
   font-weight: 700;
   box-shadow: 3px 4px 5px 0px lightgrey;
   position: relative;
   left: 38%;
+  font-weight: 400;
+}
+
+.new-budget{
+  color: black;
+  margin-left: 9px;
+  margin-right: 26px;
+  border-top: solid 1px lightgray;
+  padding-top: 4%;
+}
+
+.new-budget h2{
+  margin-bottom: 3%;
+  font-weight: 500;
+}
+
+.enter-income{
+  margin-top: 12px;
+}
+
+.category-groups{
+  margin: 13px 0;
+}
+
+.category-groups * input{
+  float: right;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  -webkit-appearance: none;
+}
+
+.category-groups * input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.category-groups * input:focus{
+  outline: none;
 }

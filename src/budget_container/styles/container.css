@@ -13,17 +13,21 @@
   margin-left: 2em;
 }
 .month-card {
-  /* background: rgb(148,255,220); */
-  background: #151E3F;
-  padding: 11px 0;
-  padding-bottom: 23px;
-  margin-bottom: 34px;
-  box-shadow: -1px 7px 11px 0px lightgrey;
-  border-radius: 15px;
-  margin-right: 11px;
-  margin-left: -1px;
+  /* background: rgb(148,255,220);  */
+  /* background: #151E3F; */
+  padding: 5px 0;
+  /* padding-bottom: 23px; */
+  margin-bottom: 30px;
+  /* box-shadow: -1px 7px 11px 0px lightgrey; */
+  /* border-radius: 15px; */
+  /* margin-right: 11px; */
+  /* margin-left: -1px; */
   height: 5em;
-  color: white;
+  color: #151E3F;
+  position: relative;
+  top: -11px;
+  left: -43px;
+  
 }
 
 /* .month-card:hover {
@@ -42,6 +46,7 @@
   display: flex;
   flex-wrap: wrap;
   /* justify-content: space-between; */
+  margin-left: 11px;
 }
 
 .inset-shad {

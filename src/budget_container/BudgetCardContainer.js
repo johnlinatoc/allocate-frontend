@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import BudgetCardBack from './BudgetCardBack'
 import './styles/card.css'
 import ProgressBar from './ProgressBar.js'
+import * as Icons from 'react-icons/fa';
+
 
 class BudgetCardContainer extends Component {
   constructor(){
@@ -81,6 +83,8 @@ class BudgetCardContainer extends Component {
     const names = this.renderCategoryTransactionNames()
     const amounts = this.renderCategoryTransactionAmounts()
     const isClicked = this.state.flipped
+    const Icon = Icons['FaBeer']
+
 
     if (!isClicked) {
       return <div className='card-header'>

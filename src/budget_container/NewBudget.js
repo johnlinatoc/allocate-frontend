@@ -72,7 +72,6 @@ class NewBudgetContainer extends Component {
       .then(data => console.log(data))
       .then( this.setState({ monthSubmitted: false }) )
 
-      console.log('month cancel')
   }
 
   handleMonthSubmit(e) {
@@ -156,7 +155,8 @@ class NewBudgetContainer extends Component {
   renderCategoryInputs(){
     return this.state.categories.map((category, index)=> {
       return(
-        <div>
+        <div className='category-groups'>
+          <h4>New Category</h4>
           <Form.Group
             style = {{ marginTop: "2px", }}
             >
@@ -191,7 +191,7 @@ class NewBudgetContainer extends Component {
   }
 
   renderSubmitButton(){
-    return <Button variant="primary" type="submit">
+    return <Button className ='submit' variant="primary" type="submit">
             Submit Budget!
             </Button>
   }
@@ -223,14 +223,14 @@ class NewBudgetContainer extends Component {
 
   render() {
     return (
-      <div className="" style={{ color: "black" }}>
+      <div className="new-budget" style={{ color: "black" }}>
         <h2>Start Your New Budget</h2>
         <Form
           className='main-budget-form'
           onSubmit={e => this.handleMonthSubmit(e)}
           >
           <Form.Group>
-            <Form.Label>Monthly Income</Form.Label>
+            <Form.Label><h4>This Month's Income</h4></Form.Label>
             <Form.Control
               required
               onChange={e => {
@@ -239,8 +239,8 @@ class NewBudgetContainer extends Component {
               type="number"
               placeholder="ex: $2500"/>
           </Form.Group>
-          { this.state.monthly_income > 0 && !this.state.monthSubmitted ? <Button variant="primary" type="submit">
-            Submit Month Income
+          { this.state.monthly_income > 0 && !this.state.monthSubmitted ? <Button className='enter-income'variant="primary" type="submit">
+            Enter Income
           </Button> : null}
 
         </Form>
@@ -256,7 +256,7 @@ class NewBudgetContainer extends Component {
           }}>
 
           { this.state.monthSubmitted ? this.renderCategoryInputs() : null }
-          { this.state.monthSubmitted ? this.renderNewCatButton() : null }
+          { this.state.monthSubmitted && !this.state.isEqual? this.renderNewCatButton() : null }
 
           { this.state.isEqual ? this.renderSubmitButton() : null }
 

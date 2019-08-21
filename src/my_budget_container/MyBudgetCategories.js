@@ -11,8 +11,6 @@ class MyBudgetCategories extends Component {
     };
   }
 
-  // componentDidUpdate(){ this.renderPopCategory() }
-
   findPopCategory() {
     let categories = {};
     const { transactions } = this.props;
@@ -63,9 +61,9 @@ class MyBudgetCategories extends Component {
     transactions.forEach(trans => {
       if (trans.category_id in transAmounts) {
         transAmounts[parseInt(trans.category_id)] =
-          transAmounts[trans.category_id] + trans.amount;
+          transAmounts[trans.category_id] += trans.amount;
       } else {
-        transAmounts[parseInt(trans.category_id)] = 0;
+        transAmounts[parseInt(trans.category_id)] = trans.amount;
       }
     });
 
@@ -75,6 +73,7 @@ class MyBudgetCategories extends Component {
 
     let entries = Object.entries(transAmounts);
     let sortedAmountTotals = entries.sort((a, b) => a[1] - b[1]);
+    console.log('sortedAmountTotals', sortedAmountTotals )
     let matched = sortedAmountTotals.map(index => {
       let indexId = parseInt(index[0]);
       let matched1 = [];
@@ -89,96 +88,121 @@ class MyBudgetCategories extends Component {
       return matched1
     });
 
-    const danger = matched.filter(cat => cat[0].percentage > 100)
-    const dangerCats = thisMonthsCats.filter(cat => {
-      let catId = cat.id
-      return danger.find(category => {
-        return category[0].category_id == catId
+      const danger = matched.filter(cat => cat[0].percentage > 100)
+      const dangerCats = thisMonthsCats.filter(cat => {
+        let catId = cat.id
+        return danger.find(category => {
+          return category[0].category_id == catId
+        })
       })
-    })
 
-    const warning = matched.filter(cat => cat[0].percentage < 100 && cat[0].percentage > 80)
-    const warningCats = thisMonthsCats.filter(cat => {
-      let catId = cat.id
-      return warning.find(category => {
-        return category[0].category_id == catId
+      const warning = matched.filter(cat => cat[0].percentage < 100 && cat[0].percentage > 80)
+      const warningCats = thisMonthsCats.filter(cat => {
+        let catId = cat.id
+        return warning.find(category => {
+          return category[0].category_id == catId
+        })
       })
-    })
 
-    const okay = matched.filter(cat => cat[0].percentage < 80)
-    const okayCats = thisMonthsCats.filter(cat => {
-      let catId = cat.id
-      return okay.find(category => {
-        return category[0].category_id == catId
+      const okay = matched.filter(cat => cat[0].percentage < 80)
+      const okayCats = thisMonthsCats.filter(cat => {
+        let catId = cat.id
+        return okay.find(category => {
+          return category[0].category_id == catId
+        })
       })
-    })
 
-    // console.log("danger", danger);
+    console.log("danger", danger);
     // console.log("dangerCats", dangerCats);
     // console.log("warning", warning);
     // console.log("warningCats", warningCats);
     // console.log("okayCats", okayCats);
-    return [dangerCats, warningCats, okayCats]
+    return {dangerCats: dangerCats, warningCats: warningCats, okayCats: okayCats}
   }
 
   renderDangerCats() {
     if (this.props.categories.length > 0 ) {
-       let dangerCats = this.findDangerCats()[0]
+      const found = this.findDangerCats();
+      const dangerCats = found.dangerCats;
+      const warningCats = found.warningCats;
+      const okayCats = found.okayCats;
+
        if (dangerCats.length > 0) {
           return (
             <div>
-            <h2>Budgets you went over!</h2> {
+            <h4> <span>Budget Status:</span> Looks like you went over this month!</h4> {
               dangerCats.map(cat => {
                 return (
                   <div>
-                    <p style={{color: 'red', fontWeight: 600 }}> {cat.name} </p>
+                    <h5 className='danger-cat'> {cat.name} </h5>
                   </div>
                 )
               })
             }
           </div>
           )
-        }
-       let warningCats = this.findDangerCats()[1]
-       let okayCats = this.findDangerCats()[2]
-     } else {
-       return null
+        } else if (warningCats && warningCats.length > 0) {
+       return (
+         <div>
+         <h4><span>Budget Status:</span>Budgets you are close to going over</h4> {
+           warningCats.map(cat => {
+             return (
+               <div>
+                 <h5 className='warning-cat'> {cat.name} </h5>
+               </div>
+             )
+           })
+         }
+       </div>
+       )
+     } else if (okayCats && okayCats.length > 0) {
+    return (
+      <div>
+      <h4><span>Budget Status:</span>All your budgets are looking good!</h4> {
+        okayCats.map(cat => {
+          return (
+            <div>
+              <h5 className='okay-cat'> {cat.name} </h5>
+            </div>
+          )
+        })
+      }
+    </div>
+    )
+  } else {
+       return (
+         <div>
+         <h4><span>Budget Status:</span> Start your budget for this month today!</h4>
+       </div>
+       )
      }
+   }
   }
 
+
   render() {
+
     const popCategory = this.findPopCategory();
     return (
       <div className="my-budget-category-container">
-        <h3>myBudge Overview</h3>
-        {this.props.month[0].name}
-        {this.props.month[0].year}
-        <br />
-        <button
-          id="month-back"
-          onClick={e => {
-            this.props.pageBack(e);
-          }}
-        >
-          {" "}
-          &laquo;{" "}
-        </button>
-        <button
-          id="month-forward"
-          onClick={e => {
-            this.props.pageForward(e);
-          }}
-        >
-          &raquo;
-        </button>
-        <p>Most Popular Budget Category </p>
-        {popCategory ? (
-          <h4>{popCategory.name}</h4>
-        ) : (
-          <h4> No Transactions Yet! </h4>
-        )}
+        <h2>Overview</h2>
+        <div className='cat-buttons'>
+          <button className='cat-button' onClick={e => {this.props.pageBack(e) }}> &laquo; </button>
+          <button className='cat-button' onClick={e => {this.props.pageForward(e) }}> &raquo; </button>
+        </div>
 
-        { this.renderDangerCats()}
+        <div className='cat-month-year'>
+          <h3>{this.props.month[0].name}  {this.props.month[0].year} </h3>
+        </div>
+
+
+        <div className='cat-pop'>
+          <h4>You've spent the most in this budget:</h4>
+          {popCategory ? ( <h5>{popCategory.name}</h5> ) : ( <h5> No Transactions Yet! </h5> )}
+        </div>
+        <div className='danger-cats'>
+          { this.renderDangerCats()}
+        </div>
       </div>
     );
   }

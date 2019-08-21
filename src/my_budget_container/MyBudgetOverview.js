@@ -12,7 +12,7 @@ class MyBudgetOverview extends Component {
   render(){
     return(
       <div className='my-budget-overview-container'>
-        MyBudgetOverview
+        Overview
         <p>show how much overall is left in month with days</p>
           <button id="month-back" onClick={e => { this.props.pageBack(e); }}> &laquo; </button>
           <button id="month-forward" onClick={e => { this.props.pageForward(e); }}>  &raquo; </button>

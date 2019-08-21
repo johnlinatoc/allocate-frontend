@@ -27,7 +27,7 @@ class MyBudgetGraph extends Component {
       newData.push({ month: months[i], budget: monthBudgets[i] });
     }
     console.log('newData', newData)
-    return newData.slice(0, 5);
+    return newData.slice(0, 6);
   }
 
   renderTransactionData() {
@@ -55,7 +55,7 @@ class MyBudgetGraph extends Component {
        }
      }
 
-   return obj.slice(0, 5);
+   return obj.slice(0, 6);
   }
 
   render() {
@@ -63,15 +63,11 @@ class MyBudgetGraph extends Component {
       <div className="my-budget-graph-container">
 
         <VictoryChart
-          domainPadding={40}
+          domainPadding={30}
+          padding={{ top: 10, bottom: 27, left: 50, right: 5 }}
         >
-        <VictoryLabel
-           x={55} y={20}
-          text='myBudge Graph'
-           textAnchor="middle"/>
 
-
-  <VictoryLegend x={125} y={50}
+         <VictoryLegend x={125} y={20}
     orientation="horizontal"
     gutter={50}
     colorScale={["orange", "tomato"]}

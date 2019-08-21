@@ -29,6 +29,10 @@ export default class BudgetMonthCard extends Component {
     return total;
   }
 
+  renderMonthBudget(){
+    return `$${this.props.month.monthly_budget}`
+  }
+
   render() {
     const { month } = this.props
 
@@ -41,16 +45,14 @@ export default class BudgetMonthCard extends Component {
           <button id='month-back' onClick={(e)=>{this.props.pageBack(e)}}> &laquo; </button>
           <button id='month-forward' onClick={(e)=>{this.props.pageForward(e)}}>&raquo;</button>
         </div>
-        {this.props.month.monthly_budget >= 1 ? (
-          <div>
-            <div id='main-month-bar'>
-              <ProgressBar percentage={this.calcPercentage()} />
-            </div>
-            <div id='main-month-info'></div>
-            <h4 className="spent"> Spent ${this.renderMonthTransactions()} </h4>
-            <h4 className="income"> Income ${month.monthly_budget} </h4>
+        <div>
+          <div id='main-month-bar'>
+            <ProgressBar percentage={this.calcPercentage()} />
           </div>
-        ) : <p>Start this month's budget today!</p>}
+          <div id='main-month-info'></div>
+          <h4 className="spent"> Spent ${this.renderMonthTransactions()} </h4>
+          <h4 className="income"> Income { month.monthly_budget ? this.renderMonthBudget() : `$0`} </h4>
+        </div>
       </div>
     );
   }

@@ -11,6 +11,77 @@
   border-radius: 3%;
 }
 
+.trans-header h2{
+  font-weight: 500;
+}
+
 .side-trans-card span {
   float: right
+}
+
+.trans-sub-header{
+  margin: 3% 0;
+  font-weight: 100;
+}
+
+.trans-card-container{
+  height: 42vh;
+  overflow: scroll;
+}
+
+.trans-card-container div{
+  margin-bottom: 9px;
+  padding: 15px 6px;
+  background: #151E3F;
+  font-weight: 100;
+}
+
+.add-expense{
+  text-align: center;
+  width: 72%;
+  left: 16%;
+  position: relative;
+  margin-top: 13px;
+}
+
+.add-expense form{
+  display: flex;
+  flex-direction: column;
+}
+
+.add-expense h4{
+  margin: 3% 0;
+}
+
+.add-expense input{
+  margin-right: 4%;
+  border: none;
+  padding: 3px;
+  background: none;
+  color: white;
+  border-bottom: 1px darkgray solid;
+  font-size: 14px;
+}
+
+.add-expense select{
+  background: none;
+  color: white;
+  text-align: left;
+  border: none;
+  left: -6px;
+  position: relative;
+  font-weight: 100;
+  font-size: 11px;
+}
+
+.add-expense button{
+  background: none;
+  border: none;
+  color: white;
+  position: relative;
+  top: 1px;
+  font-weight: 100;
+  right: 3px;
+  font-size: 13px;
+  margin-top: 4px;
 }
