@@ -52,6 +52,7 @@ class NewBudgetContainer extends Component {
       monthly_income: parseInt(e.target.value),
       monthSubmitted: false,
       categories: [{name: '', amount: 0}],
+      categoryTotal: 0,
     });
   }
 
@@ -107,14 +108,22 @@ class NewBudgetContainer extends Component {
       body: JSON.stringify(data)
     };
 
-
-
     fetch("http://localhost:3000/categories", reqObj_mon)
       .then(res => res.json())
-      .then(data => console.log(data))
-      .then(this.props.fetchAll())
-
-  //   this.props.history.push('/home')
+      .then(data => {
+        console.log('!!!!!!!!!!!', data)
+        this.setState({
+          monthly_income: 0,
+          month_id: this.props.months[0].id,
+          user_id: this.props.userInfo.id,
+          categories: [{name: '', amount: 0}],
+          isEqual: false,
+          monthSubmitted: false,
+          categoryTotal: 0,
+        })
+        this.props.fetchAll()
+        this.props.isFlagged()
+      })
   }
 
   renderNewCategory() {
@@ -191,13 +200,14 @@ class NewBudgetContainer extends Component {
   }
 
   renderSubmitButton(){
-    return <Button className ='submit' variant="primary" type="submit">
+    return <Button className ='submit-budget' variant="primary" type="submit">
             Submit Budget!
             </Button>
   }
 
   renderNewCatButton(){
     return <button
+      className='enter-category'
       onClick={() => {
         this.renderNewCategory();
       }}>

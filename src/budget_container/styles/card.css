@@ -1,7 +1,7 @@
 .budget-card{
   color: white;
   width: 31%;
-  height: 10em;
+  height: 190px;
   overflow: scroll;
   display: inline-block;
   margin-right: 2%;
@@ -12,14 +12,14 @@
 
 .budget-card:hover {
   color: white;
-  width: 31%;
-  height: 10em;
+  width: 32%;
+  height: 191px;
   overflow: scroll;
   display: inline-block;
   margin-right: 2%;
   margin-bottom: 1em;
-  background: #7F8496;
   border-radius: 3%;
+  transition-duration: 0.8s;
 }
 
 /* .budget-card:nth-child(3n+3){
@@ -59,8 +59,13 @@
 .card-back-cats {
   display: inline-block;
   text-align: right;
-  margin-left: 15%;
-  font-weight: 600;
+  margin-left: 10%;
+}
+
+.card-back-last{
+  font-weight: bold;
+font-size: 1.1em;
+color: #F2F3D9;
 }
 .card-back-data{
   display: inline-block;
@@ -75,6 +80,7 @@
   /* text-align: center; */
   font-weight: 700;
   margin-bottom: 3%;
+
 }
 .card-back h5{
   /* text-align: center; */
@@ -82,6 +88,7 @@
   margin-bottom: 3%;
   margin-top: 7%;
   font-size: 1em;
+
 }
 
 .card-back hr {
@@ -193,7 +200,7 @@
 }
 
 .filler-2 {
-  background: red;
+  background: darkred;
   height: 100%;
   border-radius: inherit;
   transition: width .2s ease-in;
@@ -235,8 +242,8 @@
 
 .category-name{
   margin-left: 6%;
-  margin-top: 13%;
-  font-size: 1.4em;
+  margin-top: 19%;
+  font-size: 1.5em;
   font-weight: 300;
 }
 
@@ -255,6 +262,7 @@
   border: none;
   border-bottom: 1px solid lightgray;
   -webkit-appearance: none;
+  font-size: 14px;
 }
 
 .main-budget-form * input::-webkit-inner-spin-button {
@@ -313,6 +321,44 @@
 
 .enter-income{
   margin-top: 12px;
+  padding: 8px 1em;
+  font-size: 1em;
+  border-radius: 7px;
+  background: darkseagreen;
+  color: white;
+  border: none;
+  font-weight: 700;
+  box-shadow: 3px 4px 5px 0px lightgrey;
+  position: relative;
+  font-weight: 400;
+}
+
+.enter-category{
+  margin-top: 12px;
+  padding: 8px 1em;
+  font-size: 1em;
+  border-radius: 7px;
+  background: goldenrod;
+  color: white;
+  border: none;
+  font-weight: 700;
+  box-shadow: 3px 4px 5px 0px lightgrey;
+  position: relative;
+  font-weight: 400;
+}
+
+.submit-budget{
+  margin-top: 12px;
+  padding: 8px 1em;
+  font-size: 1em;
+  border-radius: 7px;
+  background: limegreen;
+  color: white;
+  border: none;
+  font-weight: 700;
+  box-shadow: 3px 4px 5px 0px lightgrey;
+  position: relative;
+  font-weight: 400;
 }
 
 .category-groups{
@@ -324,6 +370,7 @@
   border: none;
   border-bottom: 1px solid lightgray;
   -webkit-appearance: none;
+  font-size: 14px;
 }
 
 .category-groups * input::-webkit-inner-spin-button {

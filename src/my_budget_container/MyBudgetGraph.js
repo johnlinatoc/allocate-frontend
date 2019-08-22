@@ -67,18 +67,18 @@ class MyBudgetGraph extends Component {
           padding={{ top: 10, bottom: 27, left: 50, right: 5 }}
         >
 
-         <VictoryLegend x={125} y={20}
+         <VictoryLegend x={125} y={10}
     orientation="horizontal"
     gutter={50}
-    colorScale={["orange", "tomato"]}
+    colorScale={["#151E3F", "darkred"]}
     data={[
       { name: "Budget" }, { name: "Total Expenses" }
     ]}
   />
           <VictoryGroup
-            colorScale={["orange", "tomato"]}
-            offset={20}>
+            offset={13}>
             <VictoryBar
+              color='#151E3F'
               animate={{ duration: 2000 }}
               data={this.renderMonthData()}
               x="month"
@@ -86,6 +86,7 @@ class MyBudgetGraph extends Component {
               tickFormat={(t) => `${t}k`}
             />
             <VictoryBar
+              color='darkred'
               animate={{ duration: 2000, onLoad: { duration: 4000 } }}
               data={this.renderTransactionData()}
               x="month"

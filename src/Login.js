@@ -53,7 +53,7 @@ class Login extends React.Component {
           <p>save well</p>
         </div>
         <div className='login-form-full'>
-          {this.state.error ? <h4 style={{fontWeight: '100'}}>Invalid username or Password</h4> : null}
+          {this.state.error ? <h1 style={{fontWeight: '100'}}>Invalid username or Password</h1> : null}
           <form onSubmit={(e)=>{this.handleLogin(e)}}>
             <h3>Login</h3>
             <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} placeholder='username'/><br/>

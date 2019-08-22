@@ -10,6 +10,7 @@ export default class TransactionsContainer extends Component {
       amount: "",
       category_id: 0,
       monthly_budget_id: 0,
+      isClicked: true,
     };
   }
 
@@ -77,16 +78,38 @@ export default class TransactionsContainer extends Component {
       }))
   }
 
+  rootClassName() {
+  let names = ['add-expense'];
+  if (this.state.isClicked) names.push('-min');
+
+  console.log(names)
+  return names.join('');
+  }
+
+  rootClassNameContainer() {
+  let names = ['trans-card-container'];
+  if (this.state.isClicked) names.push('-min');
+
+  console.log(names)
+  return names.join('');
+  }
+
+handleClick(){
+  this.setState({
+    isClicked: !this.state.isClicked,
+  })
+}
+
   render() {
     return (
       <div>
         <h2 className="trans-header">Expenses</h2>
         <h4 className="trans-sub-header">This Month</h4>
-        <div className='trans-card-container'>
+        <div className={ this.rootClassNameContainer()}>
           {this.renderTransactionCard()}
         </div>
-        <div className="add-expense">
-          <h4>Add Expense</h4>
+        <div className={ this.rootClassName()} >
+          <h4 onClick={()=>this.handleClick()}>Add Expense</h4>
           <form onSubmit={(e) => {this.handleSubmit(e)}}>
             <input
               className=''

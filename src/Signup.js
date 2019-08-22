@@ -43,7 +43,7 @@ class Signup extends React.Component {
           })
         } else {
           this.props.handleLogin(data)
-          this.props.history.push(`/profile`)
+          this.props.history.push(`/home`)
         }
       })
   }

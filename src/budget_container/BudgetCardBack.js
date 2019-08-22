@@ -31,7 +31,7 @@ class BudgetCardBack extends Component {
         <p>
           Spent:
         </p>
-        <p>
+        <p className='card-back-last'>
           Remaining:
         </p>
       </div>
@@ -42,7 +42,7 @@ class BudgetCardBack extends Component {
         <p>
         ${total}
         </p>
-        <p>
+        <p className='card-back-last'>
         ${this.calcRemainder()}
         </p>
       </div>

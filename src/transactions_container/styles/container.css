@@ -29,12 +29,25 @@
   overflow: scroll;
 }
 
+
 .trans-card-container div{
   margin-bottom: 9px;
   padding: 15px 6px;
   background: #151E3F;
   font-weight: 100;
 }
+.trans-card-container-min{
+  height: 52vh;
+  overflow: scroll;
+}
+
+.trans-card-container-min div{
+  margin-bottom: 9px;
+  padding: 15px 6px;
+  background: #151E3F;
+  font-weight: 100;
+}
+
 
 .add-expense{
   text-align: center;
@@ -42,6 +55,7 @@
   left: 16%;
   position: relative;
   margin-top: 13px;
+  cursor: pointer;
 }
 
 .add-expense form{
@@ -75,6 +89,59 @@
 }
 
 .add-expense button{
+  background: none;
+  border: none;
+  color: white;
+  position: relative;
+  top: 1px;
+  font-weight: 100;
+  right: 3px;
+  font-size: 13px;
+  margin-top: 4px;
+}
+.add-expense-min{
+  overflow: hidden;
+  height: 29px;
+  position: relative;
+  top: 79px;
+  left: 15%;
+  cursor: pointer;
+  text-align: center;
+  width: 72%;
+  margin-top: -65px;
+}
+
+.add-expense-min form{
+  display: flex;
+  flex-direction: column;
+}
+
+.add-expense-min h4{
+  margin: 3% 0;
+}
+
+.add-expense-min input{
+  margin-right: 4%;
+  border: none;
+  padding: 3px;
+  background: none;
+  color: white;
+  border-bottom: 1px darkgray solid;
+  font-size: 14px;
+}
+
+.add-expense-min select{
+  background: none;
+  color: white;
+  text-align: left;
+  border: none;
+  left: -6px;
+  position: relative;
+  font-weight: 100;
+  font-size: 11px;
+}
+
+.add-expense-min button{
   background: none;
   border: none;
   color: white;

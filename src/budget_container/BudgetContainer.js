@@ -37,15 +37,8 @@ export default class BudgetContainer extends Component {
     });
   }
 
-  handleEdit(e){
-    e.preventDefault()
-
-    this.setState({ editEnabled: !this.state.editEnabled })
-  }
-
   renderBudgetCard() {
     const { categories, transactions } = this.props;
-
     return categories.map(category => {
       return (
         <BudgetCardContainer
@@ -71,7 +64,8 @@ export default class BudgetContainer extends Component {
         months={months}
         userInfo={this.props.userInfo}
         isCancelled={this.state.isCancelled}
-        fetchAll={this.props.fetchAll} />
+        fetchAll={this.props.fetchAll}
+        isFlagged={()=>this.isFlagged()}/>
   }
 
   renderButton(){
