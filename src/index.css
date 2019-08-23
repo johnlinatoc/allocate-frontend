@@ -150,10 +150,11 @@ img {
 }
 
 .bg-video {
-  width: 100vw;
+  width: 120vw;
   position: absolute;
   z-index: 10;
-  top: -74px;
+  height: 105vh;
+  top: -71px;
 }
 
 .video{

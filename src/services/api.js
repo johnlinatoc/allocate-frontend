@@ -1,3 +1,5 @@
+const URL = http://localhost:3000
+
 export default {
   login: loginData => {
     const reqObj = {
@@ -8,7 +10,7 @@ export default {
       body: JSON.stringify(loginData)
     };
 
-    return fetch("http://localhost:3000/auth", reqObj).then(res => res.json());
+    return fetch(`${URL}/auth`, reqObj).then(res => res.json());
   },
 
   signup: loginData => {
@@ -20,7 +22,7 @@ export default {
       body: JSON.stringify(loginData)
     };
 
-    return fetch("http://localhost:3000/users", reqObj)
+    return fetch(`${URL}/users`, reqObj)
       .then(res => res.json())
       .catch(err => console.error(err));
   },
@@ -32,7 +34,7 @@ export default {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     };
-    return fetch("http://localhost:3000/profile", reqObj).then(resp =>
+    return fetch(`${URL}/profile`, reqObj).then(resp =>
       resp.json()
     );
   },
@@ -46,7 +48,7 @@ export default {
       },
       body: JSON.stringify(userInput)
     };
-    return fetch("http://localhost:3000/transactions", reqObj).then(res =>
+    return fetch(`${URL}/transactions`, reqObj).then(res =>
       res.json()
     );
   },
@@ -59,7 +61,7 @@ export default {
       }
     };
 
-    return fetch(`http://localhost:3000/users/${userId}/months`, reqObj).then(
+    return fetch(`${URL}/users/${userId}/months`, reqObj).then(
       resp => resp.json()
     );
   },
@@ -73,7 +75,7 @@ export default {
     };
 
     return fetch(
-      `http://localhost:3000/users/${userId}/categories`,
+      `${URL}/users/${userId}/categories`,
       reqObj
     ).then(resp => resp.json());
   },
@@ -87,7 +89,7 @@ export default {
     };
 
     return fetch(
-      `http://localhost:3000/users/${userId}/transactions`,
+      `${URL}/users/${userId}/transactions`,
       reqObj
     ).then(resp => resp.json());
   }

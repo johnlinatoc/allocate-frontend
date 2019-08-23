@@ -67,9 +67,11 @@ class Login extends React.Component {
           </form>
         </div>
         <div className="bg-video">
-          <video className='video' loop autoPlay>
+          <iframe allow="autoplay">
+          <video className='video' loop allow="autoplay">
             <source src={home} type="video/mp4" />
           </video>
+        </iframe>
         </div>
 
       </div>
