@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TransactionCard from "./TransactionCard";
-import "./styles/container.css";
+import "./styles.css";
 
 export default class TransactionsContainer extends Component {
   constructor(props) {
