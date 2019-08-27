@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
 import BudgetContainer from "./budget_container/BudgetContainer";
 import TransactionsContainer from "./transactions_container/TransactionsContainer";
 import Api from "./services/api";
-import DashboardContainer from "./DashboardContainer";
 import "./index.css";
 
 
@@ -46,7 +44,6 @@ class Home extends Component {
       this.props.history.push("/login");
     } else {
       Api.currentUser(token).then(data => {
-        //console.log("data", data);
         if (data.error) {
           this.props.history.push("/login");
         } else {

@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Icon from "./images/icon.png";
-import { Consumer } from "./App";
 import { Link, withRouter } from "react-router-dom";
 
 class Navbar extends Component {
@@ -51,7 +49,7 @@ class Navbar extends Component {
             </div>
           </Link>
 
-          <a to="/" className="nav-link-text">
+          <a to="/login" className="nav-link-text">
             <div
               className="nav-link"
               onClick={() => {

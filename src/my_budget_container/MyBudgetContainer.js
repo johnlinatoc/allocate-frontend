@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Api from "../services/api";
 import './my_budget_container_styles.css'
-import AllTransactions from './AllTransactions'
 import MyBudgetGraph from './MyBudgetGraph'
 import MyBudgetCategories from './MyBudgetCategories'
 
@@ -23,7 +22,6 @@ class MyBudgetContainer extends Component {
       this.props.history.push("/login");
     } else {
       Api.currentUser(token).then(data => {
-        //console.log("data", data);
         if (data.error) {
           this.props.history.push("/login");
         } else {
@@ -75,7 +73,6 @@ class MyBudgetContainer extends Component {
   }
 
   renderPerMonth(){
-    const { categories, transactions, months } = this.state;
     const start = this.state.page
     const perMonthMon = this.state.months.sort((a, b)=> a.id -b.id ).slice(start, start + 1)
     const allMonthCats = this.state.categories
@@ -83,13 +80,6 @@ class MyBudgetContainer extends Component {
     if (perMonthMon[0]){
       const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
       const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === perMonthMon[0].id})
-      // return <TransactionsContainer
-      //   categories={thisMonthCats}
-      //   transactions={thisMonthTrans}
-      //   months={perMonthMon}
-      //   id={this.props.userInfo.id}
-      //   addTransactions={(data)=>{this.addTransaction(data)}}
-      //   />
       return <MyBudgetCategories
         month={perMonthMon}
         pageBack={(e)=>{this.pageBack(e)}}
@@ -101,7 +91,6 @@ class MyBudgetContainer extends Component {
 
 
   render(){
-    console.log('state', this.state)
     return(
       <div>
         <h1 className='my-budge-header'>myBudget</h1>

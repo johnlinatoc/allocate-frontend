@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import BudgetCardTransaction from "./BudgetCardTransaction";
-import uuid from "uuid";
 
 class BudgetCardBack extends Component {
   renderTransCards() {

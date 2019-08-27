@@ -1,13 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
-import uuid from "uuid";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import './styles/card.css'
-
-//monthly income is set first. display confirmation on screen.
-//add category budgets until CB == monthly income. (0 == 0 validation needed)
-//enable submit button
-
 
 class NewBudgetContainer extends Component {
   constructor(props) {
@@ -70,7 +64,6 @@ class NewBudgetContainer extends Component {
 
     fetch("http://localhost:3000/new_budget", reqObj_mon)
       .then(res => res.json())
-      .then(data => console.log(data))
       .then( this.setState({ monthSubmitted: false }) )
 
   }
@@ -111,7 +104,6 @@ class NewBudgetContainer extends Component {
     fetch("http://localhost:3000/categories", reqObj_mon)
       .then(res => res.json())
       .then(data => {
-        console.log('!!!!!!!!!!!', data)
         this.setState({
           monthly_income: 0,
           month_id: this.props.months[0].id,
@@ -135,7 +127,6 @@ class NewBudgetContainer extends Component {
   handleCategoryChange(e, index) {
     let newCats = [...this.state.categories]
     let categories = this.state.categories
-    let isEqual = this.state.isEqual
     let monthly_income = this.state.monthly_income
 
     newCats[index][e.target.name] = e.target.value
@@ -156,9 +147,6 @@ class NewBudgetContainer extends Component {
         isEqual: false,
       })
     }
-
-
-    return this.totalUpdate()
   }
 
   renderCategoryInputs(){

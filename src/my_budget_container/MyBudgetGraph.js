@@ -3,11 +3,8 @@ import "./my_budget_container_styles.css";
 import {
   VictoryBar,
   VictoryChart,
-  VictoryAxis,
-  VictoryTheme,
   VictoryGroup,
-  VictoryLabel,
-  VictoryLegend
+  VictoryLegend,
 } from "victory";
 
 class MyBudgetGraph extends Component {
@@ -26,16 +23,13 @@ class MyBudgetGraph extends Component {
     for (let i = 0; i < months.length; i++) {
       newData.push({ month: months[i], budget: monthBudgets[i] });
     }
-    console.log('newData', newData)
     return newData.slice(0, 6);
   }
 
   renderTransactionData() {
-    const monthNames = this.props.allMonths.map(month => month.name);
     const months = this.props.allMonths
     const transactions = this.props.allTransactions;
     const trans = {};
-    const newData = []
 
     transactions.forEach(transaction => {
       if (transaction.monthly_budget_id in trans) {

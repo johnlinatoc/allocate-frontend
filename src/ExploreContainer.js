@@ -10,7 +10,6 @@ class ExploreContainer extends Component{
       this.props.history.push("/login");
     } else {
       Api.currentUser(token).then(data => {
-        //console.log("data", data);
         if (data.error) {
           this.props.history.push("/login");
         } else {

@@ -1,7 +1,6 @@
 import React from 'react';
 import Api from './services/api'
 import home from './images/home.mp4'
-import { VideoCover } from 'react-video-cover'
 import { Link, withRouter } from "react-router-dom";
 import './index.css'
 
@@ -33,7 +32,6 @@ class Login extends React.Component {
     e.preventDefault()
     Api.login(this.state)
       .then(data => {
-        console.log('data = ', data)
         if (data.error){
           this.setState({
             error: true
@@ -67,11 +65,9 @@ class Login extends React.Component {
           </form>
         </div>
         <div className="bg-video">
-          <iframe allow="autoplay">
-          <video className='video' loop allow="autoplay">
+          <video className='video' autoPlay loop muted>
             <source src={home} type="video/mp4" />
           </video>
-        </iframe>
         </div>
 
       </div>

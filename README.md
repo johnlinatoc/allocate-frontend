@@ -84,8 +84,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 //what happens if user has budgets created past today's month?
     //will not be a problem because at creation of user, the populated months will have the ability to have budget be made already -->
 
-  if monthly budget is empty, render option to start budget
-  in budget container, render 'myBudget' component
 
 
 <!--  -->

@@ -2,7 +2,6 @@ import React from 'react'
 import './styles/card.css'
 
 const Filler = (props) => {
-  console.log(props.percentage)
   let fillerStyle;
   let fillerClassName;
   if (props.percentage < 100) {

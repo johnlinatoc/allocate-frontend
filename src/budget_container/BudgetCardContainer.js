@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import BudgetCardBack from './BudgetCardBack'
 import './styles/card.css'
 import ProgressBar from './ProgressBar.js'
-import * as Icons from 'react-icons/fa';
-
 
 class BudgetCardContainer extends Component {
   constructor(){
@@ -21,21 +19,9 @@ class BudgetCardContainer extends Component {
     })
   }
 
-  // componentDidMount(){
-  //   let transactions = this.renderTotal()
-  //   if(this.state.total !== transactions) {
-  //     console.log('hit component did mount. transactions ==', transactions)
-  //     return this.setState({
-  //       total: transactions,
-  //       budget: this.props.category.budget
-  //     })
-  //   }
-  // }
-
   test(){
     let transactions = this.renderTotal()
     if(this.state.total !== transactions) {
-      console.log('hit component did mount. transactions ==', transactions)
       return this.setState({
         total: transactions,
         budget: this.props.category.budget
@@ -92,11 +78,9 @@ class BudgetCardContainer extends Component {
   }
 
   renderCard(){
-    const { category, transactions } = this.props
-    const names = this.renderCategoryTransactionNames()
-    const amounts = this.renderCategoryTransactionAmounts()
+    const { category } = this.props
     const isClicked = this.state.flipped
-    const Icon = Icons['FaBeer']
+
 
 
     if (!isClicked) {
@@ -124,7 +108,6 @@ class BudgetCardContainer extends Component {
   }
 
   render(){
-    {console.log('hit render. props ==', this.props)}
     return(
         <div className='budget-card' onClick={()=>{ this.handleflip() }}>
           { this.renderCard() }

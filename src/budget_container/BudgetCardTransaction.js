@@ -4,7 +4,6 @@ class BudgetCardTransaction extends Component {
 
   render(){
     const { name, amount } = this.props
-    console.log(this.props)
     return(
       <div className='trans-card'>
         {name} <span>${amount}</span>

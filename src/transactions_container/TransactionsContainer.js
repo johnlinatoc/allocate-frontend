@@ -27,7 +27,6 @@ export default class TransactionsContainer extends Component {
     const categories = this.props.categories;
 
     return categories.map(category => {
-      //console.log(category.monthly_budget_id)
       return (
         <option key={category.id} value={[category.id, category.monthly_budget_id]}>
           {category.name}
@@ -50,9 +49,8 @@ export default class TransactionsContainer extends Component {
 
   handleSubmit(e){
     e.preventDefault()
-    const { amount, category_id, monthly_budget_id, user_id, expense_title } = this.state
+    const { amount, category_id, monthly_budget_id, expense_title } = this.state
 
-    const info = this.state
     const reqObj = {
       method: 'POST',
       headers: {
@@ -81,16 +79,12 @@ export default class TransactionsContainer extends Component {
   rootClassName() {
   let names = ['add-expense'];
   if (this.state.isClicked) names.push('-min');
-
-  console.log(names)
   return names.join('');
   }
 
   rootClassNameContainer() {
   let names = ['trans-card-container'];
   if (this.state.isClicked) names.push('-min');
-
-  console.log(names)
   return names.join('');
   }
 
