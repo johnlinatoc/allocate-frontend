@@ -1,8 +1,8 @@
 import React from 'react';
-import Api from './services/api'
-import home from './images/home.mp4'
+import Api from '../services/api'
+import home from './media/home.mp4'
 import { Link, withRouter } from "react-router-dom";
-import './index.css'
+import './styles.css'
 
 
 

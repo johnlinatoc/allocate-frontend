@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './index.css'
-import Api from "./services/api";
+import './styles.css'
+import Api from "../services/api";
 
 
 class ProfileContainer extends Component {

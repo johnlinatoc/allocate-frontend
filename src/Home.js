@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import BudgetContainer from "./budget_container/BudgetContainer";
-import TransactionsContainer from "./transactions_sidebar/TransactionsContainer";
+import BudgetContainer from "./mainBudgetContainer/BudgetContainer";
+import TransactionsContainer from "./expensesContainer/TransactionsContainer";
 import Api from "./services/api";
 import "./index.css";
 

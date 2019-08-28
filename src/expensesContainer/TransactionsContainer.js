@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TransactionCard from "./TransactionCard";
+import ExpenseCard from "./ExpenseCard";
 import "./styles.css";
 
 export default class TransactionsContainer extends Component {
@@ -14,12 +14,12 @@ export default class TransactionsContainer extends Component {
     };
   }
 
-  renderTransactionCard() {
+  renderexpenseCard() {
     let allMonthTrans = this.props.transactions
     const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === this.props.months[0].id})
 
     return thisMonthTrans.map(trans => {
-            return <TransactionCard key={trans.id} info={trans} />;
+            return <ExpenseCard key={trans.id} info={trans} />;
     });
   }
 
@@ -100,7 +100,7 @@ handleClick(){
         <h2 className="trans-header">Expenses</h2>
         <h4 className="trans-sub-header">This Month</h4>
         <div className={ this.rootClassNameContainer()}>
-          {this.renderTransactionCard()}
+          {this.renderExpenseCard()}
         </div>
         <div className={ this.rootClassName()} >
           <h4 onClick={()=>this.handleClick()}>Add Expense</h4>

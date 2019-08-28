@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
 import Home from "./Home";
-import Login from "./Login";
+import Login from "./user/Login";
 import Navbar from "./Navbar";
-import Signup from "./Signup";
-import ExploreContainer from "./ExploreContainer";
-import ProfileContainer from "./ProfileContainer";
-import MyBudgetContainer from "./my_budget_container/MyBudgetContainer";
+import Signup from "./user/Signup";
+import ProfileContainer from "./user/ProfileContainer";
+import MyBudgetContainer from "./myBudget/MyBudgetContainer";
 
 class App extends Component {
   constructor(props) {

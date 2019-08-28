@@ -1,7 +1,7 @@
 import React from 'react';
-import Api from './services/api'
-import beach from './images/create.mp4'
-import './index.css'
+import Api from '../services/api'
+import beach from './media/create.mp4'
+import './styles.css'
 import { Link } from "react-router-dom";
 
 class Signup extends React.Component {

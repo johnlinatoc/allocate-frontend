@@ -35,14 +35,6 @@ class Navbar extends Component {
             </div>
           </Link>
 
-          {
-          //   <Link to="/explore" className="nav-link-text">
-          //   <div className="nav-link">
-          //     <span>Explore</span>
-          //   </div>
-          // </Link>
-        }
-
           <Link to="/profile" className="nav-link-text">
             <div>
               <span className="nav-link">Profile</span>
