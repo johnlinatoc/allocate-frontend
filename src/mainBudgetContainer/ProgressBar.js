@@ -1,6 +1,6 @@
 import React from 'react'
 import Filler from './Filler'
-import './styles/card.css'
+import './styles.css'
 
 
 const ProgressBar = (props) => {

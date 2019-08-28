@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import BudgetCardContainer from "./BudgetCardContainer";
 import BudgetMonthCard from "./BudgetMonthCard";
 import NewBudget from "./NewBudget";
-import "./styles/container.css";
+import "./styles.css";
 
 
 

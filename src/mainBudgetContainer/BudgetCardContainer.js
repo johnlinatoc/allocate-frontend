@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import BudgetCardBack from './BudgetCardBack'
-import './styles/card.css'
+import './styles.css'
 import ProgressBar from './ProgressBar.js'
 
 class BudgetCardContainer extends Component {

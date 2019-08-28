@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-import "./my_budget_container_styles.css";
+import "./styles.css";
 
 class MyBudgetCategories extends Component {
   constructor(props) {
