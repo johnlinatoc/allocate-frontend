@@ -10,8 +10,8 @@ export default class BudgetMonthCard extends Component {
     }
   }
 
-  renderMonthTransactions() {
-    let allMonthTrans = this.props.transactions;
+  renderMonthExpenses() {
+    let allMonthTrans = this.props.expenses;
     let total = 0;
 
     const thisMonthTrans = allMonthTrans.filter(trans => {
@@ -25,7 +25,7 @@ export default class BudgetMonthCard extends Component {
 
   calcPercentage() {
     let total =
-      (this.renderMonthTransactions() / this.props.month.monthly_budget) * 100;
+      (this.renderMonthExpenses() / this.props.month.monthly_budget) * 100;
     return total;
   }
 
@@ -50,7 +50,7 @@ export default class BudgetMonthCard extends Component {
             <ProgressBar percentage={this.calcPercentage()} />
           </div>
           <div id='main-month-info'></div>
-          <h4 className="spent"> Spent ${this.renderMonthTransactions()} </h4>
+          <h4 className="spent"> Spent ${this.renderMonthExpenses()} </h4>
           <h4 className="income"> Income { month.monthly_budget ? this.renderMonthBudget() : `$0`} </h4>
         </div>
       </div>

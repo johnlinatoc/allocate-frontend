@@ -11,9 +11,9 @@ class MyBudgetCategories extends Component {
 
   findPopCategory() {
     let categories = {};
-    const { transactions } = this.props;
+    const { expenses } = this.props;
 
-    transactions.forEach(trans => {
+    expenses.forEach(trans => {
       if (trans.category_id in categories) {
         categories[trans.category_id] = categories[trans.category_id] + 1;
       } else {
@@ -36,8 +36,8 @@ class MyBudgetCategories extends Component {
     return poppy;
   }
 
-  calcMonthTransactions() {
-    let allMonthTrans = this.props.transactions;
+  calcMonthExpenses() {
+    let allMonthTrans = this.props.expenses;
     let total = 0;
 
     const thisMonthTrans = allMonthTrans.filter(trans => {
@@ -53,10 +53,10 @@ class MyBudgetCategories extends Component {
   findDangerCats() {
     let transAmounts = {};
 
-    const { transactions, categories, month } = this.props;
+    const { expenses, categories, month } = this.props;
 
 
-    transactions.forEach(trans => {
+    expenses.forEach(trans => {
       if (trans.category_id in transAmounts) {
         transAmounts[parseInt(trans.category_id)] =
           transAmounts[trans.category_id] += trans.amount;
@@ -190,7 +190,7 @@ class MyBudgetCategories extends Component {
 
         <div className='cat-pop'>
           <h4>You've spent the most in this budget:</h4>
-          {popCategory ? ( <h5>{popCategory.name}</h5> ) : ( <h5> No Transactions Yet! </h5> )}
+          {popCategory ? ( <h5>{popCategory.name}</h5> ) : ( <h5> No Expenses Yet! </h5> )}
         </div>
         <div className='danger-cats'>
           { this.renderDangerCats()}

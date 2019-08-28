@@ -26,16 +26,16 @@ class MyBudgetGraph extends Component {
     return newData.slice(0, 6);
   }
 
-  renderTransactionData() {
+  renderExpenseData() {
     const months = this.props.allMonths
-    const transactions = this.props.allTransactions;
+    const expenses = this.props.allExpenses;
     const trans = {};
 
-    transactions.forEach(transaction => {
-      if (transaction.monthly_budget_id in trans) {
-        trans[transaction.monthly_budget_id] += transaction.amount;
+    expenses.forEach(expense => {
+      if (expense.monthly_budget_id in trans) {
+        trans[expense.monthly_budget_id] += expense.amount;
       } else {
-        trans[transaction.monthly_budget_id] = transaction.amount;
+        trans[expense.monthly_budget_id] = expense.amount;
       }
     });
 
@@ -82,7 +82,7 @@ class MyBudgetGraph extends Component {
             <VictoryBar
               color='darkred'
               animate={{ duration: 2000, onLoad: { duration: 4000 } }}
-              data={this.renderTransactionData()}
+              data={this.renderExpenseData()}
               x="month"
               y="total"
 

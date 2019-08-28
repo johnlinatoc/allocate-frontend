@@ -11,7 +11,7 @@ class MyBudgetContainer extends Component {
     this.state = {
       months: [],
       categories: [],
-      transactions: [],
+      expenses: [],
       page: 0,
     };
   }
@@ -33,9 +33,9 @@ class MyBudgetContainer extends Component {
             console.error(err);
           });
 
-          Api.fetchTransactions(this.props.userInfo.id)
+          Api.fetchExpenses(this.props.userInfo.id)
           .then(data => {
-            this.setState({ transactions: data })
+            this.setState({ expenses: data })
             Api.fetchCategories(this.props.userInfo.id)
             .then(data => this.setState({ categories: data }))
             .catch(err => {
@@ -76,7 +76,7 @@ class MyBudgetContainer extends Component {
     const start = this.state.page
     const perMonthMon = this.state.months.sort((a, b)=> a.id -b.id ).slice(start, start + 1)
     const allMonthCats = this.state.categories
-    const allMonthTrans = this.state.transactions
+    const allMonthTrans = this.state.expenses
     if (perMonthMon[0]){
       const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
       const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === perMonthMon[0].id})
@@ -85,7 +85,7 @@ class MyBudgetContainer extends Component {
         pageBack={(e)=>{this.pageBack(e)}}
         pageForward={e=>this.pageForward(e)}
         categories={thisMonthCats}
-        transactions={thisMonthTrans}/>
+        expenses={thisMonthTrans}/>
     }
   }
 
@@ -97,7 +97,7 @@ class MyBudgetContainer extends Component {
         <div className='my-budge-container'>
           <MyBudgetGraph
             allMonths={this.state.months}
-            allTransactions={this.state.transactions}/>
+            allExpenses={this.state.expenses}/>
 
           {this.renderPerMonth()}
         </div>

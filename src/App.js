@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, withRouter } from "react-router-dom";
-import Home from "./Home";
+import Homepage from "./Homepage";
 import Login from "./user/Login";
 import Navbar from "./Navbar";
 import Signup from "./user/Signup";
@@ -51,28 +51,18 @@ class App extends Component {
     />
   }
 
-  // <Navbar
-  //   userInfo={auth.user}
-  //   handleLogin={user => {
-  //     this.handleLogin(user);
-  //   }}
-  //   handleLogout={() => {
-  //     this.handleLogout();
-  //   }}
-  //   />
   render() {
     const { auth } = this.state;
 
     return (
       <div>
-
         <Route
           path="/home"
           userInfo={auth.user}
           render={routeProps => {
             return (<div>
               {this.renderNavbar()}
-              <Home
+              <Homepage
                 {...routeProps}
                 fetchProfile={() => {
                   this.fetchProfile();

@@ -63,9 +63,7 @@ class Signup extends React.Component {
           <input type='submit' value='Signup' /><br/>
         </form>
         <p className="create-user">Already a member?<Link to="/login" className="nav-link-text">
-            <div >
               <span>Login</span>
-            </div>
           </Link></p>
       </div>
         <div className="create-bg-video">

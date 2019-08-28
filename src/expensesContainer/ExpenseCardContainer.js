@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ExpenseCard from "./ExpenseCard";
 import "./styles.css";
 
-export default class TransactionsContainer extends Component {
+export default class ExpenseCardContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,8 +14,8 @@ export default class TransactionsContainer extends Component {
     };
   }
 
-  renderexpenseCard() {
-    let allMonthTrans = this.props.transactions
+  renderExpenseCard() {
+    let allMonthTrans = this.props.expenses
     const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === this.props.months[0].id})
 
     return thisMonthTrans.map(trans => {
@@ -65,9 +65,9 @@ export default class TransactionsContainer extends Component {
         user_id: this.props.id
       })
     }
-    return fetch('http://localhost:3000/transactions', reqObj)
+    return fetch('http://localhost:3000/expenses', reqObj)
       .then(res => res.json())
-      .then(data => this.props.addTransactions(data))
+      .then(data => this.props.addExpense(data))
       .then( this.setState({
         expense_title: '',
         amount: "",

@@ -20,37 +20,37 @@ class BudgetCardContainer extends Component {
   }
 
   test(){
-    let transactions = this.renderTotal()
-    if(this.state.total !== transactions) {
+    let expenses = this.renderTotal()
+    if(this.state.total !== expenses) {
       return this.setState({
-        total: transactions,
+        total: expenses,
         budget: this.props.category.budget
       })
     }
   }
 
-  renderCategoryTransactionNames(){
+  renderCategoryExpenseNames(){
     const { category } = this.props
     let filtered;
     let names;
 
-    filtered = this.props.transactions.filter((transaction)=>{
-      return transaction.category_id === category.id
+    filtered = this.props.expenses.filter((expense)=>{
+      return expense.category_id === category.id
     })
-    names = filtered.map((transaction)=>{return transaction.name})
+    names = filtered.map((expense)=>{return expense.name})
 
     return names
   }
 
-  renderCategoryTransactionAmounts(){
+  renderCategoryExpenseAmounts(){
     const { category } = this.props
     let filtered;
     let amounts;
 
-    filtered = this.props.transactions.filter((transaction)=>{
-      return transaction.category_id === category.id
+    filtered = this.props.expenses.filter((expense)=>{
+      return expense.category_id === category.id
     })
-    amounts = filtered.map((transaction)=>{return transaction.amount})
+    amounts = filtered.map((expense)=>{return expense.amount})
 
     return amounts
   }
@@ -60,8 +60,8 @@ class BudgetCardContainer extends Component {
     const { category } = this.props
     let filtered;
 
-    filtered = this.props.transactions.filter((transaction)=>{
-      return transaction.category_id === category.id
+    filtered = this.props.expenses.filter((expense)=>{
+      return expense.category_id === category.id
     })
 
     for(let expense of filtered) {
@@ -95,15 +95,15 @@ class BudgetCardContainer extends Component {
     } else {
       let filtered;
 
-      filtered = this.props.transactions.filter((transaction)=>{
-        return transaction.category_id === category.id
+      filtered = this.props.expenses.filter((expense)=>{
+        return expense.category_id === category.id
       })
 
       return <BudgetCardBack
           key={category.id}
           category={category}
           total={this.renderTotal()}
-          transactions={filtered}/>
+          expenses={filtered}/>
     }
   }
 

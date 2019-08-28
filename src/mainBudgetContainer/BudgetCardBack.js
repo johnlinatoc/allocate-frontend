@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import BudgetCardTransaction from "./BudgetCardTransaction";
+import BudgetCardExpense from "./BudgetCardExpense";
 
 class BudgetCardBack extends Component {
   renderTransCards() {
-    const trans = this.props.transactions;
-    return trans.map(transaction => (
-      <BudgetCardTransaction
-        name={transaction.name}
-        amount={transaction.amount}
+    const trans = this.props.expenses;
+    return trans.map(expense => (
+      <BudgetCardExpense
+        name={expense.name}
+        amount={expense.amount}
       />
     ));
   }

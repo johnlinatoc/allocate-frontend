@@ -19,7 +19,7 @@ export default class BudgetContainer extends Component {
 
 
   renderBudgetMonth() {
-    const { months, transactions } = this.props;
+    const { months, expenses } = this.props;
 
     return months.map(month => {
       return (
@@ -31,20 +31,20 @@ export default class BudgetContainer extends Component {
           key={month.id}
           id={month.id}
           month={month}
-          transactions={transactions}
+          expenses={expenses}
         />
       );
     });
   }
 
   renderBudgetCard() {
-    const { categories, transactions } = this.props;
+    const { categories, expenses } = this.props;
     return categories.map(category => {
       return (
         <BudgetCardContainer
           key={category.id}
           category={category}
-          transactions={transactions}
+          expenses={expenses}
         />
       );
     });

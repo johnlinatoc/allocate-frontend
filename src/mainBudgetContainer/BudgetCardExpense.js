@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class BudgetCardTransaction extends Component {
+class BudgetCardExpense extends Component {
 
   render(){
     const { name, amount } = this.props
@@ -13,4 +13,4 @@ class BudgetCardTransaction extends Component {
   }
 }
 
-export default BudgetCardTransaction
+export default BudgetCardExpense

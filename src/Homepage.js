@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import BudgetContainer from "./mainBudgetContainer/BudgetContainer";
-import TransactionsContainer from "./expensesContainer/TransactionsContainer";
+import ExpenseCardContainer from "./expensesContainer/ExpenseCardContainer";
 import Api from "./services/api";
 import "./index.css";
 
@@ -11,7 +11,7 @@ class Home extends Component {
     this.state = {
       months: [],
       categories: [],
-      transactions: [],
+      expenses: [],
       page: 0,
     };
   }
@@ -49,15 +49,15 @@ class Home extends Component {
         } else {
           this.props.handleLogin(data);
           this.fetchMonth();
-          this.fetchTransactions();
+          this.fetchExpenses();
         }
       });
     }
   }
 
-  addTransaction(data){
-    let newState = [...this.state.transactions, data]
-    this.setState({ transactions: newState })
+  addExpense(data){
+    let newState = [...this.state.expenses, data]
+    this.setState({ expenses: newState })
   }
 
   fetchMonth() {
@@ -97,7 +97,7 @@ class Home extends Component {
 
   }
 
-  fetchTransactions() {
+  fetchExpenses() {
     const userId = this.props.userInfo.id
 
     const reqObj = {
@@ -106,10 +106,10 @@ class Home extends Component {
         Authorization: `Bearer ${localStorage.getItem("token")}`
       }
     };
-    return fetch(`http://localhost:3000/users/${userId}/transactions`, reqObj)
+    return fetch(`http://localhost:3000/users/${userId}/expenses`, reqObj)
       .then(resp => resp.json())
       .then(data => {
-        this.setState({ transactions: data })
+        this.setState({ expenses: data })
         this.fetchCategories();
       })
       .catch(err => {
@@ -119,16 +119,16 @@ class Home extends Component {
 
   fetchAll(){
     this.fetchMonth();
-    this.fetchTransactions();
+    this.fetchExpenses();
   }
 
   renderPerMonth(){
-    const { categories, transactions, months } = this.state;
+    const { categories, expenses, months } = this.state;
     const start = this.state.page
     const sortedMonths = months.sort( (a, b) =>{ return a.id - b.id })
     const perMonthMon = sortedMonths.slice(start, start + 1)
     const allMonthCats = categories
-    const allMonthTrans = transactions
+    const allMonthTrans = expenses
 
     if (perMonthMon[0]){
       const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
@@ -140,18 +140,18 @@ class Home extends Component {
           pageBack={(e)=>{this.pageBack(e)}}
           pageForward={e=>this.pageForward(e)}
           months={perMonthMon}
-          transactions={transactions}
+          expenses={expenses}
           categories={thisMonthCats}
           userInfo={this.props.userInfo}
           fetchAll={()=>this.fetchAll()}
           />
-        <div className="transactions-container">
-        <TransactionsContainer
+        <div className="expenses-container">
+        <ExpenseCardContainer
           categories={thisMonthCats}
-          transactions={thisMonthTrans}
+          expenses={thisMonthTrans}
           months={perMonthMon}
           id={this.props.userInfo.id}
-          addTransactions={(data)=>{this.addTransaction(data)}}
+          addExpense={(data)=>{this.addExpense(data)}}
           />
         </div>
       </div>

@@ -48,7 +48,7 @@ export default {
       },
       body: JSON.stringify(userInput)
     };
-    return fetch(`${URL}/transactions`, reqObj).then(res =>
+    return fetch(`${URL}/expenses`, reqObj).then(res =>
       res.json()
     );
   },
@@ -80,7 +80,7 @@ export default {
     ).then(resp => resp.json());
   },
 
-  fetchTransactions: userId => {
+  fetchExpenses: userId => {
     const reqObj = {
       method: "GET",
       headers: {
@@ -89,7 +89,7 @@ export default {
     };
 
     return fetch(
-      `${URL}/users/${userId}/transactions`,
+      `${URL}/users/${userId}/expenses`,
       reqObj
     ).then(resp => resp.json());
   }
