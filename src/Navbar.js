@@ -49,7 +49,7 @@ class Navbar extends Component {
                 this.props.history.push("/login");
               }}
             >
-              <span>Logout</span>
+              <span style={{cursor: 'pointer'}}>Logout</span>
             </div>
           </a>
         </div>

@@ -1,6 +1,5 @@
 .my-budge-container {
   display: flex;
-  /* border: solid black 1px; */
   width: 91vw;
   height: 75vh;
   margin: 1% auto;
@@ -15,14 +14,12 @@
 
 .my-budget-trans-container{
   width: 59%;
-  /* border: solid lightgreen 1px; */
   height: 35%;
   display: inline-block;
 }
 
 .my-budget-graph-container{
   width: 60%;
-  /* border: solid lightgreen 1px; */
   height: 100%;
   display: inline-block;
 }

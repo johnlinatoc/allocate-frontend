@@ -90,7 +90,7 @@
 
 .add-expense button{
   background: none;
-  border: none;
+  border: solid white 1px;
   color: white;
   position: relative;
   top: 1px;
@@ -98,6 +98,7 @@
   right: 3px;
   font-size: 13px;
   margin-top: 4px;
+  cursor: pointer;
 }
 .add-expense-min{
   overflow: hidden;

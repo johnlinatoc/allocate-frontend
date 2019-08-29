@@ -8,7 +8,7 @@ export default class ExpenseCardContainer extends Component {
     this.state = {
       expense_title: '',
       amount: "",
-      category_id: 0,
+      category_id: undefined,
       monthly_budget_id: 0,
       isClicked: true,
     };
@@ -65,15 +65,17 @@ export default class ExpenseCardContainer extends Component {
         user_id: this.props.id
       })
     }
-    return fetch('http://localhost:3000/expenses', reqObj)
+    fetch('http://localhost:3000/expenses', reqObj)
       .then(res => res.json())
-      .then(data => this.props.addExpense(data))
-      .then( this.setState({
-        expense_title: '',
-        amount: "",
-        category_id: 0,
-        monthly_budget_id: 0
-      }))
+      .then(data => {
+        this.props.addExpense(data)
+        this.setState({
+          expense_title: '',
+          amount: "",
+          category_id: undefined,
+          monthly_budget_id: 0
+        })
+      })
   }
 
   rootClassName() {
@@ -127,8 +129,9 @@ handleClick(){
                   monthly_budget_id: parseInt(filteredMonId)
                 });
               }}
+              value={this.state.category_id ? `${this.state.category_id},${this.state.monthly_budget_id}` : "0"}
               >
-              <option>Select Category</option>
+              <option value="0">Select Category</option>
               {this.renderCategories()}
             </select>
             <button>Submit</button>

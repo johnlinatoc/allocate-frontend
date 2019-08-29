@@ -19,16 +19,6 @@ class BudgetCardContainer extends Component {
     })
   }
 
-  test(){
-    let expenses = this.renderTotal()
-    if(this.state.total !== expenses) {
-      return this.setState({
-        total: expenses,
-        budget: this.props.category.budget
-      })
-    }
-  }
-
   renderCategoryExpenseNames(){
     const { category } = this.props
     let filtered;

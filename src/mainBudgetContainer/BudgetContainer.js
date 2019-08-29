@@ -16,8 +16,6 @@ export default class BudgetContainer extends Component {
     };
   }
 
-
-
   renderBudgetMonth() {
     const { months, expenses } = this.props;
 

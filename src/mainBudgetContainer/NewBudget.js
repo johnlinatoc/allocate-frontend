@@ -52,7 +52,7 @@ class NewBudgetContainer extends Component {
 
   handleMonthCancel(){
     const data = this.state;
-    const reqObj_mon = {
+    const reqObj = {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -62,9 +62,9 @@ class NewBudgetContainer extends Component {
       body: JSON.stringify(data)
     };
 
-    fetch("http://localhost:3000/new_budget", reqObj_mon)
+    fetch("http://localhost:3000/new_budget", reqObj)
       .then(res => res.json())
-      .then( this.setState({ monthSubmitted: false }) )
+      .then(this.setState({ monthSubmitted: false }) )
 
   }
 
@@ -252,12 +252,9 @@ class NewBudgetContainer extends Component {
           onSubmit={e => {
             this.handleCategorySubmit(e);
           }}>
-
           { this.state.monthSubmitted ? this.renderCategoryInputs() : null }
           { this.state.monthSubmitted && !this.state.isEqual? this.renderNewCatButton() : null }
-
           { this.state.isEqual ? this.renderSubmitButton() : null }
-
         </Form>
       </div>
     );
