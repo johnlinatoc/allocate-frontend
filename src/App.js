@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Redirect } from "react-router-dom";
 import Homepage from "./Homepage";
 import Login from "./user/Login";
 import Navbar from "./Navbar";
@@ -52,10 +52,14 @@ class App extends Component {
   }
 
   render() {
-    const { auth } = this.state;
+    const { auth, loggedIn } = this.state;
 
     return (
       <div>
+        <Route exact path="/" render={() => (
+            <Redirect to="/home"/>
+          )}/>
+          
         <Route
           path="/home"
           userInfo={auth.user}
