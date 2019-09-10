@@ -34,24 +34,6 @@ class NewBudgetContainer extends Component {
     .then( this.setState({ monthSubmitted: true }) )
   }
 
-  handleCategorySubmit(e) {
-    e.preventDefault();
-    const data = this.state;
-    Api.postCategories(data)
-      .then(data => {
-        this.setState({
-          monthly_income: 0,
-          month_id: this.props.months[0].id,
-          user_id: this.props.userInfo.id,
-          categories: [{name: '', amount: 0}],
-          isEqual: false,
-          monthSubmitted: false,
-          categoryTotal: 0,
-        })
-        this.props.fetchAll()
-        this.props.isFlagged()
-      })
-  }
 
   renderNewCategory() {
     let categories = this.state.categories
@@ -82,6 +64,25 @@ class NewBudgetContainer extends Component {
         isEqual: false,
       })
     }
+  }
+
+  handleCategorySubmit(e) {
+    e.preventDefault();
+    const data = this.state;
+    Api.postCategories(data)
+    .then(data => {
+      this.setState({
+        monthly_income: 0,
+        month_id: this.props.months[0].id,
+        user_id: this.props.userInfo.id,
+        categories: [{name: '', amount: 0}],
+        isEqual: false,
+        monthSubmitted: false,
+        categoryTotal: 0,
+      })
+      this.props.fetchAll()
+      this.props.isFlagged()
+    })
   }
 
   renderCategoryInputs(){
@@ -147,14 +148,6 @@ class NewBudgetContainer extends Component {
       <span style={ this.state.isEqual ? {color: 'green'} : {color: 'red'}}>${this.calcRemainder()}</span>
       </h3>
     </div>
-  }
-
-  totalUpdate(){
-    if (this.state.monthly_income === this.state.categoryTotal){
-      this.setState({ isEqual: true })
-    } else{
-      this.setState({ isEqual: false })
-    }
   }
 
   calcRemainder(){
