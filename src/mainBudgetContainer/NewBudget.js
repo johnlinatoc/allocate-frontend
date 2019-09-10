@@ -151,8 +151,7 @@ class NewBudgetContainer extends Component {
   }
 
   calcRemainder(){
-    let total = this.state.monthly_income - this.state.categoryTotal
-    return total
+    return this.state.monthly_income - this.state.categoryTotal
   }
 
   render() {
