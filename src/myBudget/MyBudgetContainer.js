@@ -18,6 +18,7 @@ class MyBudgetContainer extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem("token");
+
     if (!token) {
       this.props.history.push("/login");
     } else {
@@ -50,7 +51,7 @@ class MyBudgetContainer extends Component {
     }
   }
 
-  pageForward = (e) => {
+  pageForward(e) {
     e.preventDefault()
     let start = this.state.page;
     if (start < this.state.months.length - 1) {
@@ -61,7 +62,7 @@ class MyBudgetContainer extends Component {
     }
   }
 
-  pageBack = (e) => {
+  pageBack(e) {
     e.preventDefault()
     let start = this.state.page;
     if (start > 0){
@@ -72,7 +73,7 @@ class MyBudgetContainer extends Component {
     }
   }
 
-  renderPerMonth(){
+  renderPerMonth() {
     const start = this.state.page
     const perMonthMon = this.state.months.sort((a, b)=> a.id -b.id ).slice(start, start + 1)
     const allMonthCats = this.state.categories
@@ -96,9 +97,8 @@ class MyBudgetContainer extends Component {
         <h1 className='my-budge-header'>myBudget</h1>
         <div className='my-budge-container'>
           <MyBudgetGraph
-            allMonths={this.state.months}
-            allExpenses={this.state.expenses}/>
-
+          allMonths={this.state.months}
+          allExpenses={this.state.expenses}/>
           {this.renderPerMonth()}
         </div>
       </div>

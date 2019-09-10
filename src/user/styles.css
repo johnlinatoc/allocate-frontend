@@ -127,8 +127,6 @@
   position: relative;
   z-index: 10;
   height: 100vh;
-  /* top: -79px; */
-  border: solid;
 }
 
 .video{

@@ -25,21 +25,6 @@ class NewBudgetContainer extends Component {
     }
   }
 
-  clearForm(){
-    if (this.props.isCancelled){
-      this.setState({
-        monthly_income: 0,
-        month_id: this.props.months[0].id,
-        user_id: this.props.userInfo.id,
-        categories: [{name: '', amount: 0}],
-        isEqual: false,
-        monthSubmitted: false,
-        categoryTotal: 0,
-      })
-      this.handleMonthCancel()
-    }
-  }
-
 
   handleMonthIncomeChange(e) {
     this.setState({
@@ -48,24 +33,6 @@ class NewBudgetContainer extends Component {
       categories: [{name: '', amount: 0}],
       categoryTotal: 0,
     });
-  }
-
-  handleMonthCancel(){
-    const data = this.state;
-    const reqObj = {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-        mode: 'no-cors'
-      },
-      body: JSON.stringify(data)
-    };
-
-    fetch("http://localhost:3000/new_budget", reqObj)
-      .then(res => res.json())
-      .then(this.setState({ monthSubmitted: false }) )
-
   }
 
   handleMonthSubmit(e) {

@@ -61,60 +61,30 @@ class Home extends Component {
   }
 
   fetchMonth() {
-    const userId = this.props.userInfo.id
-
-    const reqObj = {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    };
-
-    fetch(`http://localhost:3000/users/${userId}/months`, reqObj)
-      .then(resp => resp.json())
-      .then(data => this.setState({ months: data }))
-      .catch(err => {
-        console.error(err);
-      });
+    Api.fetchMonth(this.props.userInfo.id)
+    .then(data => this.setState({ months: data }))
+    .catch(err => {
+      console.error(err);
+    });
   }
 
   fetchCategories() {
-    const userId = this.props.userInfo.id
-
-    const reqObj = {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    };
-
-    return fetch(`http://localhost:3000/users/${userId}/categories`, reqObj)
-      .then(resp => resp.json())
-      .then(data => this.setState({ categories: data }))
-      .catch(err => {
-        console.error(err);
-      });
-
+    Api.fetchCategories(this.props.userInfo.id)
+    .then(data => this.setState({ categories: data }))
+    .catch(err => {
+      console.error(err);
+    });
   }
 
   fetchExpenses() {
-    const userId = this.props.userInfo.id
-
-    const reqObj = {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-      }
-    };
-    return fetch(`http://localhost:3000/users/${userId}/expenses`, reqObj)
-      .then(resp => resp.json())
-      .then(data => {
-        this.setState({ expenses: data })
-        this.fetchCategories();
-      })
-      .catch(err => {
-        console.error(err);
-      });
+    Api.fetchExpenses(this.props.userInfo.id)
+    .then(data => {
+      this.setState({ expenses: data })
+      this.fetchCategories();
+    })
+    .catch(err => {
+      console.error(err);
+    });
   }
 
   fetchAll(){
@@ -134,7 +104,6 @@ class Home extends Component {
       const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
       const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === perMonthMon[0].id})
       return <div>
-
         <BudgetContainer
           key={perMonthMon.id}
           pageBack={(e)=>{this.pageBack(e)}}
