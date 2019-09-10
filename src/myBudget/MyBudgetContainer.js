@@ -75,7 +75,7 @@ class MyBudgetContainer extends Component {
   renderMonth() {
     const { page, months, categories, expenses } = this.state;
     const month = months.sort((a, b)=> a.id -b.id ).slice(page, page + 1)
-    const {} = this.state
+
     if (month[0]){
       const monthCats = categories.filter((cats)=>{return cats.monthly_budget_id === month[0].id})
       const monthExpenses = expenses.filter((expense)=>{return expense.monthly_budget_id === month[0].id})
