@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BudgetCardContainer from "./BudgetCardContainer";
+import BudgetCardFront from "./BudgetCardFront";
 import BudgetMonthCard from "./BudgetMonthCard";
 import NewBudget from "./NewBudget";
 import "./styles.css";
@@ -39,7 +39,7 @@ export default class BudgetContainer extends Component {
     const { categories, expenses } = this.props;
     return categories.map(category => {
       return (
-        <BudgetCardContainer
+        <BudgetCardFront
           key={category.id}
           category={category}
           expenses={expenses}

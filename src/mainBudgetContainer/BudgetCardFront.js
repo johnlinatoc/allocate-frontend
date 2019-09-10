@@ -3,9 +3,9 @@ import BudgetCardBack from './BudgetCardBack'
 import './styles.css'
 import ProgressBar from './ProgressBar.js'
 
-class BudgetCardContainer extends Component {
+class BudgetCardFront extends Component {
   constructor(){
-    super()
+    super();
     this.state = {
       flipped: false,
       total: 0,
@@ -13,37 +13,35 @@ class BudgetCardContainer extends Component {
     }
   }
 
-  handleflip = () => {
+  handleflip() {
     this.setState({
       flipped: !this.state.flipped
     })
   }
 
-  renderCategoryExpenseNames(){
-    const { category } = this.props
-    let filtered;
-    let names;
-
-    filtered = this.props.expenses.filter((expense)=>{
-      return expense.category_id === category.id
-    })
-    names = filtered.map((expense)=>{return expense.name})
-
-    return names
-  }
-
-  renderCategoryExpenseAmounts(){
-    const { category } = this.props
-    let filtered;
-    let amounts;
-
-    filtered = this.props.expenses.filter((expense)=>{
-      return expense.category_id === category.id
-    })
-    amounts = filtered.map((expense)=>{return expense.amount})
-
-    return amounts
-  }
+  // renderCategoryExpenseNames(){
+  //   const { category } = this.props
+  //   let filtered, names;
+  //
+  //   filtered = this.props.expenses.filter((expense)=>{
+  //     return expense.category_id === category.id
+  //   })
+  //   names = filtered.map((expense)=>{return expense.name})
+  //
+  //   return names
+  // }
+  //
+  // renderCategoryExpenseAmounts(){
+  //   const { category } = this.props
+  //   let filtered, amounts;
+  //
+  //   filtered = this.props.expenses.filter((expense)=>{
+  //     return expense.category_id === category.id
+  //   })
+  //   amounts = filtered.map((expense)=>{return expense.amount})
+  //
+  //   return amounts
+  // }
 
   renderTotal(){
     let total = 0;
@@ -107,4 +105,4 @@ class BudgetCardContainer extends Component {
 
 }
 
-export default BudgetCardContainer
+export default BudgetCardFront

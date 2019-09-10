@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
-import Api from '../services/api'
-import './styles.css'
+import Api from '../services/api';
+import './styles.css';
 
 class NewBudgetContainer extends Component {
   constructor(props) {
@@ -34,21 +34,18 @@ class NewBudgetContainer extends Component {
     .then( this.setState({ monthSubmitted: true }) )
   }
 
-
   renderNewCategory() {
-    let categories = this.state.categories
+    const {categories} = this.state
     categories.push({name: '', amount: 0})
     this.setState({ categories })
   }
 
   handleCategoryChange(e, index) {
+    const {categories, monthly_income} = this.state;
     let newCats = [...this.state.categories]
-    let categories = this.state.categories
-    let monthly_income = this.state.monthly_income
+    let newCatsTotal = 0
 
     newCats[index][e.target.name] = e.target.value
-
-    let newCatsTotal = 0
     categories.map(cat=> newCatsTotal += parseInt(cat.amount))
 
     if (newCatsTotal === monthly_income){
@@ -68,6 +65,7 @@ class NewBudgetContainer extends Component {
 
   handleCategorySubmit(e) {
     e.preventDefault();
+    
     const data = this.state;
     Api.postCategories(data)
     .then(data => {

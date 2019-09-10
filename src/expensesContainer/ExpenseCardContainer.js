@@ -17,16 +17,16 @@ export default class ExpenseCardContainer extends Component {
   }
 
   renderExpenseCard() {
-    let allMonthTrans = this.props.expenses
-    const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === this.props.months[0].id})
+    const { expenses } = this.props;
+    const monthExpenses = expenses.filter((expense)=>{return expense.monthly_budget_id === this.props.months[0].id})
 
-    return thisMonthTrans.map(trans => {
-            return <ExpenseCard key={trans.id} info={trans} />;
+    return monthExpenses.map(expense => {
+            return <ExpenseCard key={expense.id} info={expense} />;
     });
   }
 
   renderCategories() {
-    const categories = this.props.categories;
+    const { categories } = this.props;
 
     return categories.map(category => {
       return (
@@ -52,6 +52,7 @@ export default class ExpenseCardContainer extends Component {
   handleSubmit(e){
     e.preventDefault();
     const data = this.state;
+    
     Api.postExpense(data)
     .then(data => {
       this.props.addExpense(data)
@@ -71,7 +72,7 @@ export default class ExpenseCardContainer extends Component {
   }
 
   rootClassNameContainer() {
-  let names = ['trans-card-container'];
+  let names = ['expense-card-container'];
   if (this.state.isClicked) names.push('-min');
   return names.join('');
   }
@@ -85,8 +86,8 @@ handleClick(){
   render() {
     return (
       <div>
-        <h2 className="trans-header">Expenses</h2>
-        <h4 className="trans-sub-header">This Month</h4>
+        <h2 className="expense-header">Expenses</h2>
+        <h4 className="expense-sub-header">This Month</h4>
         <div className={ this.rootClassNameContainer()}>
           {this.renderExpenseCard()}
         </div>

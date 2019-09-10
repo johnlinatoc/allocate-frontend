@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import BudgetCardExpense from "./BudgetCardExpense";
 
 class BudgetCardBack extends Component {
+  
   renderTransCards() {
-    const trans = this.props.expenses;
-    return trans.map(expense => (
+    const { expenses } = this.props;
+    return expenses.map(expense => (
       <BudgetCardExpense
         name={expense.name}
         amount={expense.amount}
@@ -13,12 +14,12 @@ class BudgetCardBack extends Component {
   }
 
   calcRemainder() {
-    const total = this.props.category.budget - this.props.total;
-    return total;
+    return this.props.category.budget - this.props.total;
   }
 
   render() {
     const { category, total } = this.props;
+
     return (
       <div className="card-back">
         <h4>{category.name}</h4>
