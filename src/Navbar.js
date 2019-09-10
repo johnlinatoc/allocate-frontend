@@ -4,9 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 class Navbar extends Component {
 
   renderNavbar() {
-    return this.props.userInfo.id
-      ? this.renderLoggedInNavbar()
-      : this.renderLoggedOutNavbar();
+    return this.props.userInfo.id ? this.renderLoggedInNavbar() : null
   }
 
   renderLoggedInNavbar() {
@@ -55,11 +53,6 @@ class Navbar extends Component {
         </div>
       </div>
     );
-  }
-
-  renderLoggedOutNavbar() {
-    return <div>
-    </div>
   }
 
   render() {

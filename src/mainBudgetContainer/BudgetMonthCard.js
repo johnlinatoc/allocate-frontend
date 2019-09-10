@@ -4,33 +4,28 @@ import ProgressBar from "./ProgressBar.js";
 
 export default class BudgetMonthCard extends Component {
   constructor(props){
-    super(props)
+    super(props);
+    //add ability to flip month card so an edit form will be available to users
     this.state = {
       isClicked: false,
     }
   }
 
   renderMonthExpenses() {
-    let allMonthTrans = this.props.expenses;
+    let { expenses } = this.props;
     let total = 0;
 
-    const thisMonthTrans = allMonthTrans.filter(trans => {
-      return trans.monthly_budget_id === this.props.id;
+    const monthExpenses = expenses.filter(expense => {
+      return expense.monthly_budget_id === this.props.id;
     });
-    for (let expense of thisMonthTrans) {
+    for (let expense of monthExpenses) {
       total += expense.amount;
     }
     return total;
   }
 
   calcPercentage() {
-    let total =
-      (this.renderMonthExpenses() / this.props.month.monthly_budget) * 100;
-    return total;
-  }
-
-  renderMonthBudget(){
-    return `$${this.props.month.monthly_budget}`
+    return (this.renderMonthExpenses() / this.props.month.monthly_budget) * 100;
   }
 
   render() {
@@ -51,7 +46,7 @@ export default class BudgetMonthCard extends Component {
           </div>
           <div id='main-month-info'></div>
           <h4 className="spent"> Spent ${this.renderMonthExpenses()} </h4>
-          <h4 className="income"> Income { month.monthly_budget ? this.renderMonthBudget() : `$0`} </h4>
+          <h4 className="income"> Income { month.monthly_budget ? '$' + this.props.month.monthly_budget : `$0`} </h4>
         </div>
       </div>
     );

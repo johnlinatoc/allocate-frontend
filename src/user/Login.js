@@ -28,6 +28,7 @@ class Login extends React.Component {
 
   handleLogin(e){
     e.preventDefault()
+    
     Api.login(this.state)
       .then(data => {
         if (data.error){

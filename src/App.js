@@ -33,7 +33,7 @@ class App extends Component {
     localStorage.removeItem("token");
   }
 
-  getState = passedState => {
+  getState(passedState) {
     this.setState({passedState});
   }
 
@@ -59,7 +59,7 @@ class App extends Component {
         <Route exact path="/" render={() => (
             <Redirect to="/home"/>
           )}/>
-          
+
         <Route
           path="/home"
           userInfo={auth.user}

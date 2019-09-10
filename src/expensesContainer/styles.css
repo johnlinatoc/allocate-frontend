@@ -11,37 +11,37 @@
   border-radius: 3%;
 }
 
-.trans-header h2{
+.expense-header h2{
   font-weight: 500;
 }
 
-.side-trans-card span {
+.side-expense-card span {
   float: right
 }
 
-.trans-sub-header{
+.expense-sub-header{
   margin: 3% 0;
   font-weight: 100;
 }
 
-.trans-card-container{
+.expense-card-container{
   height: 42vh;
   overflow: scroll;
 }
 
 
-.trans-card-container div{
+.expense-card-container div{
   margin-bottom: 9px;
   padding: 15px 6px;
   background: #151E3F;
   font-weight: 100;
 }
-.trans-card-container-min{
+.expense-card-container-min{
   height: 52vh;
   overflow: scroll;
 }
 
-.trans-card-container-min div{
+.expense-card-container-min div{
   margin-bottom: 9px;
   padding: 15px 6px;
   background: #151E3F;

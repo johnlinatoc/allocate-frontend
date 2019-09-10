@@ -29,13 +29,14 @@ class NewBudgetContainer extends Component {
 
   handleMonthSubmit(e) {
     e.preventDefault();
+
     const data = this.state;
     Api.postMonthBudget(data)
     .then( this.setState({ monthSubmitted: true }) )
   }
 
   renderNewCategory() {
-    const {categories} = this.state
+    const { categories } = this.state;
     categories.push({name: '', amount: 0})
     this.setState({ categories })
   }
@@ -43,10 +44,10 @@ class NewBudgetContainer extends Component {
   handleCategoryChange(e, index) {
     const {categories, monthly_income} = this.state;
     let newCats = [...this.state.categories]
-    let newCatsTotal = 0
+    let newCatsTotal = 0;
 
     newCats[index][e.target.name] = e.target.value
-    categories.map(cat=> newCatsTotal += parseInt(cat.amount))
+    categories.map(cat => newCatsTotal += parseInt(cat.amount))
 
     if (newCatsTotal === monthly_income){
       return this.setState({
@@ -65,7 +66,7 @@ class NewBudgetContainer extends Component {
 
   handleCategorySubmit(e) {
     e.preventDefault();
-    
+
     const data = this.state;
     Api.postCategories(data)
     .then(data => {
@@ -137,14 +138,14 @@ class NewBudgetContainer extends Component {
     </button>
   }
 
-  renderSecondForm(){
+  renderBudgetTracker(){
     return <div>
     <h3>Planned Expenses: <span>${this.state.categoryTotal}</span> </h3>
     <hr />
     <h3 style={ this.state.isEqual ? {color: 'green'} : null}>
       { this.state.isEqual ? 'Budget Ready!' : 'Remaining:'}
       <span style={ this.state.isEqual ? {color: 'green'} : {color: 'red'}}>${this.calcRemainder()}</span>
-      </h3>
+    </h3>
     </div>
   }
 
@@ -177,7 +178,7 @@ class NewBudgetContainer extends Component {
         </Form>
         <div className="side-budget-form">
           <h3>This Month's Income: <span>${this.state.monthly_income ? this.state.monthly_income : 0}</span> </h3>
-          { this.state.monthSubmitted  ?  this.renderSecondForm() : null }
+          { this.state.monthSubmitted  ?  this.renderBudgetTracker() : null }
 
         </div>
         <Form

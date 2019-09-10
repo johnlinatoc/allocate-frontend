@@ -52,7 +52,7 @@ export default class ExpenseCardContainer extends Component {
   handleSubmit(e){
     e.preventDefault();
     const data = this.state;
-    
+
     Api.postExpense(data)
     .then(data => {
       this.props.addExpense(data)
@@ -64,15 +64,15 @@ export default class ExpenseCardContainer extends Component {
       })
     })
   }
+  
+  rootClassNameContainer() {
+    let names = ['expense-card-container'];
+    if (this.state.isClicked) names.push('-min');
+    return names.join('');
+  }
 
   rootClassName() {
   let names = ['add-expense'];
-  if (this.state.isClicked) names.push('-min');
-  return names.join('');
-  }
-
-  rootClassNameContainer() {
-  let names = ['expense-card-container'];
   if (this.state.isClicked) names.push('-min');
   return names.join('');
   }

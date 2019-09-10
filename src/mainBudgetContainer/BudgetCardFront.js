@@ -19,34 +19,10 @@ class BudgetCardFront extends Component {
     })
   }
 
-  // renderCategoryExpenseNames(){
-  //   const { category } = this.props
-  //   let filtered, names;
-  //
-  //   filtered = this.props.expenses.filter((expense)=>{
-  //     return expense.category_id === category.id
-  //   })
-  //   names = filtered.map((expense)=>{return expense.name})
-  //
-  //   return names
-  // }
-  //
-  // renderCategoryExpenseAmounts(){
-  //   const { category } = this.props
-  //   let filtered, amounts;
-  //
-  //   filtered = this.props.expenses.filter((expense)=>{
-  //     return expense.category_id === category.id
-  //   })
-  //   amounts = filtered.map((expense)=>{return expense.amount})
-  //
-  //   return amounts
-  // }
-
   renderTotal(){
-    let total = 0;
     const { category } = this.props
     let filtered;
+    let total = 0;
 
     filtered = this.props.expenses.filter((expense)=>{
       return expense.category_id === category.id
@@ -66,12 +42,10 @@ class BudgetCardFront extends Component {
   }
 
   renderCard(){
-    const { category } = this.props
-    const isClicked = this.state.flipped
+    const { category } = this.props;
+    const { flipped } = this.state;
 
-
-
-    if (!isClicked) {
+    if (!flipped) {
       this.calcPercentage()
       return <div className='card-header'>
         <div className='card-progress-bar'>

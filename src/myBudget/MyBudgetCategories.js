@@ -5,7 +5,7 @@ class MyBudgetCategories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      thisMonthTotal: 0
+      thisMonthTotal: 0,
     };
   }
 
@@ -30,9 +30,7 @@ class MyBudgetCategories extends Component {
         .shift()
     );
 
-
     let poppy = this.props.categories.find(cat => cat.id === cat_id);
-
     return poppy;
   }
 
@@ -50,13 +48,11 @@ class MyBudgetCategories extends Component {
     return total;
   }
 
-  findDangerCats() {
+  findAllCats() {
+    const { expenses, categories, month } = this.props;
     let transAmounts = {};
 
-    const { expenses, categories, month } = this.props;
-
-
-    expenses.forEach(trans => {
+    expenses.forEach( trans => {
       if (trans.category_id in transAmounts) {
         transAmounts[parseInt(trans.category_id)] =
           transAmounts[trans.category_id] += trans.amount;
@@ -65,56 +61,54 @@ class MyBudgetCategories extends Component {
       }
     });
 
-    const thisMonthsCats = categories.filter(
-      cat => cat.monthly_budget_id === month[0].id
-    );
+    const thisMonthCats = categories.filter( cat => cat.monthly_budget_id === month[0].id );
 
     let entries = Object.entries(transAmounts);
     let sortedAmountTotals = entries.sort((a, b) => a[1] - b[1]);
     let matched = sortedAmountTotals.map(index => {
       let indexId = parseInt(index[0]);
-      let matched1 = [];
-       thisMonthsCats.find(category => {
+      let matchedCats = [];
+       thisMonthCats.find(category => {
         if (category.id === indexId) {
-          return matched1.push({
+          return matchedCats.push({
             category_id: category.id,
             percentage: (index[1] / category.budget) * 100
           })
         }
       });
-      return matched1
+      return matchedCats
     });
 
-      const danger = matched.filter(cat => cat[0].percentage > 100)
-      const dangerCats = thisMonthsCats.filter(cat => {
-        let catId = cat.id
-        return danger.find(category => {
-          return category[0].category_id === catId
-        })
+    const danger = matched.filter(cat => cat[0].percentage > 100)
+    const dangerCats = thisMonthCats.filter(cat => {
+      let catId = cat.id
+      return danger.find(category => {
+        return category[0].category_id === catId
       })
+    })
 
-      const warning = matched.filter(cat => cat[0].percentage < 100 && cat[0].percentage > 80)
-      const warningCats = thisMonthsCats.filter(cat => {
-        let catId = cat.id
-        return warning.find(category => {
-          return category[0].category_id === catId
-        })
+    const warning = matched.filter(cat => cat[0].percentage < 100 && cat[0].percentage > 80)
+    const warningCats = thisMonthCats.filter(cat => {
+      let catId = cat.id
+      return warning.find(category => {
+        return category[0].category_id === catId
       })
+    })
 
-      const okay = matched.filter(cat => cat[0].percentage < 80)
-      const okayCats = thisMonthsCats.filter(cat => {
-        let catId = cat.id
-        return okay.find(category => {
-          return category[0].category_id === catId
-        })
+    const okay = matched.filter(cat => cat[0].percentage < 80)
+    const okayCats = thisMonthCats.filter(cat => {
+      let catId = cat.id
+      return okay.find(category => {
+        return category[0].category_id === catId
       })
+    })
 
     return {dangerCats: dangerCats, warningCats: warningCats, okayCats: okayCats}
   }
 
-  renderDangerCats() {
+  renderCats() {
     if (this.props.categories.length > 0 ) {
-      const found = this.findDangerCats();
+      const found = this.findAllCats();
       const dangerCats = found.dangerCats;
       const warningCats = found.warningCats;
       const okayCats = found.okayCats;
@@ -173,8 +167,8 @@ class MyBudgetCategories extends Component {
 
 
   render() {
-
     const popCategory = this.findPopCategory();
+
     return (
       <div className="my-budget-category-container">
         <h2>Overview</h2>
@@ -193,7 +187,7 @@ class MyBudgetCategories extends Component {
           {popCategory ? ( <h5>{popCategory.name}</h5> ) : ( <h5> No Expenses Yet! </h5> )}
         </div>
         <div className='danger-cats'>
-          { this.renderDangerCats()}
+          { this.renderCats()}
         </div>
       </div>
     );

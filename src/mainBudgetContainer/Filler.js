@@ -2,8 +2,8 @@ import React from 'react'
 import './styles.css'
 
 const Filler = (props) => {
-  let fillerStyle;
-  let fillerClassName;
+  let fillerStyle, fillerClassName;
+
   if (props.percentage < 100) {
     fillerClassName = 'filler-4'
      fillerStyle = {

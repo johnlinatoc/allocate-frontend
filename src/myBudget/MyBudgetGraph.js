@@ -14,11 +14,9 @@ class MyBudgetGraph extends Component {
   }
 
   renderMonthData() {
-    const months = this.props.allMonths.map(month => month.name);
-    const monthBudgets = this.props.allMonths.map(
-      month => month.monthly_budget
-    );
     const newData = [];
+    const months = this.props.allMonths.map(month => month.name);
+    const monthBudgets = this.props.allMonths.map(month => month.monthly_budget);
 
     for (let i = 0; i < months.length; i++) {
       newData.push({ month: months[i], budget: monthBudgets[i] });
@@ -27,25 +25,24 @@ class MyBudgetGraph extends Component {
   }
 
   renderExpenseData() {
-    const months = this.props.allMonths
-    const expenses = this.props.allExpenses;
-    const trans = {};
+    const { allMonths, allExpenses } = this.props;
+    const graphExpenses = {};
 
-    expenses.forEach(expense => {
-      if (expense.monthly_budget_id in trans) {
-        trans[expense.monthly_budget_id] += expense.amount;
+    allExpenses.forEach(expense => {
+      if (expense.monthly_budget_id in graphExpenses) {
+        graphExpenses[expense.monthly_budget_id] += expense.amount;
       } else {
-        trans[expense.monthly_budget_id] = expense.amount;
+        graphExpenses[expense.monthly_budget_id] = expense.amount;
       }
     });
 
     let obj = [];
-     for (let i = 0; i < months.length; i++) {
-       let curr = months[i];
-       if (trans[curr.id]) {
-         obj.push({month: curr.name, total: trans[curr.id]});
+     for (let i = 0; i < allMonths.length; i++) {
+       let currentMonth = allMonths[i];
+       if (graphExpenses[currentMonth.id]) {
+         obj.push({month: currentMonth.name, total: graphExpenses[currentMonth.id]});
        } else {
-         obj.push({month: curr.name, total: 0});
+         obj.push({month: currentMonth.name, total: 0});
        }
      }
 
@@ -55,20 +52,20 @@ class MyBudgetGraph extends Component {
   render() {
     return (
       <div className="my-budget-graph-container">
-
         <VictoryChart
           domainPadding={30}
           padding={{ top: 10, bottom: 27, left: 50, right: 5 }}
         >
 
-         <VictoryLegend x={125} y={10}
-    orientation="horizontal"
-    gutter={50}
-    colorScale={["#151E3F", "darkred"]}
-    data={[
-      { name: "Budget" }, { name: "Total Expenses" }
-    ]}
-  />
+           <VictoryLegend x={125} y={10}
+            orientation="horizontal"
+            gutter={50}
+            colorScale={["#151E3F", "darkred"]}
+            data={[
+              { name: "Budget" }, { name: "Total Expenses" }
+            ]}
+          />
+
           <VictoryGroup
             offset={13}>
             <VictoryBar
@@ -85,11 +82,10 @@ class MyBudgetGraph extends Component {
               data={this.renderExpenseData()}
               x="month"
               y="total"
-
             />
           </VictoryGroup>
-        </VictoryChart>
 
+        </VictoryChart>
       </div>
     );
   }

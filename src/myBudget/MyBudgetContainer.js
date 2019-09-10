@@ -45,7 +45,6 @@ class MyBudgetContainer extends Component {
           }).catch(err => {
             console.error(err);
           })
-
         }
       });
     }
@@ -73,20 +72,19 @@ class MyBudgetContainer extends Component {
     }
   }
 
-  renderPerMonth() {
-    const start = this.state.page
-    const perMonthMon = this.state.months.sort((a, b)=> a.id -b.id ).slice(start, start + 1)
-    const allMonthCats = this.state.categories
-    const allMonthTrans = this.state.expenses
-    if (perMonthMon[0]){
-      const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
-      const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === perMonthMon[0].id})
+  renderMonth() {
+    const { page, months, categories, expenses } = this.state;
+    const month = months.sort((a, b)=> a.id -b.id ).slice(page, page + 1)
+    const {} = this.state
+    if (month[0]){
+      const monthCats = categories.filter((cats)=>{return cats.monthly_budget_id === month[0].id})
+      const monthExpenses = expenses.filter((expense)=>{return expense.monthly_budget_id === month[0].id})
       return <MyBudgetCategories
-        month={perMonthMon}
+        month={month}
         pageBack={(e)=>{this.pageBack(e)}}
         pageForward={e=>this.pageForward(e)}
-        categories={thisMonthCats}
-        expenses={thisMonthTrans}/>
+        categories={monthCats}
+        expenses={monthExpenses}/>
     }
   }
 
@@ -99,7 +97,7 @@ class MyBudgetContainer extends Component {
           <MyBudgetGraph
           allMonths={this.state.months}
           allExpenses={this.state.expenses}/>
-          {this.renderPerMonth()}
+          {this.renderMonth()}
         </div>
       </div>
     )

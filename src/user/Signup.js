@@ -14,7 +14,6 @@ class Signup extends React.Component {
     }
   }
 
-
   handleUsernameChange(e){
     this.setState({
       username: e.target.value
@@ -47,6 +46,7 @@ class Signup extends React.Component {
         }
       })
   }
+  
   render(){
     return (
       <div className='create'>
