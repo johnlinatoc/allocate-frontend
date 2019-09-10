@@ -39,20 +39,6 @@ export default {
     );
   },
 
-  postBudget: userInput => {
-    const reqObj = {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(userInput)
-    };
-    return fetch(`${URL}/expenses`, reqObj).then(res =>
-      res.json()
-    );
-  },
-
   fetchMonth: userId => {
     const reqObj = {
       method: "GET",
@@ -94,5 +80,46 @@ export default {
     ).then(resp => resp.json());
   },
 
-  
+  postMonthBudget: data => {
+    const reqObj_mon = {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+        mode: 'no-cors'
+      },
+      body: JSON.stringify(data)
+    };
+
+    return fetch("http://localhost:3000/new_budget", reqObj_mon)
+      .then(res => res.json())
+  },
+
+  postCategories: data => {
+    const reqObj_mon = {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+    };
+
+    return fetch("http://localhost:3000/categories", reqObj_mon)
+      .then(res => res.json())
+  },
+
+  postExpense: data => {
+    const reqObj = {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+
+    }
+    fetch('http://localhost:3000/expenses', reqObj)
+      .then(res => res.json())
+  },
 };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ExpenseCard from "./ExpenseCard";
+import Api from '../services/api'
 import "./styles.css";
 
 export default class ExpenseCardContainer extends Component {
@@ -8,9 +9,10 @@ export default class ExpenseCardContainer extends Component {
     this.state = {
       expense_title: '',
       amount: "",
-      category_id: undefined,
+      category_id: 0,
       monthly_budget_id: 0,
       isClicked: true,
+      userId: this.props.id,
     };
   }
 
@@ -48,34 +50,18 @@ export default class ExpenseCardContainer extends Component {
   }
 
   handleSubmit(e){
-    e.preventDefault()
-    const { amount, category_id, monthly_budget_id, expense_title } = this.state
-
-    const reqObj = {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: expense_title,
-        amount,
-        category_id,
-        monthly_budget_id,
-        user_id: this.props.id
+    e.preventDefault();
+    const data = this.state;
+    Api.postExpense(data)
+    .then(data => {
+      this.props.addExpense(data)
+      this.setState({
+        expense_title: '',
+        amount: "",
+        category_id: 0,
+        monthly_budget_id: 0,
       })
-    }
-    fetch('http://localhost:3000/expenses', reqObj)
-      .then(res => res.json())
-      .then(data => {
-        this.props.addExpense(data)
-        this.setState({
-          expense_title: '',
-          amount: "",
-          category_id: undefined,
-          monthly_budget_id: 0
-        })
-      })
+    })
   }
 
   rootClassName() {

@@ -16,7 +16,7 @@ class Home extends Component {
     };
   }
 
-  pageForward = (e) => {
+  pageForward(e) {
     e.preventDefault()
     let start = this.state.page;
     if (start < this.state.months.length - 1) {
@@ -27,7 +27,7 @@ class Home extends Component {
     }
   }
 
-  pageBack = (e) => {
+  pageBack(e) {
     e.preventDefault()
     let start = this.state.page;
     if (start > 0){

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
+import Api from '../services/api'
 import './styles.css'
 
 class NewBudgetContainer extends Component {
@@ -17,15 +18,6 @@ class NewBudgetContainer extends Component {
     };
   }
 
-  totalUpdate(){
-    if (this.state.monthly_income === this.state.categoryTotal){
-      this.setState({ isEqual: true })
-    } else{
-      this.setState({ isEqual: false })
-    }
-  }
-
-
   handleMonthIncomeChange(e) {
     this.setState({
       monthly_income: parseInt(e.target.value),
@@ -38,38 +30,14 @@ class NewBudgetContainer extends Component {
   handleMonthSubmit(e) {
     e.preventDefault();
     const data = this.state;
-
-    const reqObj_mon = {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-        mode: 'no-cors'
-      },
-      body: JSON.stringify(data)
-    };
-
-    fetch("http://localhost:3000/new_budget", reqObj_mon)
-      .then(res => res.json())
-      .then( this.setState({ monthSubmitted: true }) )
-
+    Api.postMonthBudget(data)
+    .then( this.setState({ monthSubmitted: true }) )
   }
 
   handleCategorySubmit(e) {
     e.preventDefault();
     const data = this.state;
-
-    const reqObj_mon = {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data)
-    };
-
-    fetch("http://localhost:3000/categories", reqObj_mon)
-      .then(res => res.json())
+    Api.postCategories(data)
       .then(data => {
         this.setState({
           monthly_income: 0,
@@ -170,11 +138,6 @@ class NewBudgetContainer extends Component {
     </button>
   }
 
-  calcRemainder(){
-    let total = this.state.monthly_income - this.state.categoryTotal
-    return total
-  }
-
   renderSecondForm(){
     return <div>
     <h3>Planned Expenses: <span>${this.state.categoryTotal}</span> </h3>
@@ -184,6 +147,19 @@ class NewBudgetContainer extends Component {
       <span style={ this.state.isEqual ? {color: 'green'} : {color: 'red'}}>${this.calcRemainder()}</span>
       </h3>
     </div>
+  }
+
+  totalUpdate(){
+    if (this.state.monthly_income === this.state.categoryTotal){
+      this.setState({ isEqual: true })
+    } else{
+      this.setState({ isEqual: false })
+    }
+  }
+
+  calcRemainder(){
+    let total = this.state.monthly_income - this.state.categoryTotal
+    return total
   }
 
   render() {
