@@ -6,6 +6,7 @@ class Navbar extends Component {
     super(props);
     this.state = {
       isClicked: false,
+      style: 'none',
     }
   }
 
@@ -14,7 +15,6 @@ class Navbar extends Component {
   }
 
   handleClick(){
-    console.log('wo')
     this.setState({
       isClicked: !this.state.isClicked,
     })
@@ -22,8 +22,25 @@ class Navbar extends Component {
 
   hamburger(){
     let names = ['hamburger hamburger--collapse'];
-      if (this.state.isClicked) names.push(' is-active');
-      return names.join('');
+    if (this.state.isClicked) names.push(' is-active');
+    return names.join('');
+  }
+
+  display(){
+    if(window.innerWidth < 577) {
+      this.setState({
+        style: 'inline-block',
+      })
+    } else {
+      this.setState({
+        style: 'none',
+      })
+    }
+  }
+
+  componentDidMount(){
+    this.display();
+    window.addEventListener('resize', ()=>this.display())
   }
 
   renderLoggedInNavbar() {
@@ -37,10 +54,17 @@ class Navbar extends Component {
           </div>
         </Link>
 
+
+
         <div className="account-container">
           Welcome, {this.props.userInfo.username}
-        </div>
 
+          <button style={{display: `${this.state.style}`}}className={this.hamburger()} type="button" onClick={()=>this.handleClick()}>
+          <span className="hamburger-box">
+          <span className="hamburger-inner"></span>
+          </span>
+          </button>
+        </div>
 
         <div className="categories-container">
           <Link to="/home" >
@@ -72,12 +96,6 @@ class Navbar extends Component {
               <span style={{cursor: 'pointer'}}>Logout</span>
             </div>
           </a>
-
-          <button className={this.hamburger()} type="button" onClick={()=>this.handleClick()}>
-          <span className="hamburger-box">
-          <span className="hamburger-inner"></span>
-          </span>
-          </button>
 
         </div>
       </div>
