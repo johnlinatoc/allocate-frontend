@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import BudgetContainer from "./mainBudgetContainer/BudgetContainer";
 import ExpenseCardContainer from "./expensesContainer/ExpenseCardContainer";
 import Api from "./services/api";
-import "./index.css";
 
 
 class Home extends Component {
@@ -30,7 +29,7 @@ class Home extends Component {
 
   pageBack(e) {
     e.preventDefault()
-    
+
     let start = this.state.page;
     if (start > 0){
       start -= 1
@@ -131,7 +130,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div id='main-home'>
+      <div className='home-header'>
         <h1>Welcome back, {this.props.userInfo.username}!</h1>
         {this.renderPerMonth()}
       </div>

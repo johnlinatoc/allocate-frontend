@@ -2,7 +2,6 @@ import React from 'react';
 import Api from '../services/api'
 import home from './media/home.mp4'
 import { Link, withRouter } from "react-router-dom";
-import './styles.css'
 
 class Login extends React.Component {
   constructor(props){
@@ -28,7 +27,7 @@ class Login extends React.Component {
 
   handleLogin(e){
     e.preventDefault()
-    
+
     Api.login(this.state)
       .then(data => {
         if (data.error){

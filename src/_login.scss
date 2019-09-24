@@ -1,0 +1,116 @@
+.bg-video {
+  display: none;
+  @include for-desktop-up {
+    width: 100vw;
+    position: relative;
+    z-index: 10;
+    height: 100vh;
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 499px) {
+
+  .login {
+    height: 100vh;
+    background: linear-gradient(150deg,#53f 15%,#05d5ff 70%,#a6ffcb 94%);
+    form{
+      text-align: center;
+      font-size: 22px;
+      font-weight: 300;
+      input{
+        margin: 0;
+        border: none;
+        padding: 6px;
+      }
+    }
+    h3 {
+      font-weight: 300;
+      margin-bottom: 8%;
+      color: white;
+    }
+  }
+
+  .login-header{
+    text-align: center;
+    padding-top: 10vh;
+    color: white;
+    h1 {
+      font-weight: 200;
+      font-size: 62px;
+    }
+    p {
+      margin-top: 0;
+      font-weight: 100;
+      font-size: 26px;
+    }
+  }
+
+  .login-form-full{
+    margin-top: 3vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15rem;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+
+  .login{
+    color: black;
+    form {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 300;
+      input {
+        margin: 0;
+        border: none;
+        padding: 6px;
+      }
+    }
+    h3 {
+      font-weight: 300;
+      margin-bottom: 8%;
+    }
+  }
+
+  .login-header{
+    z-index: 20;
+    position: absolute;
+    left: 44vw;
+    top: 12%;
+    text-align: center;
+    font-size: 19px;
+    padding-top: 0;
+    color: black;
+    h1 {
+      font-weight: 200;
+      font-size: 62px;
+    }
+    p {
+      margin-top: 0;
+      font-weight: 100;
+      font-size: 26px;
+    }
+  }
+
+  .login-form-full{
+    color: black;
+    position: absolute;
+    top: 32%;
+    left: 41vw;
+    z-index: 20;
+    background-color: #ffffff4d;
+    padding: 10px 56px;
+    border-radius: 4px;
+    display: block;
+    margin-top: 0;
+    height: 11rem;
+  }
+
+  .video{
+    width: 100%;
+    height: 100%;
+  }
+}
