@@ -71,7 +71,7 @@ export default class BudgetContainer extends Component {
 
   render() {
     return (
-      <div className="budget-container">
+      <div>
         {this.renderBudgetMonth()}
         <div className="budget-cards">{this.renderBudgetCard()}</div>
         { this.props.categories.length < 1 && !this.state.isFlagged ? this.renderButton() : null }

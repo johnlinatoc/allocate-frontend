@@ -36,6 +36,12 @@
       margin-left: 5%;
       font-weight: 500;
     }
+    @include for-phone-only {
+      display: flex;
+      justify-content: center;
+      margin: 5%;
+      font-weight: 500;
+    }
   }
 
   .budget-container{
@@ -46,7 +52,16 @@
     overflow: scroll;
     padding-left: 11px;
     position: sticky;
+    @include for-phone-only {
+      height: 60vh;
+      width: 90vw;
+      padding: 0px;
+      margin: 0px 5%;
+      overflow: scroll;
+      border: solid;
+    }
   }
+
   .home-page-header{
     margin-left: 2em;
   }

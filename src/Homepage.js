@@ -105,7 +105,8 @@ class Home extends Component {
       const thisMonthCats = allMonthCats.filter((cats)=>{return cats.monthly_budget_id === perMonthMon[0].id})
       const thisMonthTrans = allMonthTrans.filter((trans)=>{return trans.monthly_budget_id === perMonthMon[0].id})
       return <div>
-        <BudgetContainer
+        <div className="budget-container">
+          <BudgetContainer
           key={perMonthMon.id}
           pageBack={(e)=>{this.pageBack(e)}}
           pageForward={e=>this.pageForward(e)}
@@ -115,8 +116,9 @@ class Home extends Component {
           userInfo={this.props.userInfo}
           fetchAll={()=>this.fetchAll()}
           />
+        </div>
         <div className="expenses-container">
-        <ExpenseCardContainer
+          <ExpenseCardContainer
           categories={thisMonthCats}
           expenses={thisMonthTrans}
           months={perMonthMon}

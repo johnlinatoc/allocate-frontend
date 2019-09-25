@@ -80,27 +80,27 @@ class Navbar extends Component {
         </div>
 
         <div className={this.classNameChange()[1]}>
-          <Link to="/home" >
+
+          <Link to="/home" className="nav-link-text">
             <div>
-              <span className="nav-link-text">Home</span>
+              Home
             </div>
           </Link>
 
           <Link to="/myBudget" className="nav-link-text">
             <div>
-              <span className="nav-link">myBudget</span>
+              <span>myBudget</span>
             </div>
           </Link>
 
-          <Link to="/profile">
-            <div className="nav-link-text">
-              <span className="nav-link">Profile</span>
+          <Link to="/profile" className="nav-link-text">
+            <div>
+              <span>Profile</span>
             </div>
           </Link>
 
           <a to="/login" className="nav-link-text">
             <div
-              className="nav-link"
               onClick={() => {
                 this.props.handleLogout();
                 this.props.history.push("/login");
