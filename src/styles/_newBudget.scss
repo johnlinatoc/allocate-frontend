@@ -1,0 +1,127 @@
+.main-budget-form{
+  display: inline-block;
+  width: 50%;
+  h4 {
+    display: inline-block;
+    width: 50%;
+  }
+  * input {
+    float: right;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    -webkit-appearance: none;
+    font-size: 14px;
+  }
+}
+
+.main-budget-form * input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.main-budget-form * input:focus{
+  outline: none;
+}
+
+.cat-budget-form{
+  display: inline-block;
+  width: 50%;
+  * input {
+    float: right;
+  }
+}
+
+.side-budget-form{
+  display: inline-block;
+  float: right;
+  width: 36%;
+  span {
+    float: right;
+  }
+}
+
+.start-budget-button{
+  padding: 12px 3em;
+  font-size: 1em;
+  border-radius: 7px;
+  background: #151E3F;
+  color: white;
+  border: none;
+  font-weight: 700;
+  box-shadow: 3px 4px 5px 0px lightgrey;
+  position: relative;
+  left: 38%;
+  font-weight: 400;
+}
+
+.new-budget{
+  color: black;
+  margin-left: 9px;
+  margin-right: 26px;
+  border-top: solid 1px lightgray;
+  padding-top: 4%;
+  h2 {
+    margin-bottom: 3%;
+    font-weight: 500;
+  }
+}
+
+.enter-income{
+  margin-top: 12px;
+  padding: 8px 1em;
+  font-size: 1em;
+  border-radius: 7px;
+  background: darkseagreen;
+  color: white;
+  border: none;
+  font-weight: 700;
+  box-shadow: 3px 4px 5px 0px lightgrey;
+  position: relative;
+  font-weight: 400;
+}
+
+.enter-category{
+  margin-top: 12px;
+  padding: 8px 1em;
+  font-size: 1em;
+  border-radius: 7px;
+  background: goldenrod;
+  color: white;
+  border: none;
+  font-weight: 700;
+  box-shadow: 3px 4px 5px 0px lightgrey;
+  position: relative;
+  font-weight: 400;
+}
+
+.submit-budget{
+  margin-top: 12px;
+  padding: 8px 1em;
+  font-size: 1em;
+  border-radius: 7px;
+  background: limegreen;
+  color: white;
+  border: none;
+  font-weight: 700;
+  box-shadow: 3px 4px 5px 0px lightgrey;
+  position: relative;
+  font-weight: 400;
+}
+
+.category-groups{
+  margin: 13px 0;
+  * input {
+    float: right;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    -webkit-appearance: none;
+    font-size: 14px;
+  }
+}
+
+.category-groups * input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.category-groups * input:focus{
+  outline: none;
+}

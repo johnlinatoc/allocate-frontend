@@ -1,7 +1,7 @@
 #navbar {
   height: 4em;
   width: auto;
-  position: sticky;
+  position: relative;
   background: white;
   margin-bottom: 1em;
   text-decoration: none;
@@ -21,22 +21,38 @@
   text-decoration: none;
   font-weight: 100;
   margin-left: 33%;
+  @include for-phone-only {
+    margin-left: 0px;
+    top: 0px;
+    font-size: 3em;
+  }
 }
 
 .title-container{
   display: inline-block;
   margin-left: 2em;
   margin-top: 6px;
+  @include for-phone-only {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0em;
+    margin-top: 0px;
+  }
 }
 
-.account-container{
+.account-container {
   display: inline-block;
   float: right;
   position: relative;
   top: 20px;
   margin-right: 4em;
+  @include for-phone-only {
+    display: none;
+  }
 }
-.categories-container{
+
+.categories-container {
   display: flex;
   float: right;
   position: relative;
@@ -44,5 +60,29 @@
   margin-right: 3em;
   div{
     margin-right: 2em;
+  }
+  @include for-phone-only {
+    display: none;
+    &.is-active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      text-align: right;
+      top: 105%;
+      right: 0;
+      margin-right: 0px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      * {
+        margin-right: 0em;
+        background: black;
+        color: white;
+        padding: 1em 0.5em 1em 1em;
+      }
+      *:hover{
+        background-color: #f1f1f1;
+        color: black;
+      }
+    }
   }
 }

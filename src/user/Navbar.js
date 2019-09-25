@@ -26,8 +26,17 @@ class Navbar extends Component {
     return names.join('');
   }
 
+  classNameChange(){
+    let names = ['account-container', 'categories-container'];
+    if (this.state.isClicked) {
+      names = names.map( name => name + ' is-active');
+    }
+    console.log(names);
+    return [names[0], names[1]];
+  }
+
   display(){
-    if(window.innerWidth < 577) {
+    if(window.innerWidth < 600) {
       this.setState({
         style: 'inline-block',
       })
@@ -44,9 +53,9 @@ class Navbar extends Component {
   }
 
   renderLoggedInNavbar() {
+    this.classNameChange();
     return (
       <div>
-
 
         <Link to="/home" style={{ textDecoration: 'none', color: 'black' }}>
           <div className="title-container">
@@ -54,22 +63,26 @@ class Navbar extends Component {
           </div>
         </Link>
 
+        <button
+        style={{display: `${this.state.style}`}}
+        className={this.hamburger()}
+        type="button"
+        onClick={()=>this.handleClick()}>
 
-
-        <div className="account-container">
-          Welcome, {this.props.userInfo.username}
-
-          <button style={{display: `${this.state.style}`}}className={this.hamburger()} type="button" onClick={()=>this.handleClick()}>
           <span className="hamburger-box">
           <span className="hamburger-inner"></span>
           </span>
-          </button>
+
+        </button>
+
+        <div className={this.classNameChange()[0]}>
+          Welcome, {this.props.userInfo.username}
         </div>
 
-        <div className="categories-container">
+        <div className={this.classNameChange()[1]}>
           <Link to="/home" >
             <div>
-              <span className="nav-link">Home</span>
+              <span className="nav-link-text">Home</span>
             </div>
           </Link>
 
@@ -79,8 +92,8 @@ class Navbar extends Component {
             </div>
           </Link>
 
-          <Link to="/profile" className="nav-link-text">
-            <div>
+          <Link to="/profile">
+            <div className="nav-link-text">
               <span className="nav-link">Profile</span>
             </div>
           </Link>

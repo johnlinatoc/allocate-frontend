@@ -97,8 +97,8 @@
   overflow: hidden;
   height: 29px;
   position: relative;
-  top: 79px;
-  left: 15%;
+  top: 85px;
+  left: 7%;
   cursor: pointer;
   text-align: center;
   width: 72%;
@@ -108,7 +108,11 @@
     flex-direction: column;
   }
   h4 {
-    margin: 3% 0;
+    border: solid white 1px;
+    padding: 2%;
+    width: 75%;
+    left: 20%;
+    position: relative;
   }
   input {
     margin-right: 4%;

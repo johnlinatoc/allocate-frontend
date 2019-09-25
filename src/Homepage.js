@@ -130,8 +130,10 @@ class Home extends Component {
 
   render() {
     return (
-      <div className='home-header'>
-        <h1>Welcome back, {this.props.userInfo.username}!</h1>
+      <div>
+        <div className='home-header'>
+          <h1>Welcome back, {this.props.userInfo.username}!</h1>
+        </div>
         {this.renderPerMonth()}
       </div>
     );
