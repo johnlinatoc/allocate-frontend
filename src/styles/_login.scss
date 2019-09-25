@@ -9,7 +9,7 @@
   }
 }
 
-@media only screen and (min-width: 499px) {
+@include for-phone-only {
 
   .login {
     height: 100vh;
@@ -55,7 +55,7 @@
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@include for-desktop-up {
 
   .login{
     color: black;

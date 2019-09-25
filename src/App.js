@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Route, withRouter, Redirect } from "react-router-dom";
 import Homepage from "./Homepage";
 import Login from "./user/Login";
-import Navbar from "./Navbar";
+import Navbar from "./user/Navbar";
 import Signup from "./user/Signup";
 import ProfileContainer from "./user/ProfileContainer";
 import MyBudgetContainer from "./myBudget/MyBudgetContainer";

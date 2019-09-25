@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './styles.css';
 import Api from "../services/api";
 
 
 class ProfileContainer extends Component {
-  
+
   componentDidMount(){
     const token = localStorage.getItem("token");
     if (!token) {

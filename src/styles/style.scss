@@ -15,6 +15,10 @@
 }
 
 @import './login';
+@import './navbar';
+@import './createUser';
+@import './profile';
+@import './hamburgerMenu';
 
 body {
   margin: 0;
@@ -35,62 +39,6 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: none;
 }
-
-
-
-
-//navbar
-#navbar {
-  height: 4em;
-  width: auto;
-  position: sticky;
-  background: white;
-  margin-bottom: 1em;
-  text-decoration: none;
-  color: black;
-  box-shadow: 0 1px 12px 0px lightgrey;
-}
-
-.icon{
-  width: 3em;
-}
-
-.name{
-  display: inline-block;
-  position: relative;
-  top: 4px;
-  font-size: 34px;
-  text-decoration: none;
-  font-weight: 100;
-  margin-left: 33%;
-}
-
-.title-container{
-  display: inline-block;
-  margin-left: 2em;
-  margin-top: 6px;
-}
-
-.account-container{
-  display: inline-block;
-  float: right;
-  position: relative;
-  top: 20px;
-  margin-right: 4em;
-}
-.categories-container{
-  display: flex;
-  float: right;
-  position: relative;
-  top: 20px;
-  margin-right: 3em;
-  div{
-    margin-right: 2em;
-  }
-}
-
-
-// homepage
 
 .home-header {
   margin-top: 3%;

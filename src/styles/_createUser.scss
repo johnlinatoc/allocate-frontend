@@ -1,0 +1,60 @@
+.create-form-full{
+  position: absolute;
+  top: 31%;
+  left: 42vw;
+  z-index: 100;
+  background-color: #ffffff4d;
+  padding: 19px 59px;
+  border-radius: 4px;
+  form {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 300;
+    input {
+      margin: 0;
+      border: none;
+      padding: 6px;
+    }
+  }
+  h3 {
+    font-weight: 200;
+    margin-bottom: 8%;
+  }
+}
+
+.create-header{
+  z-index: 200;
+  position: absolute;
+  left: 44vw;
+  top: 12%;
+  text-align: center;
+  font-size: 19px;
+  h1 {
+    font-weight: 200;
+    font-size: 62px;
+  }
+  p {
+    margin-top: 0;
+    font-weight: 100;
+    font-size: 26px;
+  }
+}
+
+
+.create-user{
+  width: 101%;
+  font-size: 12px;
+  display: flex;
+  a {
+    font-weight: 600;
+  }
+}
+
+
+
+.create-bg-video{
+  width: 101vw;
+  position: absolute;
+  top: 0%;
+  z-index: 10;
+}
