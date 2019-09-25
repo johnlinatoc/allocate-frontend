@@ -1,24 +1,12 @@
-@mixin for-phone-only {
-  @media (max-width: 599px) { @content; }
-}
-@mixin for-tablet-portrait-up {
-  @media (min-width: 600px) { @content; }
-}
-@mixin for-tablet-landscape-up {
-  @media (min-width: 900px) { @content; }
-}
-@mixin for-desktop-up {
-  @media (min-width: 1280px) { @content; }
-}
-@mixin for-big-desktop-up {
-  @media (min-width: 1800px) { @content; }
-}
-
+@import './mixins';
 @import './login';
 @import './navbar';
 @import './createUser';
 @import './profile';
 @import './hamburgerMenu';
+@import './myBudget';
+@import './expenses';
+@import './mainBudgetContainer';
 
 body {
   margin: 0;
@@ -38,15 +26,4 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   text-decoration: none;
-}
-
-.home-header {
-  margin-top: 3%;
-  color: #151E3F;
-  h1 {
-    margin-top: -1%;
-    margin-bottom: 2%;
-    margin-left: 5%;
-    font-weight: 500;
-  }
 }

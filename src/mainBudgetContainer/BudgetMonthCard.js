@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./styles.css";
 import ProgressBar from "./ProgressBar.js";
 
 export default class BudgetMonthCard extends Component {

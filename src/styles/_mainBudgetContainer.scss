@@ -3,6 +3,16 @@
 }
 
 @media screen and (min-width: 1280px)  {
+  .home-header {
+    margin-top: 3%;
+    color: #151E3F;
+    h1 {
+      margin-top: -1%;
+      margin-bottom: 2%;
+      margin-left: 5%;
+      font-weight: 500;
+    }
+  }
 
   .budget-container{
     width: 65%;
@@ -24,7 +34,6 @@
     position: relative;
     top: -11px;
     left: -43px;
-
   }
 
   .month-card-name{
@@ -59,35 +68,51 @@
     margin-bottom: 1em;
     background: #151E3F;
     border-radius: 3%;
+    &:hover {
+      color: white;
+      width: 32%;
+      height: 191px;
+      overflow: scroll;
+      display: inline-block;
+      margin-right: 2%;
+      margin-bottom: 1em;
+      border-radius: 3%;
+      transition-duration: 0.8s;
+
+    }
   }
 
-  .budget-card:hover {
-    color: white;
-    width: 32%;
-    height: 191px;
-    overflow: scroll;
-    display: inline-block;
-    margin-right: 2%;
-    margin-bottom: 1em;
-    border-radius: 3%;
-    transition-duration: 0.8s;
-  }
 
-
-  .trans-card span{
-    float: right;
-  }
   .trans-card {
     width: 100%;
     margin: 0 auto;
     font-weight: 600;
+    span {
+      float: right;
+    }
   }
 
   .card-back{
     padding: 1em;
-  }
-  .card-back div{
-    padding: 0 1%;
+    div {
+      padding: 0 1%;
+    }
+    p {
+      margin: 0px;
+    }
+    h4 {
+      font-weight: 700;
+      margin-bottom: 3%;
+    }
+    h5 {
+      font-weight: 300;
+      margin-bottom: 3%;
+      margin-top: 7%;
+      font-size: 1em;
+    }
+    hr {
+      border-bottom: hidden;
+    }
   }
 
   .card-back-cats{
@@ -95,45 +120,16 @@
     text-align: right;
     margin-left: 15%;
   }
-  .card-back-cats {
-    display: inline-block;
-    text-align: right;
-    margin-left: 10%;
-  }
 
   .card-back-last{
     font-weight: bold;
-  font-size: 1.1em;
-  color: #F2F3D9;
+    font-size: 1.1em;
+    color: #F2F3D9;
   }
   .card-back-data{
     display: inline-block;
     text-align: left;
   }
-  .card-back p{
-    /* text-align: center; */
-    /* font-weight: 600; */
-    margin: 0
-  }
-  .card-back h4{
-    /* text-align: center; */
-    font-weight: 700;
-    margin-bottom: 3%;
-
-  }
-  .card-back h5{
-    /* text-align: center; */
-    font-weight: 300;
-    margin-bottom: 3%;
-    margin-top: 7%;
-    font-size: 1em;
-
-  }
-
-  .card-back hr {
-    border-bottom: hidden;
-  }
-
 
   #main-month-bar {
     position: relative;
@@ -189,16 +185,16 @@
     position: absolute;
   }
 
-  #month-forward:hover,
-  #month-back:hover {
-    background-color: #3C4148;
-    color: white;
-  }
-
   #month-back{
     font-size: 1em;
     background: transparent;
       border: none;
+  }
+
+  #month-forward:hover,
+  #month-back:hover {
+    background-color: #3C4148;
+    color: white;
   }
 
   .card-progress-bar {
@@ -286,11 +282,10 @@
   .main-budget-form{
     display: inline-block;
     width: 50%;
-  }
-
-  .main-budget-form h4{
-    display: inline-block;
-    width: 50%;
+    h4 {
+      display: inline-block;
+      width: 50%;
+    }
   }
 
   .main-budget-form * input{
@@ -322,10 +317,9 @@
     display: inline-block;
     float: right;
     width: 36%;
-  }
-
-  .side-budget-form span{
-    float: right;
+    span {
+      float: right;
+    }
   }
 
   .start-budget-button{
@@ -348,11 +342,10 @@
     margin-right: 26px;
     border-top: solid 1px lightgray;
     padding-top: 4%;
-  }
-
-  .new-budget h2{
-    margin-bottom: 3%;
-    font-weight: 500;
+    h2 {
+      margin-bottom: 3%;
+      font-weight: 500;
+    }
   }
 
   .enter-income{

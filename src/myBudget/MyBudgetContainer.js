@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Api from "../services/api";
-import './styles.css'
 import MyBudgetGraph from './MyBudgetGraph'
 import MyBudgetCategories from './MyBudgetCategories'
 

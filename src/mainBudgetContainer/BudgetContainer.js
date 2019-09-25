@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import BudgetCardFront from "./BudgetCardFront";
 import BudgetMonthCard from "./BudgetMonthCard";
 import NewBudget from "./NewBudget";
-import "./styles.css";
-
-
 
 export default class BudgetContainer extends Component {
   constructor(props) {

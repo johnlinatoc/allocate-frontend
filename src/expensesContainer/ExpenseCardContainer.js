@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ExpenseCard from "./ExpenseCard";
 import Api from '../services/api'
-import "./styles.css";
 
 export default class ExpenseCardContainer extends Component {
   constructor(props) {
@@ -64,7 +63,7 @@ export default class ExpenseCardContainer extends Component {
       })
     })
   }
-  
+
   rootClassNameContainer() {
     let names = ['expense-card-container'];
     if (this.state.isClicked) names.push('-min');
