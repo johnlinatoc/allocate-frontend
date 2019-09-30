@@ -54,13 +54,13 @@ export default class ExpenseCardContainer extends Component {
 
     Api.postExpense(data)
     .then(data => {
-      this.props.addExpense(data)
+      this.props.addExpense(data);
       this.setState({
         expense_title: '',
         amount: "",
         category_id: 0,
         monthly_budget_id: 0,
-      })
+      });
     })
   }
 

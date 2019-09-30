@@ -28,7 +28,10 @@
 
 @include for-phone-only  {
   .home-header {
-    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    margin: 5% 4% 4% 4%;
+    font-weight: 500;
     color: #151E3F;
     h1 {
       margin-top: -1%;
@@ -36,48 +39,26 @@
       margin-left: 5%;
       font-weight: 500;
     }
-    @include for-phone-only {
-      display: flex;
-      justify-content: center;
-      margin: 5%;
-      font-weight: 500;
-    }
   }
 
   .budget-container{
-    width: 65%;
-    height: 75vh;
     display: inline-block;
-    margin-left: 3em;
     overflow: scroll;
-    padding-left: 11px;
     position: sticky;
-    @include for-phone-only {
-      height: 60vh;
-      width: 90vw;
-      padding: 0px;
-      margin: 0px 5%;
-      overflow: scroll;
-      border: solid;
-    }
+    height: 60vh;
+    width: 90vw;
+    padding: 0px;
+    margin: 0% 5% 2% 5%;
   }
 
-  .home-page-header{
-    margin-left: 2em;
-  }
   .month-card {
-    padding: 5px 0;
-    margin-bottom: 30px;
-    height: 5em;
-    color: #151E3F;
-    position: relative;
-    top: -11px;
-    left: -43px;
+    color: black;
+    margin-bottom: 2%;
   }
 
   .month-card-name{
-    margin-left: 5%;
     display: inline-block;
+    margin: 2% 0% 2% 3%;
   }
 
   .budget-cards {
@@ -99,26 +80,13 @@
 
   .budget-card{
     color: white;
-    width: 31%;
-    height: 190px;
+    width: 100%;
+    height: 12vh;
     overflow: scroll;
     display: inline-block;
-    margin-right: 2%;
-    margin-bottom: 1em;
+    margin: 1% 2%;
     background: #151E3F;
     border-radius: 3%;
-    &:hover {
-      color: white;
-      width: 32%;
-      height: 191px;
-      overflow: scroll;
-      display: inline-block;
-      margin-right: 2%;
-      margin-bottom: 1em;
-      border-radius: 3%;
-      transition-duration: 0.8s;
-
-    }
   }
 
   .trans-card {
@@ -153,10 +121,14 @@
     }
   }
 
+  .card-back-info{
+    display: flex;
+    justify-content: center;
+  }
+
   .card-back-cats{
     display: inline-block;
     text-align: right;
-    margin-left: 15%;
   }
 
   .card-back-last{
@@ -172,13 +144,10 @@
   #main-month-bar {
     position: relative;
     .progress-bar {
-      position: relative;
-      height: 7px;
+      margin-left: 20px;
       border-radius: 3px;
-      width: 96%;
-      margin: 0 auto;
-      background: rgb(140, 138, 166);
-      left: 36px;
+      width: 93%;
+      background: #8c8aa6;
       .filler-4 {
         background: #151E3F;
       }
@@ -198,33 +167,23 @@
     font-size: 24px;
   }
 
-  .month-card-name{
-    margin-top: 1%;
-    margin-bottom: 2%;
-    margin-left: 5%;
-    display: inline-block;
-    width: 23%;
-  }
-
   .month-buttons{
-    position: relative;
     display: inline-block;
-    top: 53px;
-    right: -23%;
-    width: 5%;
+    float: right;
+    width: 27%;
   }
 
   #month-forward{
     background: transparent;
     border: none;
-    font-size: 1em;
-    position: absolute;
+    font-size: 2em;
   }
 
   #month-back{
-    font-size: 1em;
+    font-size: 2em;
     background: transparent;
-      border: none;
+    border: none;
+    margin-right: 23%;
   }
 
   #month-forward:hover,
@@ -234,7 +193,7 @@
   }
 
   .card-progress-bar {
-    margin-top: 14%
+    margin-top: 5%;
   }
 
   .progress-bar {
@@ -256,10 +215,9 @@
 
 
   .income {
-    margin: 0;
     display: inline-block;
     float: right;
-    margin-right: -2%;
+    margin-right: 2%;
     font-weight: 400;
     word-spacing: 1px;
   }
@@ -267,7 +225,7 @@
   .spent {
     margin: 0;
     display: inline-block;
-    margin-left: 6%;
+    margin-left: 5%;
     font-weight: 400;
     word-spacing: 1px;
   }
@@ -278,19 +236,21 @@
 
   .category-spent{
     margin-left: 6%;
-    margin-top: 3%;
+    margin-top: 4%;
     font-weight: 400;
+    display: inline-block;
   }
 
   .category-name{
-    margin-left: 6%;
-    margin-top: 19%;
+    margin-top: 2%;
+    margin-right: 7%;
+    float: right;
     font-size: 1.5em;
     font-weight: 300;
   }
 }
 
-@media screen and (min-width: 1280px)  {
+@include for-tablet-portrait-up {
   .home-header {
     margin-top: 3%;
     color: #151E3F;
@@ -325,8 +285,11 @@
   }
 
   .month-card-name{
+    margin-top: 1%;
+    margin-bottom: 2%;
     margin-left: 5%;
     display: inline-block;
+    width: 25%;
   }
 
   .budget-cards {
@@ -447,13 +410,6 @@
     font-size: 24px;
   }
 
-  .month-card-name{
-    margin-top: 1%;
-    margin-bottom: 2%;
-    margin-left: 5%;
-    display: inline-block;
-    width: 23%;
-  }
 
   .month-buttons{
     position: relative;

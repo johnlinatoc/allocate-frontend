@@ -1,147 +1,296 @@
-.expenses-container {
-  border: solid black 1px;
-  width: 20%;
-  display: inline-block;
-  float: right;
-  margin-right: 4em;
-  height: 70vh;
-  padding: 1em;
-  background: #030027;
-  color: white;
-  border-radius: 3%;
-}
+@include for-phone-only {
+  .expenses-container {
+    display: inline-block;
+    width: 90vw;
+    height: 70vh;
+    margin-right: 0em;
+    padding: 1em;
+    background: #030027;
+    color: white;
+    border-radius: 3%;
+  }
 
-.expense-header h2{
-  font-weight: 500;
-}
+  .expense-header h2{
+    font-weight: 500;
+  }
 
-.side-expense-card span {
-  float: right
-}
+  .side-expense-card span {
+    float: right
+  }
 
-.expense-sub-header{
-  margin: 3% 0;
-  font-weight: 100;
-}
-
-.expense-card-container{
-  height: 42vh;
-  overflow: scroll;
-  div {
-    margin-bottom: 9px;
-    padding: 15px 6px;
-    background: #151E3F;
+  .expense-sub-header{
+    margin: 3% 0;
     font-weight: 100;
   }
-}
 
-.expense-card-container-min{
-  height: 52vh;
-  overflow: scroll;
-  div {
-    margin-bottom: 9px;
-    padding: 15px 6px;
-    background: #151E3F;
-    font-weight: 100;
+  .expense-card-container{
+    height: 42vh;
+    overflow: scroll;
+    div {
+      margin-bottom: 9px;
+      padding: 15px 6px;
+      background: #151E3F;
+      font-weight: 100;
+    }
   }
-}
 
-.add-expense{
-  text-align: center;
-  width: 72%;
-  left: 16%;
-  position: relative;
-  margin-top: 13px;
-  cursor: pointer;
-  form {
-    display: flex;
-    flex-direction: column;
+  .expense-card-container-min{
+    height: 52vh;
+    overflow: scroll;
+    div {
+      margin-bottom: 9px;
+      padding: 15px 6px;
+      background: #151E3F;
+      font-weight: 100;
+    }
   }
-  h4 {
-    margin: 3% 0px;
-  }
-  input {
-    margin-right: 4%;
-    border: none;
-    padding: 3px;
-    background: none;
-    color: white;
-    border-bottom: 1px darkgray solid;
-    font-size: 14px;
-  }
-  select {
-    background: none;
-    color: white;
-    text-align: left;
-    border: none;
-    left: -6px;
+
+  .add-expense{
+    text-align: center;
+    width: 72%;
+    left: 16%;
     position: relative;
-    font-weight: 100;
-    font-size: 11px;
-  }
-  button {
-    background: none;
-    border: solid white 1px;
-    color: white;
-    position: relative;
-    top: 1px;
-    font-weight: 100;
-    right: 3px;
-    font-size: 13px;
-    margin-top: 4px;
+    margin-top: 13px;
     cursor: pointer;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    h4 {
+      margin: 3% 0px;
+    }
+    input {
+      margin-right: 4%;
+      border: none;
+      padding: 3px;
+      background: none;
+      color: white;
+      border-bottom: 1px darkgray solid;
+      font-size: 14px;
+    }
+    select {
+      background: none;
+      color: white;
+      text-align: left;
+      border: none;
+      left: -6px;
+      position: relative;
+      font-weight: 100;
+      font-size: 11px;
+    }
+    button {
+      background: none;
+      border: solid white 1px;
+      color: white;
+      position: relative;
+      top: 1px;
+      font-weight: 100;
+      right: 3px;
+      font-size: 13px;
+      margin-top: 4px;
+      cursor: pointer;
+    }
+  }
+
+  .add-expense-min{
+    overflow: hidden;
+    height: 29px;
+    position: relative;
+    top: 85px;
+    left: 7%;
+    cursor: pointer;
+    text-align: center;
+    width: 72%;
+    margin-top: -65px;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    h4 {
+      border: solid white 1px;
+      padding: 2%;
+      width: 75%;
+      left: 20%;
+      position: relative;
+    }
+    input {
+      margin-right: 4%;
+      border: none;
+      padding: 3px;
+      background: none;
+      color: white;
+      border-bottom: 1px darkgray solid;
+      font-size: 14px;
+    }
+    select {
+      background: none;
+      color: white;
+      text-align: left;
+      border: none;
+      left: -6px;
+      position: relative;
+      font-weight: 100;
+      font-size: 11px;
+    }
+    button {
+      background: none;
+      border: none;
+      color: white;
+      position: relative;
+      top: 1px;
+      font-weight: 100;
+      right: 3px;
+      font-size: 13px;
+      margin-top: 4px;
+    }
   }
 }
 
-.add-expense-min{
-  overflow: hidden;
-  height: 29px;
-  position: relative;
-  top: 85px;
-  left: 7%;
-  cursor: pointer;
-  text-align: center;
-  width: 72%;
-  margin-top: -65px;
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  h4 {
-    border: solid white 1px;
-    padding: 2%;
-    width: 75%;
-    left: 20%;
-    position: relative;
-  }
-  input {
-    margin-right: 4%;
-    border: none;
-    padding: 3px;
-    background: none;
+@include for-tablet-portrait-up {
+  .expenses-container {
+    display: inline-block;
+    width: 20%;
+    float: right;
+    margin-right: 4em;
+    height: 70vh;
+    padding: 1em;
+    background: #030027;
     color: white;
-    border-bottom: 1px darkgray solid;
-    font-size: 14px;
+    border-radius: 3%;
   }
-  select {
-    background: none;
-    color: white;
-    text-align: left;
-    border: none;
-    left: -6px;
-    position: relative;
+
+  .expense-header h2{
+    font-weight: 500;
+  }
+
+  .side-expense-card span {
+    float: right
+  }
+
+  .expense-sub-header{
+    margin: 3% 0;
     font-weight: 100;
-    font-size: 11px;
   }
-  button {
-    background: none;
-    border: none;
-    color: white;
+
+  .expense-card-container{
+    height: 42vh;
+    overflow: scroll;
+    div {
+      margin-bottom: 9px;
+      padding: 15px 6px;
+      background: #151E3F;
+      font-weight: 100;
+    }
+  }
+
+  .expense-card-container-min{
+    height: 52vh;
+    overflow: scroll;
+    div {
+      margin-bottom: 9px;
+      padding: 15px 6px;
+      background: #151E3F;
+      font-weight: 100;
+    }
+  }
+
+  .add-expense{
+    text-align: center;
+    width: 72%;
+    left: 16%;
     position: relative;
-    top: 1px;
-    font-weight: 100;
-    right: 3px;
-    font-size: 13px;
-    margin-top: 4px;
+    margin-top: 13px;
+    cursor: pointer;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    h4 {
+      margin: 3% 0px;
+    }
+    input {
+      margin-right: 4%;
+      border: none;
+      padding: 3px;
+      background: none;
+      color: white;
+      border-bottom: 1px darkgray solid;
+      font-size: 14px;
+    }
+    select {
+      background: none;
+      color: white;
+      text-align: left;
+      border: none;
+      left: -6px;
+      position: relative;
+      font-weight: 100;
+      font-size: 11px;
+    }
+    button {
+      background: none;
+      border: solid white 1px;
+      color: white;
+      position: relative;
+      top: 1px;
+      font-weight: 100;
+      right: 3px;
+      font-size: 13px;
+      margin-top: 4px;
+      cursor: pointer;
+    }
+  }
+
+  .add-expense-min{
+    overflow: hidden;
+    height: 29px;
+    position: relative;
+    top: 85px;
+    left: 7%;
+    cursor: pointer;
+    text-align: center;
+    width: 72%;
+    margin-top: -65px;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    h4 {
+      border: solid white 1px;
+      padding: 2%;
+      width: 75%;
+      left: 20%;
+      position: relative;
+    }
+    input {
+      margin-right: 4%;
+      border: none;
+      padding: 3px;
+      background: none;
+      color: white;
+      border-bottom: 1px darkgray solid;
+      font-size: 14px;
+    }
+    select {
+      background: none;
+      color: white;
+      text-align: left;
+      border: none;
+      left: -6px;
+      position: relative;
+      font-weight: 100;
+      font-size: 11px;
+    }
+    button {
+      background: none;
+      border: none;
+      color: white;
+      position: relative;
+      top: 1px;
+      font-weight: 100;
+      right: 3px;
+      font-size: 13px;
+      margin-top: 4px;
+    }
   }
 }

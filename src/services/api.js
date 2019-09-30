@@ -117,9 +117,9 @@ export default {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
+    };
 
-    }
-    fetch('http://localhost:3000/expenses', reqObj)
+    return fetch('http://localhost:3000/expenses', reqObj)
       .then(res => res.json())
   },
 };

@@ -31,7 +31,6 @@ class Navbar extends Component {
     if (this.state.isClicked) {
       names = names.map( name => name + ' is-active');
     }
-    console.log(names);
     return [names[0], names[1]];
   }
 

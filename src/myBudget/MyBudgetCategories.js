@@ -129,7 +129,7 @@ class MyBudgetCategories extends Component {
         } else if (warningCats && warningCats.length > 0) {
        return (
          <div>
-         <h4><span>Budget Status:</span> Budgets you are close to going over</h4> {
+         <h4><span>Budget Status:</span> You were close to going over! </h4> {
            warningCats.map(cat => {
              return (
                <div>
