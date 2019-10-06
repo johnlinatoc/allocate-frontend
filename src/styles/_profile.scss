@@ -15,6 +15,16 @@
     position: relative;
     font-size: 3em;
     left: -13%;
+    @include for-phone-only {
+      background: white;
+      width: 73%;
+      margin: 5% 0 5% 12%;
+      top: -8%;
+      padding: 8px 1%;
+      position: relative;
+      font-size: 3em;
+      left: -13%;
+    }
   }
   button {
     width: 70%;
@@ -23,6 +33,14 @@
     font-size: 12px;
     font-weight: 500;
     background-color: #151E3F;
+  }
+  @include for-phone-only {
+    border: solid 1px black;
+    width: 88%;
+    text-align: center;
+    height: 76vh;
+    margin: 8% auto 0;
+    position: relative;
   }
 }
 

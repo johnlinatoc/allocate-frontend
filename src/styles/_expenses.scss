@@ -1,13 +1,12 @@
 @include for-phone-only {
   .expenses-container {
     display: inline-block;
-    width: 90vw;
+    width: 78vw;
     height: 70vh;
-    margin-right: 0em;
+    margin-left: 8%;
     padding: 1em;
     background: #030027;
     color: white;
-    border-radius: 3%;
   }
 
   .expense-header h2{

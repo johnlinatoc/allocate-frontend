@@ -9,7 +9,7 @@
   }
 }
 
-@media (min-width: 400px) {
+@include for-phone-only {
 
   .login {
     height: 100vh;
