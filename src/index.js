@@ -8,7 +8,9 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 function reducer() {
-
+  return {
+    
+  }
 }
 
 const store = createStore(reducer);

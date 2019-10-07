@@ -7,10 +7,6 @@ import {
 } from "victory";
 
 class MyBudgetGraph extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
 
   renderMonthData() {
     const newData = [];
