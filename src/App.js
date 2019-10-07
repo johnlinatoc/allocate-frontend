@@ -6,6 +6,7 @@ import Navbar from "./user/Navbar";
 import Signup from "./user/Signup";
 import ProfileContainer from "./user/ProfileContainer";
 import MyBudgetContainer from "./myBudget/MyBudgetContainer";
+import { connect } from 'react-redux';
 
 class App extends Component {
   constructor(props) {

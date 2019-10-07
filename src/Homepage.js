@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import BudgetContainer from "./mainBudgetContainer/BudgetContainer";
 import ExpenseCardContainer from "./expensesContainer/ExpenseCardContainer";
 import Api from "./services/api";
+import { connect } from 'react-redux';
 
 
 class Home extends Component {
