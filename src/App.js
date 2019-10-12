@@ -13,6 +13,7 @@ class App extends Component {
     super(props);
     this.state = {
       auth: { user: {} },
+      loggedIn: false,
     };
   }
 
@@ -51,6 +52,7 @@ class App extends Component {
       }}
     />
   }
+
 
   render() {
     const { auth, loggedIn } = this.state;
