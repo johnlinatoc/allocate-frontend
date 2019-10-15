@@ -7,6 +7,7 @@ import Signup from "./user/Signup";
 import ProfileContainer from "./user/ProfileContainer";
 import MyBudgetContainer from "./myBudget/MyBudgetContainer";
 import { connect } from 'react-redux';
+import { login, logout } from './actions/index'
 
 class App extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class App extends Component {
     if (data.jwt) {
       localStorage.setItem("token", data.jwt);
     }
+    this.props.onUserLogin();
   }
 
   handleLogout() {
@@ -33,6 +35,7 @@ class App extends Component {
       profile: ""
     });
     localStorage.removeItem("token");
+    this.props.onUserLogout();
   }
 
   getState(passedState) {
@@ -56,7 +59,6 @@ class App extends Component {
 
   render() {
     const { auth, loggedIn } = this.state;
-
     return (
       <div>
         <Route exact path="/" render={() => (
@@ -152,4 +154,13 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = state => ({
+  isLogged: state.isLogged,
+})
+
+const mapDispatchToProps = {
+  onUserLogin: login,
+  onUserLogout: logout,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
