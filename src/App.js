@@ -7,7 +7,8 @@ import Signup from "./user/Signup";
 import ProfileContainer from "./user/ProfileContainer";
 import MyBudgetContainer from "./myBudget/MyBudgetContainer";
 import { connect } from 'react-redux';
-import { login, logout } from './actions/index'
+import { login, logout } from './actions/index';
+import { bindActionCreators } from 'redux';
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class App extends Component {
   handleLogout() {
     this.setState({
       auth: { user: {} },
-      profile: ""
+      loggedIn: false,
     });
     localStorage.removeItem("token");
     this.props.onUserLogout();
@@ -154,13 +155,17 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isLogged: state.isLogged,
-})
+const mapStateToProps = (state, props) => {
+  return {
+    isLogged: state.isLogged,
+  }
+}
 
-const mapDispatchToProps = {
-  onUserLogin: login,
-  onUserLogout: logout,
+const mapDispatchToProps = (dispatch, props) => {
+  return bindActionCreators({
+    onUserLogin: login,
+    onUserLogout: logout,
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));
