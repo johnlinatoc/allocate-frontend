@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import { userLogin } from '../actions/index';
+import { userLogin, logout } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Navbar extends Component {
@@ -78,7 +78,7 @@ class Navbar extends Component {
         </button>
 
         <div className={this.classNameChange()[0]}>
-          Welcome, {this.props.userInfo.username}
+          Welcome, {this.props.auth.user.username}
         </div>
 
         <div className={this.classNameChange()[1]}>
@@ -104,7 +104,7 @@ class Navbar extends Component {
           <a to="/login" className="nav-link-text">
             <div
               onClick={() => {
-                this.props.handleLogout();
+                this.props.onUserLogout();
                 this.props.history.push("/login");
               }}
             >
@@ -133,7 +133,8 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return bindActionCreators({
-    onUserLogin: userLogin
+    onUserLogin: userLogin,
+    onUserLogout: logout,
   }, dispatch)
 }
 

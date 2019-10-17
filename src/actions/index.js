@@ -8,6 +8,7 @@ export const login = () => ({
 
 export const logout = () => ({
   type: SIGN_OUT,
+  payload: { user: {} },
 })
 
 export const userLogin = (data) => ({
