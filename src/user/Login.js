@@ -2,6 +2,9 @@ import React from 'react';
 import Api from '../services/api'
 import home from './media/home.mp4'
 import { Link, withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+import { userLogin } from '../actions/index';
+import { bindActionCreators } from 'redux';
 
 class Login extends React.Component {
   constructor(props){
@@ -35,8 +38,9 @@ class Login extends React.Component {
             error: true
           })
         } else {
-          this.props.handleLogin(data)
-          this.props.history.push('/home')
+          this.props.handleLogin(data);
+          this.props.onUserLogin(data);
+          this.props.history.push('/home');
         }
       })
   }
@@ -71,4 +75,16 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(Login);
+const mapStateToProps = (state, props) => {
+  return {
+    auth: state.auth,
+  }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return bindActionCreators({
+    onUserLogin: userLogin
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Login));

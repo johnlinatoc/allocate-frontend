@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
+import { userLogin } from '../actions/index';
+import { bindActionCreators } from 'redux';
 
 class Navbar extends Component {
   constructor(props){
@@ -11,7 +14,7 @@ class Navbar extends Component {
   }
 
   renderNavbar() {
-    return this.props.userInfo.id ? this.renderLoggedInNavbar() : null
+    return this.props.isLogged ? this.renderLoggedInNavbar() : null
   }
 
   handleClick(){
@@ -121,4 +124,17 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(Navbar);
+const mapStateToProps = (state, props) => {
+  return {
+    auth: state.auth,
+    isLogged: state.isLogged,
+  }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return bindActionCreators({
+    onUserLogin: userLogin
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar));
