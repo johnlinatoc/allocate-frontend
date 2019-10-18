@@ -1,7 +1,7 @@
-import { SIGN_IN } from '../actions/index.js'
-import { SIGN_OUT } from '../actions/index.js'
+import { SIGN_IN, SIGN_OUT } from '../actions/index.js'
 
 const loggedReducer = (state = null, action) => {
+  console.log(action.payload)
   switch(action.type){
     case SIGN_IN:
       return state = {

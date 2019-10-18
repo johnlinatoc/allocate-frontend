@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import { userLogin, logout } from '../actions/index';
+import { login, logout } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Navbar extends Component {
@@ -133,7 +133,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return bindActionCreators({
-    onUserLogin: userLogin,
+    onUserLogin: login,
     onUserLogout: logout,
   }, dispatch)
 }
