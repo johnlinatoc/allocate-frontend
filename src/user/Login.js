@@ -3,7 +3,7 @@ import Api from '../services/api'
 import home from './media/home.mp4'
 import { Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import { login } from '../actions/index';
+import { login, userLogin } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Login extends React.Component {
@@ -38,9 +38,8 @@ class Login extends React.Component {
             error: true
           })
         } else {
-          console.log(data)
-          this.props.onUserLogin(data);
           this.props.handleLogin(data);
+          this.props.onUserLogin(data);
           this.props.history.push('/home');
         }
       })
@@ -84,7 +83,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return bindActionCreators({
-    onUserLogin: login
+    onUserLogin: userLogin
   }, dispatch)
 }
 

@@ -27,7 +27,7 @@ class App extends Component {
     if (data.jwt) {
       localStorage.setItem("token", data.jwt);
     }
-    this.props.onUserLogin();
+    this.props.onUserLogin(data);
   }
 
   handleLogout() {
