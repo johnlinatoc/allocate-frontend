@@ -3,6 +3,8 @@ import BudgetContainer from "./mainBudgetContainer/BudgetContainer";
 import ExpenseCardContainer from "./expensesContainer/ExpenseCardContainer";
 import Api from "./services/api";
 import { connect } from 'react-redux';
+import { login, logout } from './actions/index';
+import { bindActionCreators } from 'redux';
 
 
 class Home extends Component {
@@ -46,6 +48,7 @@ class Home extends Component {
       this.props.history.push("/login");
     } else {
       Api.currentUser(token).then(data => {
+        console.log('======data', data)
         if (data.error) {
           this.props.history.push("/login");
         } else {
@@ -142,4 +145,18 @@ class Home extends Component {
     );
   }
 }
-export default Home
+
+const mapStateToProps = (state, props) => {
+  return {
+    isLogged: state.isLogged,
+  }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return bindActionCreators({
+    onUserLogin: login,
+    onUserLogout: logout,
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

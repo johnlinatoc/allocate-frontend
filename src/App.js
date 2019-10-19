@@ -56,9 +56,6 @@ class App extends Component {
               <Navbar/>
               <Homepage
                 {...routeProps}
-                fetchProfile={() => {
-                  this.fetchProfile();
-                }}
                 handleLogin={user => {
                   this.handleLogin(user);
                 }}
