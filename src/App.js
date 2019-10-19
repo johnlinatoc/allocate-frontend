@@ -39,24 +39,6 @@ class App extends Component {
     this.props.onUserLogout();
   }
 
-  getState(passedState) {
-    this.setState({passedState});
-  }
-
-  renderNavbar(){
-    const { auth } = this.state;
-
-    return <Navbar
-      userInfo={auth.user}
-      handleLogin={user => {
-        this.handleLogin(user);
-      }}
-      handleLogout={() => {
-        this.handleLogout();
-      }}
-    />
-  }
-
 
   render() {
     const { auth, loggedIn } = this.state;
@@ -71,7 +53,7 @@ class App extends Component {
           userInfo={auth.user}
           render={routeProps => {
             return (<div>
-              {this.renderNavbar()}
+              <Navbar/>
               <Homepage
                 {...routeProps}
                 fetchProfile={() => {
@@ -105,7 +87,7 @@ class App extends Component {
           path="/myBudget"
           render={routeProps => {
             return (<div>
-              {this.renderNavbar()}
+              <Navbar/>
               <MyBudgetContainer
                 {...routeProps}
                 userInfo={auth.user}
@@ -136,7 +118,7 @@ class App extends Component {
           path="/profile"
           render={routeProps => {
             return (<div>
-              {this.renderNavbar()}
+              <Navbar/>
               <ProfileContainer
                 {...routeProps}
                 userInfo={auth.user}

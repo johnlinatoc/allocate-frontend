@@ -3,7 +3,7 @@ import Api from '../services/api'
 import home from './media/home.mp4'
 import { Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
-import { login, userLogin } from '../actions/index';
+import { login } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
 class Login extends React.Component {
@@ -83,7 +83,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return bindActionCreators({
-    onUserLogin: userLogin
+    onUserLogin: login
   }, dispatch)
 }
 

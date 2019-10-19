@@ -78,7 +78,7 @@ class Navbar extends Component {
         </button>
 
         <div className={this.classNameChange()[0]}>
-          Welcome, {this.props.auth.user.username}
+          Welcome, {this.props.isLogged.auth.user.username}
         </div>
 
         <div className={this.classNameChange()[1]}>
@@ -105,6 +105,7 @@ class Navbar extends Component {
             <div
               onClick={() => {
                 this.props.onUserLogout();
+                localStorage.removeItem("token")
                 this.props.history.push("/login");
               }}
             >
@@ -126,7 +127,6 @@ class Navbar extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    auth: state.auth,
     isLogged: state.isLogged,
   }
 }
