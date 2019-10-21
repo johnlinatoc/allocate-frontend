@@ -13,13 +13,13 @@ export default {
     return fetch(`${URL}/auth`, reqObj).then(res => res.json());
   },
 
-  signup: loginData => {
+  signup: signupData => {
     const reqObj = {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(loginData)
+      body: JSON.stringify(signupData)
     };
 
     return fetch(`${URL}/users`, reqObj)

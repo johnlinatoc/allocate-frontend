@@ -13,10 +13,6 @@ class Navbar extends Component {
     }
   }
 
-  renderNavbar() {
-    return this.props.isLogged ? this.renderLoggedInNavbar() : null
-  }
-
   handleClick(){
     this.setState({
       isClicked: !this.state.isClicked,
@@ -120,7 +116,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div id="navbar">{this.renderNavbar()}</div>
+      <div id="navbar">{this.props.isLogged.loggedIn ? this.renderLoggedInNavbar() : null}</div>
     );
   }
 }

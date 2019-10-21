@@ -6,12 +6,14 @@ const loggedReducer = (state = { user: {} }, action) => {
     case SIGN_IN:
       return state = {
         loggedIn: true,
-        auth: action.payload
+        auth: action.payload,
+        jwt: action.payload.jwt,
       };
     case SIGN_OUT:
       return state = {
         loggedIn: false,
-        auth: { user: {} }
+        auth: { user: {} },
+        jwt: null,
       };
     default:
       return state;
