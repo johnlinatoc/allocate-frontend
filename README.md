@@ -10,13 +10,13 @@ This budgeting app was designed to help others make their own monthly budgets as
 
 ## Screenshots
 
-Login Page: ![login page](./public/image1.png)
+Login Page: ![login page](./public/login.png)
 
-Main Dashboard: ![Main Dashboard](./public/image2.png)
+Main Dashboard: ![Main Dashboard](./public/homescreen.png)
 
-MyBudget Page: ![MyBudget Page](./public/image3.png)
+MyBudget Page: ![MyBudget Page](./public/my-budget.png)
 
-Example of Creating New Budget: ![New Budget](./public/image4.png)
+Example of Creating New Budget: ![New Budget](./public/new-budget.png)
 
 ## Tech/framework used
 <b>Built with</b>
