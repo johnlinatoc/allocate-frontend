@@ -3,8 +3,8 @@ import BudgetCardBack from './BudgetCardBack'
 import ProgressBar from './ProgressBar.js'
 
 class BudgetCardFront extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       flipped: false,
       total: 0,

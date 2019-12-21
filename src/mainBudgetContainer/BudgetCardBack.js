@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import BudgetCardExpense from "./BudgetCardExpense";
 
 class BudgetCardBack extends Component {
-
+//convert to functional component
   renderTransCards() {
     const { expenses } = this.props;
+
     return expenses.map(expense => (
       <BudgetCardExpense
         name={expense.name}

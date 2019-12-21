@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { login, logout } from './actions/index';
 import { bindActionCreators } from 'redux';
 
-
 class Home extends Component {
   constructor(props) {
     super(props);
