@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Api from "../services/api";
-import {Link, withRouter, Redirect} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 
 class ProfileContainer extends Component {
@@ -38,7 +38,7 @@ class ProfileContainer extends Component {
 
   handleDelete(){
     let resp = window.confirm("Are you sure you would like to delete your account?");
-    if (resp == true) {
+    if (resp === true) {
       fetch(`http://localhost:3000/current_user/${this.props.userInfo.id}`, {method: 'DELETE'})
       alert('User has been deleted');
       this.props.history.push('/login');

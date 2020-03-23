@@ -41,7 +41,7 @@ class App extends Component {
 
 
   render() {
-    const { auth, loggedIn } = this.state;
+    const { auth } = this.state;
     return (
       <div>
         <Route exact path="/" render={() => (
