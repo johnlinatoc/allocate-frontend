@@ -18,7 +18,8 @@
     "react-video-cover": "^1.2.2",
     "react-vis": "^1.11.7",
     "redux": "^4.0.4",
-    "victory": "^32.3.6"
+    "victory": "^32.3.6",
+    "webpack": "^5.0.0-beta.13"
   },
   "scripts": {
     "start": "PORT=3001  react-scripts start",
@@ -46,7 +47,8 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
     "jest": "^24.9.0",
-    "react-test-renderer": "^16.12.0"
+    "react-test-renderer": "^16.12.0",
+    "webpack-cli": "^3.3.11"
   },
   "jest": {
     "snapshotSerializers": [
