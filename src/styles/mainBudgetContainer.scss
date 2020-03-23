@@ -168,7 +168,6 @@
   }
 
   .month-buttons{
-    display: inline-block;
     float: right;
     width: 27%;
   }
@@ -215,7 +214,6 @@
 
 
   .income {
-    display: inline-block;
     float: right;
     margin-right: 2%;
     font-weight: 400;
@@ -458,11 +456,8 @@
     transition: width .2s ease-in;
   }
 
-
-
   .income {
     margin: 0;
-    display: inline-block;
     float: right;
     margin-right: -2%;
     font-weight: 400;
