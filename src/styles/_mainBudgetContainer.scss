@@ -26,7 +26,7 @@
   transition: width .2s ease-in;
 }
 
-@include for-phone-only  {
+@include phone-landscape-up  {
   .home-header {
     display: flex;
     justify-content: center;
@@ -250,7 +250,7 @@
   }
 }
 
-@include for-tablet-portrait-up {
+@include tablet-portrait-up {
   .home-header {
     margin-top: 3%;
     color: #151E3F;

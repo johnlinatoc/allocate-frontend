@@ -1,4 +1,4 @@
-@include for-phone-only {
+@include phone-landscape-up {
   .expenses-container {
     display: inline-block;
     width: 78vw;
@@ -145,7 +145,7 @@
   }
 }
 
-@include for-tablet-portrait-up {
+@include tablet-portrait-up {
   .expenses-container {
     display: inline-block;
     width: 20%;

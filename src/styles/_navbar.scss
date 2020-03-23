@@ -21,7 +21,7 @@
   text-decoration: none;
   font-weight: 100;
   margin-left: 33%;
-  @include for-phone-only {
+  @include phone-landscape-up {
     margin-left: 0px;
     top: 0px;
     font-size: 3em;
@@ -32,7 +32,7 @@
   display: inline-block;
   margin-left: 2em;
   margin-top: 6px;
-  @include for-phone-only {
+  @include phone-landscape-up {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,7 +47,7 @@
   position: relative;
   top: 20px;
   margin-right: 4em;
-  @include for-phone-only {
+  @include phone-landscape-up {
     display: none;
   }
 }
@@ -61,7 +61,7 @@
   div{
     margin-right: 2em;
   }
-  @include for-phone-only {
+  @include phone-landscape-up {
     display: none;
     div {
       margin-right: 0em;

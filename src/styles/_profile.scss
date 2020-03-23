@@ -15,7 +15,7 @@
     position: relative;
     font-size: 3em;
     left: -13%;
-    @include for-phone-only {
+    @include phone-landscape-up {
       background: white;
       width: 73%;
       margin: 5% 0 5% 12%;
@@ -34,7 +34,7 @@
     font-weight: 500;
     background-color: #151E3F;
   }
-  @include for-phone-only {
+  @include phone-landscape-up {
     border: solid 1px black;
     width: 88%;
     text-align: center;
