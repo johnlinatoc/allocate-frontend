@@ -1,12 +1,25 @@
 import React from 'react';
-import Api from '../services/api'
-import home from './media/home.mp4'
+import Api from '../services/api';
+import home from './media/home.mp4';
 import { Link, withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import { login } from '../actions/index';
 import { bindActionCreators } from 'redux';
 
-class Login extends React.Component {
+interface Props {
+  handleLogin: Function,
+  onUserLogin: Function,
+  history: History,
+  push: Function,
+}
+
+interface State {
+  error: boolean,
+  username: string,
+  password: string
+}
+
+class Login extends React.Component<Props, State> {
   constructor(props){
     super(props)
     this.state = {
@@ -54,7 +67,7 @@ class Login extends React.Component {
           <p>save well</p>
         </div>
         <div className='login-form-full'>
-          {this.state.error ? <h1 style={{fontWeight: '100'}}>Invalid username or Password</h1> : null}
+          {this.state.error && <h1 style={{fontWeight: 'normal'}}>Invalid username or Password</h1>}
           <form onSubmit={(e)=>{this.handleLogin(e)}}>
             <h3>Login</h3>
             <input onChange={(e) => this.handleUsernameChange(e)} value={this.state.username} placeholder='username'/><br/>
