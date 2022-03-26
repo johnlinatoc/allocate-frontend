@@ -10,7 +10,7 @@ This budgeting app was designed to help others make their own monthly budgets as
 
 ## Screenshots
 
-Login Page: ![login page](./public/login.png)
+Login Page: ![login page](public/login.png)
 
 Main Dashboard: ![Main Dashboard](./public/homescreen.png)
 
