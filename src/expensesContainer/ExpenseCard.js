@@ -1,9 +1,11 @@
 import React from 'react';
 
-const ExpenseCard = (props) => {
+const ExpenseCard = ({info}) => {
+  const {name, amount} = info
+
   return (
     <div className="side-trans-card">
-      {props.info.name} <span>${props.info.amount}</span>
+      {name} <span>${amount}</span>
     </div>
   )
 }
