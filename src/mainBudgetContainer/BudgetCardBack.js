@@ -1,26 +1,24 @@
-import React, { Component } from "react";
-import BudgetCardExpense from "./BudgetCardExpense";
+import React from "react";
 
-class BudgetCardBack extends Component {
-//convert to functional component
-  renderTransCards() {
-    const { expenses } = this.props;
+const BudgetCardExpense = ({ name, amount }) => (
+  <div className='trans-card'>
+    {name} <span>${amount}</span>
+    <hr/>
+  </div>
+)
 
-    return expenses.map(expense => (
+const BudgetCardBack = ({ expenses, category, total}) => {
+  const renderTransCards = () => {
+    return expenses.map((expense, index) => (
       <BudgetCardExpense
+        key={index}
         name={expense.name}
         amount={expense.amount}
       />
     ));
   }
 
-  calcRemainder() {
-    return this.props.category.budget - this.props.total;
-  }
-
-  render() {
-    const { category, total } = this.props;
-
+  {
     return (
       <div className="card-back">
         <h4>{category.name}</h4>
@@ -34,12 +32,12 @@ class BudgetCardBack extends Component {
           <div className='card-back-data'>
             <p>${category.budget}</p>
             <p>${total}</p>
-            <p className='card-back-last'>${this.calcRemainder()}</p>
+            <p className='card-back-last'>${category.budget - total}</p>
           </div>
       </div>
         <div>
           <h5>Expenses</h5>
-          {this.renderTransCards()}
+          {renderTransCards()}
         </div>
       </div>
     );

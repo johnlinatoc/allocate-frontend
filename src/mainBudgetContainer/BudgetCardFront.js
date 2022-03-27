@@ -1,29 +1,15 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import BudgetCardBack from './BudgetCardBack'
 import ProgressBar from './ProgressBar.js'
 
-class BudgetCardFront extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      flipped: false,
-      total: 0,
-      budget: 0
-    }
-  }
+const BudgetCardFront = ({ category, expenses }) => {
+  const [flipped, setFlipped] = useState(false)
 
-  handleflip() {
-    this.setState({
-      flipped: !this.state.flipped
-    })
-  }
-
-  renderTotal(){
-    const { category } = this.props
+  const renderTotal = () => {
     let filtered;
     let total = 0;
 
-    filtered = this.props.expenses.filter((expense)=>{
+    filtered = expenses.filter((expense)=>{
       return expense.category_id === category.id
     })
 
@@ -34,48 +20,43 @@ class BudgetCardFront extends Component {
     return total;
   }
 
-  calcPercentage(){
+  const calcPercentage = () => {
     let total = 0
-    total = (this.renderTotal() / this.props.category.budget) * 100
+    total = (renderTotal() / category.budget) * 100
     return total
   }
 
-  renderCard(){
-    const { category } = this.props;
-    const { flipped } = this.state;
-
+  const renderCard = () =>{
     if (!flipped) {
-      this.calcPercentage()
       return <div className='card-header'>
         <div className='card-progress-bar'>
-          <ProgressBar className='card-bar' percentage={this.calcPercentage()}/>
+          <ProgressBar className='card-bar' percentage={calcPercentage()}/>
         </div>
-        <h4 className='category-spent'>Spent ${this.renderTotal()}</h4>
+        <h4 className='category-spent'>Spent ${renderTotal()}</h4>
         <h2 className='category-name'>{category.name}</h2>
       </div>
     } else {
       let filtered;
 
-      filtered = this.props.expenses.filter((expense)=>{
+      filtered = expenses.filter((expense)=>{
         return expense.category_id === category.id
       })
 
       return <BudgetCardBack
           key={category.id}
           category={category}
-          total={this.renderTotal()}
+          total={renderTotal()}
           expenses={filtered}/>
     }
   }
 
-  render(){
+  {
     return(
-        <div className='budget-card' onClick={()=>{ this.handleflip() }}>
-          { this.renderCard() }
+        <div className='budget-card' onClick={()=>{ setFlipped(!flipped) }}>
+          { renderCard() }
         </div>
     )
   }
-
 }
 
 export default BudgetCardFront

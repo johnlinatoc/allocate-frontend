@@ -1,18 +1,18 @@
 import React from 'react'
 
-const Filler = (props) => {
+const Filler = ({percentage}) => {
   let fillerStyle, fillerClassName;
 
-  if (props.percentage < 100) {
+  if (percentage < 100) {
     fillerClassName = 'filler-4'
      fillerStyle = {
-       width: `${props.percentage}%`
+       width: `${percentage}%`
      }
-  } else if (props.percentage === 100){
+  } else if (percentage === 100){
     fillerClassName = 'filler-3'
      fillerStyle = {
       width: `100%`}
-  } else if (props.percentage > 100){
+  } else if (percentage > 100){
     fillerClassName = 'filler-2'
     fillerStyle = {
      width: `100%`}

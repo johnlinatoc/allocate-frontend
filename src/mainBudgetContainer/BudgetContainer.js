@@ -1,30 +1,20 @@
-import React, { Component } from "react";
+import React, { useState} from "react";
 import BudgetCardFront from "./BudgetCardFront";
 import BudgetMonthCard from "./BudgetMonthCard";
 import NewBudget from "./NewBudget";
 
-export default class BudgetContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isFlagged: false,
-      isCancelled: true,
-      editEnabled: false,
-    };
-  }
+ const  BudgetContainer = ({ months, expenses, pageBack, pageForward, categories, userInfo, fetchAll}) =>  {
+  const [isFlagged, setIsFlagged] = useState(false);
+  const [isCancelled, setIsCancelled] = useState(true)
 
-  renderBudgetMonth() {
-    const { months, expenses } = this.props;
-
+  const renderBudgetMonth = () => {
     return months.map(month => {
       return (
         <BudgetMonthCard
-          handleEdit={(e)=>this.handleEdit(e)}
-          editEnabled={this.state.editEnabled}
-          pageBack={this.props.pageBack}
-          pageForward={this.props.pageForward}
           key={month.id}
           id={month.id}
+          pageBack={pageBack}
+          pageForward={pageForward}
           month={month}
           expenses={expenses}
         />
@@ -32,8 +22,7 @@ export default class BudgetContainer extends Component {
     });
   }
 
-  renderBudgetCard() {
-    const { categories, expenses } = this.props;
+  const renderBudgetCard = () => {
     return categories.map(category => {
       return (
         <BudgetCardFront
@@ -45,38 +34,37 @@ export default class BudgetContainer extends Component {
     });
   }
 
-  isFlagged() {
-    return this.setState({
-      isFlagged: !this.state.isFlagged,
-      isCancelled: !this.state.isCancelled,
-     });
+  const isCardFlagged = () =>{
+    setIsFlagged(!isFlagged)
+    setIsCancelled(!isCancelled)
   };
 
-  renderNewBudgetForm() {
-    const { months } = this.props;
 
-    return <NewBudget
-        months={months}
-        userInfo={this.props.userInfo}
-        isCancelled={this.state.isCancelled}
-        fetchAll={this.props.fetchAll}
-        isFlagged={()=>this.isFlagged()}/>
-  }
-
-  renderButton(){
-    return <button className='start-budget-button'  onClick={() => this.isFlagged()}>
-      { this.state.isFlagged ? "cancel" : "Start Budget!"}
-    </button>
-  }
-
-  render() {
-    return (
-      <div>
-        {this.renderBudgetMonth()}
-        <div className="budget-cards">{this.renderBudgetCard()}</div>
-        { this.props.categories.length < 1 && !this.state.isFlagged ? this.renderButton() : null }
-        {this.state.isFlagged ?  <div>{this.renderNewBudgetForm()} {this.renderButton()}</div> : null}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {renderBudgetMonth()}
+      <div className="budget-cards">{renderBudgetCard()}</div>
+      { categories.length < 1 && !isFlagged 
+        ? <button className='start-budget-button'  onClick={isCardFlagged}>
+            { isFlagged ? "cancel" : "Start Budget!"}
+          </button> 
+        : null }
+      {isFlagged 
+        ?  <>
+          <NewBudget
+            months={months}
+            userInfo={userInfo}
+            isCancelled={isCancelled}
+            fetchAll={fetchAll}
+            isFlagged={isCardFlagged}
+          /> 
+          <button className='start-budget-button'  onClick={isCardFlagged}>
+            { isFlagged ? "cancel" : "Start Budget!"}
+          </button>
+        </> 
+      : null}
+    </div>
+  );
 }
+
+export default BudgetContainer;

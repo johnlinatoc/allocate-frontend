@@ -1,10 +1,10 @@
 import React from 'react'
 import Filler from './Filler'
 
-const ProgressBar = (props) => {
+const ProgressBar = ({percentage}) => {
   return (
       <div className="progress-bar">
-        <Filler percentage={props.percentage} />
+        <Filler percentage={percentage} />
       </div>
     )
 }

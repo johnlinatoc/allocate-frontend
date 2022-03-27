@@ -50,7 +50,6 @@ class Home extends Component {
         if (data.error) {
           this.props.history.push("/login");
         } else {
-          console.log('homepage')
           this.props.handleLogin(data);
           this.props.onUserLogin(data);
           this.fetchMonth();
