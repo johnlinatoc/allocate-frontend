@@ -3,7 +3,7 @@ import BudgetCardFront from "./BudgetCardFront";
 import BudgetMonthCard from "./BudgetMonthCard";
 import NewBudget from "./NewBudget";
 
- const  BudgetContainer = ({ months, expenses, pageBack, pageForward, categories, userInfo, fetchAll}) =>  {
+const  BudgetContainer = ({ months, expenses, pageBack, pageForward, categories, userInfo, fetchAll}) =>  {
   const [isFlagged, setIsFlagged] = useState(false);
   const [isCancelled, setIsCancelled] = useState(true)
 
